@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+DOTFILES_DIR=$(pwd)
+
+export PYTHONPATH=$PYTHONPATH:DOTFILES_DIR
+
+python3 -m pip install --quiet --upgrade pip
+rm -rf venv
+python3 -m venv venv
+source venv/bin/activate
+python3 -m pip install --quiet -r ./installer/requirements.txt
+
+python3 ./installer/_installer.py $DOTFILES_DIR
+
+rm -rf venv
