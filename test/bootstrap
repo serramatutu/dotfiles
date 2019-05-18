@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+docker build -t dotfiles-test-image -f test/Dockerfile .
+
+docker run --rm -t dotfiles-test-image

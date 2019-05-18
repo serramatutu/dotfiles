@@ -4,6 +4,7 @@ import subprocess
 logger = logging.getLogger(__name__)
 
 def sh(command, pretty_name=None, logger=logger):
+    """Run a shell command"""
     _sh_logger = logger.getChild('sh')
 
     if pretty_name is None:
@@ -18,8 +19,9 @@ def sh(command, pretty_name=None, logger=logger):
     return process
 
 def apt(package_name, logger=logger):
+    """Install an apt package"""
     _apt_logger = logger.getChild('apt')
     _apt_logger.debug("Installing apt package '{0}'".format(package_name))
 
     # TODO: repository updates, checksum/key checking etc.
-    return sh('sudo apt install '+package_name, 'apt install', _apt_logger)
+    return sh('sudo apt -y install '+package_name, 'apt install', _apt_logger)
