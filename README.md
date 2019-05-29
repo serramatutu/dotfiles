@@ -19,6 +19,11 @@ sh test/bootstrap
 ```
 Note that you must have [docker](https://www.docker.com/) installed on your machine so that the installation test does not affect your computer (otherwise you would end up having to clean a whole mess every time the project is tested :p).
 
+If you need more advanced testing options, please run to know more
+```
+sh test/bootstrap --help
+```
+
 ## components
 The dotfiles repo is subdivided into topics, which are all modular and self-contained. Some of the files contained in topics will be treated specially:
 - **topics/topic/\*.zsh**: a zshell file containing aliases, environment variables or any other shell environment configurations. All of those configurations will be loaded onto the _zsh_ environment.
@@ -28,6 +33,7 @@ The dotfiles repo is subdivided into topics, which are all modular and self-cont
 ## todo
 - Snap installs (vscode, firefox)
 - Multiple ssh-keys, as shown [here](https://gist.github.com/jexchan/2351996/) (autosetup with prompts).
+- Flag for abort when file exists
 
 ## disclaimer
 This project was heavily inspired by [holman's dotfiles](https://github.com/holman/dotfiles).

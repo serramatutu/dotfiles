@@ -31,3 +31,11 @@ python3 -m pip install --quiet -r ./installer/requirements.txt
 python3 ./installer/installer.py $DOTFILES_DIR
 
 rm -rf ./venv
+
+if [ "$DOTFILES_ENV" = "TEST" ]; then
+    echo "---> HOME LS"
+    ls -a $HOME
+
+    echo "---> ZSH LS"
+    ls -a $HOME/.zsh
+fi

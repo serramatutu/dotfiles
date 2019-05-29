@@ -1,5 +1,49 @@
 #!/usr/bin/env bash
 
-docker build -t dotfiles-test-image -f test/Dockerfile .
+# set abort for errors
+set -e
 
-docker run --rm -t dotfiles-test-image
+show_help() {
+cat << EOF
+Usage: sh test/bootstrap [OPTIONS]
+
+OPTIONS:
+    -h --help         Show this guide
+    -i --inspect      Do not delete image and container. Allows for further 
+                      container inspection but requires manual cleanup later
+EOF
+}
+
+build() {
+    # create random tag for image so that docker persists its name after rebuild
+    RANDOM_TAG=$(head /dev/urandom | tr -dc A-Za-z0-9 | head -c 13 ; echo '')
+
+    docker build \
+        -t dotfiles-test-image \
+        -t dotfiles-test-image:$RANDOM_TAG \
+        -f test/Dockerfile .
+}
+
+# parse arguments
+options=$(getopt -l "inspect,help" -o "ih" -- "$@")
+eval set -- "$options"
+
+case $1 in
+    -h|--help)
+        show_help
+        break
+    ;;
+
+    -i|--inspect)
+        build
+        docker run -t --name dotfiles-test-container dotfiles-test-image
+        break
+    ;;
+    
+    --)
+        build
+        docker run --rm -t dotfiles-test-image
+        docker rmi $(docker images --format '{{.Repository}}:{{.Tag}}' | grep 'dotfiles-test-image')
+        break
+    ;;
+esac
