@@ -17,6 +17,8 @@ HOME_DIR = str(pathlib.Path.home())
 DOTFILES_DIR = sys.argv[1] if 1 < len(sys.argv) else None
 
 def _pre_install():
+    logger.info("Found HOME dir: {0}".format(HOME_DIR))
+
     sys.path.append(DOTFILES_DIR)
     os.makedirs(os.path.join(HOME_DIR, '.zsh'), exist_ok=True)
 

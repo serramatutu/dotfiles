@@ -39,7 +39,7 @@ case $1 in
         build
         docker container rm dotfiles-test-container || true
         docker run -t --name dotfiles-test-container dotfiles-test-image
-        docker commit dotfiles-test-container dotfiles-test-container:installed
+        docker commit dotfiles-test-container dotfiles-test-image:installed
         break
     ;;
     
