@@ -19,9 +19,10 @@ sh test/bootstrap
 ```
 Note that you must have [docker](https://www.docker.com/) installed on your machine so that the installation test does not affect your computer (otherwise you would end up having to clean a whole mess every time the project is tested :p).
 
-If you need more advanced testing options, please run to know more
+If you need to inspect the installation results, please run
 ```
-sh test/bootstrap --help
+sh test/bootstrap --inspect
+sh test/inspect
 ```
 
 ## components
