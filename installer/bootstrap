@@ -20,15 +20,19 @@ fi
 
 PYTHONPATH=$PYTHONPATH:DOTFILES_DIR
 
-apt -y install python3-pip
-apt -y install python3-venv
+echo "Initializing installer"
+apt -qq -y update > /dev/null
+
+apt -qq -y install python3-pip > /dev/null
+apt -qq -y install python3.7-venv > /dev/null
+
 python3 -m pip install --quiet --upgrade pip
 rm -rf ./venv
-python3 -m venv venv
+python3.7 -m venv venv
 source ./venv/bin/activate
-python3 -m pip install --quiet -r ./installer/requirements.txt
+python3.7 -m pip install --quiet -r ./installer/requirements.txt
 
-python3 ./installer/installer.py $DOTFILES_DIR
+python3.7 -m installer $DOTFILES_DIR $DOTFILES_ENV
 
 rm -rf ./venv
 

@@ -8,7 +8,7 @@ RUN apt-get update
 RUN apt-get -y install python3.7
 # Speeds up testing even though the installer will try to fetch pip
 RUN apt-get -y install python3-pip
-RUN apt-get -y install python3-venv
+RUN apt-get -y install python3.7-venv
 
 ADD . /dotfiles
 WORKDIR /dotfiles
