@@ -1,2 +1,2 @@
-from .installer import HOME_DIR, DOTFILES_DIR
+from .installer import CONTEXT
 from .util import *

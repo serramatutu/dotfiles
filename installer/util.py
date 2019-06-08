@@ -2,7 +2,7 @@ import os
 import logging
 import subprocess
 
-from .installer import CONTEXT, ENV
+from .installer import CONTEXT
 
 logger = logging.getLogger(__name__)
 
@@ -30,6 +30,10 @@ def sh(command, pretty_name=None, logger=logger, print_output=True):
 def apt(package_name, logger=logger):
     """Install an apt package"""
     _apt_logger = logger.getChild('apt')
+    if not CONTEXT.apt:
+        _apt_logger.debug("apt disabled. Skipping '{0}' install.".format(package_name))
+        return
+
     _apt_logger.debug("Installing apt package '{0}'".format(package_name))
 
     # TODO: repository updates, checksum/key checking etc.
@@ -38,9 +42,14 @@ def apt(package_name, logger=logger):
 def snap(package_name, logger=logger):
     """Install a snap package"""
     _snap_logger = logger.getChild('snap')
-    if ENV == "TEST":
-        _snap_logger.warning("Snap doesn't work inside docker container. Aborting install.")
+    if not CONTEXT.snap:
+        _snap_logger.debug("snap disabled. Skipping '{0}' install.".format(package_name))
         return
+
+    if CONTEXT.env == "TEST":
+        _snap_logger.warning("snap doesn't work inside docker container. Aborting install.")
+        return
+
     _snap_logger.debug("Installing snap package '{0}'".format(package_name))
 
     # TODO: repository updates, checksum/key checking etc.

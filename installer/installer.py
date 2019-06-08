@@ -1,41 +1,36 @@
 import os
 import sys
 import logging
-import pathlib
 import importlib
 
 import coloredlogs
 
-logging.basicConfig()
-coloredlogs.install(
-    fmt='%(levelname)-7s %(message)s',
-    level='DEBUG'
-)
-logger = logging.getLogger("installer")
+from .context import InstallContext
+CONTEXT = InstallContext()
+logger = None
 
-HOME_DIR = str(pathlib.Path.home())
-DOTFILES_DIR = sys.argv[1] if 1 < len(sys.argv) else None
-ENV = sys.argv[2]
+def _pre_install(args):
+    global CONTEXT, logger
+    CONTEXT = InstallContext(**vars(args))
 
-_cwd = DOTFILES_DIR
-class _InstallContext:
-    @property
-    def cwd(self):
-        return _cwd
-CONTEXT = _InstallContext()
+    logging.basicConfig()
+    coloredlogs.install(
+        fmt='%(levelname)-7s %(message)s',
+        level=CONTEXT.loglevel
+    )
+    logger = logging.getLogger("installer")
 
-def _pre_install():
-    logger.info("Found HOME dir: {0}".format(HOME_DIR))
+    logger.info("Found HOME dir: {0}".format(CONTEXT.home))
 
-    sys.path.append(DOTFILES_DIR)
-    os.makedirs(os.path.join(HOME_DIR, '.zsh'), exist_ok=True)
+    sys.path.append(CONTEXT.dotfiles)
+    os.makedirs(os.path.join(CONTEXT.home, '.zsh'), exist_ok=True)
 
 def _install():
     logger.info('Beginning install')
 
     success = []
     failed = []
-    topics_dir = os.path.join(DOTFILES_DIR, 'topics')
+    topics_dir = os.path.join(CONTEXT.dotfiles, 'topics')
     
     logger.info('Determining installation order')
     topics = _install_order(os.listdir(topics_dir))
@@ -68,7 +63,7 @@ def _load_method(topic, method):
     return None
 
 def _call_method_if_exists(topic, method, default=None):
-    if not os.path.exists(os.path.join(DOTFILES_DIR, 'topics', topic, 'install.py')):
+    if not os.path.exists(os.path.join(CONTEXT.dotfiles, 'topics', topic, 'install.py')):
         return default
 
     m = _load_method(topic, method)
@@ -112,9 +107,11 @@ def _install_order(topics):
 
 def _install_topic(topic):
     """Installs a topic"""
+    global CONTEXT
+
     logger.info("Installing topic '{0}'".format(topic))
 
-    topic_path = os.path.join(DOTFILES_DIR, 'topics', topic)
+    topic_path = os.path.join(CONTEXT.dotfiles, 'topics', topic)
     install_method = None
     zsh_files = []
     symlink_files = []
@@ -132,10 +129,9 @@ def _install_topic(topic):
                 .format(file_name)
             )
 
-    global _cwd
-    _cwd = topic_path
+    CONTEXT.cwd = topic_path
     _call_method_if_exists(topic, 'install')
-    _cwd = DOTFILES_DIR
+    CONTEXT.cwd = CONTEXT.dotfiles
 
     for zsh_file in zsh_files:
         _load_env(zsh_file)
@@ -148,7 +144,7 @@ def _symlink_home(src):
     """Symlinks a file into the user's home directory"""
     base_name, ext = os.path.splitext(src)
     dest = os.path.join(
-        HOME_DIR, os.path.basename(os.path.normpath(base_name))
+        CONTEXT.home, os.path.basename(os.path.normpath(base_name))
     )
     logger.debug('Symlinking {0} onto {1}'.format(src, dest))
     os.symlink(src, dest)
@@ -157,7 +153,7 @@ def _load_env(src):
     """Loads .zsh file contents onto the zsh environment"""
     base_name, ext = os.path.splitext(src)
     dest = os.path.join(
-        HOME_DIR, '.zsh', os.path.basename(os.path.normpath(base_name)) + ext
+        CONTEXT.home, '.zsh', os.path.basename(os.path.normpath(base_name)) + ext
     )
     logger.debug(
         "Loading '{0}' into zsh environment"

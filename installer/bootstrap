@@ -30,9 +30,9 @@ python3 -m pip install --quiet --upgrade pip
 rm -rf ./venv
 python3.7 -m venv venv
 source ./venv/bin/activate
-python3.7 -m pip install --quiet -r ./installer/requirements.txt
+python3.7 -m pip install --quiet -r ./requirements.txt
 
-python3.7 -m installer $DOTFILES_DIR $DOTFILES_ENV
+python3.7 -m installer --env $DOTFILES_ENV $DOTFILES_DIR $@
 
 rm -rf ./venv
 
