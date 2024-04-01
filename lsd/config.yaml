@@ -1,0 +1,9 @@
+header: true
+layout: oneline
+blocks:
+  - permission
+  - user
+  - group
+  - size
+  - date
+  - name

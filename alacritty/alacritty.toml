@@ -1,0 +1,22 @@
+import = [
+    "~/.config/alacritty/themes/themes/ayu_dark.toml"
+]
+
+shell = "zsh"
+
+[window]
+startup_mode = "Maximized"
+option_as_alt = "Both"
+
+[font]
+size = 18
+normal = { family = "FiraCode Nerd Font" }
+bold = { family = "FiraCode Nerd Font", style = "bold" }
+italic = { family = "FiraCode Nerd Font", style = "italic" }
+
+[cursor]
+style = "Underline"
+
+[env]
+WINIT_X11_SCALE_FACTOR = "1.0"
+
