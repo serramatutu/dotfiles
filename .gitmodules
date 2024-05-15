@@ -1,3 +1,12 @@
 [submodule "cheat/config/cheatsheets/community"]
 	path = cheat/config/cheatsheets/community
 	url = https://github.com/cheat/cheatsheets
+[submodule ".config/alacritty/themes"]
+	path = .config/alacritty/themes
+	url = https://github.com/alacritty/alacritty-theme
+[submodule "zsh/themes/spaceship-prompt"]
+	path = zsh/themes/spaceship-prompt
+	url = https://github.com/spaceship-prompt/spaceship-prompt.git
+[submodule "zsh/plugins/zsh-vi-mode"]
+	path = zsh/plugins/zsh-vi-mode
+	url = https://github.com/spaceship-prompt/spaceship-prompt.git

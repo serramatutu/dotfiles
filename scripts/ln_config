@@ -1,0 +1,3 @@
+#!/bin/sh
+
+scripts/ln_contents ".config" "$HOME/.config"

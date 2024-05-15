@@ -1,0 +1,19 @@
+#!/bin/sh
+#
+# Symlink contents of <source> onto <target>, one by one
+# USAGE:
+#   ln_contents <source> <target>
+
+SOURCE=$1
+TARGET=$2
+
+REAL_SOURCE=$(realpath $SOURCE)
+REAL_TARGET=$(realpath $TARGET)
+
+CONTENTS=$(find $REAL_SOURCE -mindepth 1 -maxdepth 1)
+
+for CONTENT in $CONTENTS; do
+  CONTENT_FILE=$(basename $CONTENT)
+  ln -sf "$CONTENT" "$REAL_TARGET/$CONTENT_FILE"
+done
+
