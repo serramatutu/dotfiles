@@ -5,8 +5,10 @@ import = [
 shell = "zsh"
 
 [window]
+decorations = "Buttonless"
 startup_mode = "Maximized"
 option_as_alt = "Both"
+padding = { x = 3, y = 3 }
 
 [font]
 size = 18

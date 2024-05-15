@@ -9,6 +9,12 @@
       },
       "homebrew/services": {
         "revision": "e7b5961d767f6e98bb83a0eb3af9ee95dc19345f"
+      },
+      "koekeishiya/formulae": {
+        "revision": "bd744b3c3f5958368313fc594371d13986d51cb0"
+      },
+      "felixkratz/formulae": {
+        "revision": "135452bb73f5fee5b31ca726b9eecdedb5f6492e"
       }
     },
     "brew": {
@@ -796,6 +802,22 @@
             }
           }
         }
+      },
+      "skhd": {
+        "version": "0.3.9",
+        "bottle": false
+      },
+      "yabai": {
+        "version": "7.1.0",
+        "bottle": false
+      },
+      "sketchybar": {
+        "version": "2.21.0",
+        "bottle": false
+      },
+      "borders": {
+        "version": "1.6.0",
+        "bottle": false
       }
     },
     "cask": {
@@ -809,6 +831,12 @@
         "version": "3.2.1",
         "options": {
           "full_name": "font-fira-code-nerd-font"
+        }
+      },
+      "font-hack-nerd-font": {
+        "version": "3.2.1",
+        "options": {
+          "full_name": "font-hack-nerd-font"
         }
       }
     }
