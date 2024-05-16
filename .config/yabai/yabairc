@@ -10,7 +10,7 @@ yabai -m config external_bar                 all:30:0 \
                 mouse_follows_focus          off \
                 focus_follows_mouse          off \
                 window_placement             second_child \
-                window_opacity               off \
+                window_opacity               on \
                 active_window_opacity        1.0 \
                 normal_window_opacity        0.7 \
                 window_shadow                off \
@@ -41,9 +41,13 @@ yabai -m signal --add event=window_focused action="sketchybar --trigger window_f
 yabai -m signal --add event=window_created action="sketchybar --trigger windows_on_spaces"
 yabai -m signal --add event=window_destroyed action="sketchybar --trigger windows_on_spaces"
 
-# make sure we always have 5 available spaces
+# make sure we always have 7 available spaces
 curr_spaces=$(yabai -m query --spaces | jq length)
-for i in $(seq $curr_spaces 5);
-do
-  yabai -m space --create
-done
+max_spaces="7"
+
+if [ "$curr_spaces" -lt "$max_spaces" ]; then
+  for i in $(seq $curr_spaces $max_spaces);
+  do
+    yabai -m space --create
+  done
+fi
