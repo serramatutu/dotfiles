@@ -2,6 +2,8 @@ export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="spaceship"
 plugins=(
   git
+  zsh-syntax-highlighting
+  zsh-history-substring-search
   zsh-vi-mode
 )
 
@@ -16,7 +18,12 @@ export DOTFILES="$HOME/.dotfiles"
 export EDITOR=nvim
 export GPG_TTY=$(tty)
 
+# History search
+bindkey -M vicmd 'k' history-substring-search-up
+bindkey -M vicmd 'j' history-substring-search-down
+
 # Aliases
+alias dotfiles="cd $DOTFILES"
 alias zshconfig="nvim ~/.zshrc"
 alias venv="source .venv/bin/activate"
 alias ls="lsd -l"
@@ -42,6 +49,7 @@ export NVM_DIR="$HOME/.nvm"
 # Load OS-specific config
 source "$DOTFILES/os/zshload.zsh"
 
+# Load secrets
 source ~/.zshenv
 
 # Start in a tmux session by default

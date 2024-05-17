@@ -1,5 +1,5 @@
 [submodule "cheat/config/cheatsheets/community"]
-	path = cheat/config/cheatsheets/community
+	path = .config/cheat/cheatsheets/community
 	url = https://github.com/cheat/cheatsheets
 [submodule ".config/alacritty/themes"]
 	path = .config/alacritty/themes
@@ -10,3 +10,9 @@
 [submodule "zsh/plugins/zsh-vi-mode"]
 	path = zsh/plugins/zsh-vi-mode
 	url = https://github.com/spaceship-prompt/spaceship-prompt.git
+[submodule "zsh/plugins/zsh-history-substring-search"]
+	path = zsh/plugins/zsh-history-substring-search
+	url = https://github.com/zsh-users/zsh-history-substring-search
+[submodule "zsh/plugins/zsh-syntax-highlighting"]
+	path = zsh/plugins/zsh-syntax-highlighting
+	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
