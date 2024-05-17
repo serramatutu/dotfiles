@@ -33,6 +33,9 @@ tere() {
     [ -n "$result" ] && cd -- "$result"
 }
 
+# ripgrep
+export RIPGREP_CONFIG_PATH=$HOME/.config/ripgrep/ripgreprc
+
 # Go
 export PATH="$PATH:$HOME/go/bin"
 

@@ -274,21 +274,12 @@ return {
     lazy = false,
     config = function()
       local telescope = require("telescope")
-      telescope.setup({
-        defaults = {
-          file_ignore_patterns = {
-            "^.git/",
-            "^.venv/",
-            "__pycache__",
-            "..*cache",
-          },
-        },
-      })
+      telescope.setup()
       telescope.load_extension("ui-select")
     end,
     keys = {
       -- find
-      { "<leader>ff", "<cmd>Telescope find_files hidden=true no_ignore=true<cr>", desc = "Find file" },
+      { "<leader>ff", "<cmd>Telescope find_files hidden=true<cr>", desc = "Find file" },
       { "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Find buffer" },
       { "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Open recent file" },
       { "<leader>fg", "<cmd>Telescope live_grep<cr>", desc = "Find in all files", remap = true },
