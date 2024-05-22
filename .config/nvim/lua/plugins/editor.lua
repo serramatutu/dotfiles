@@ -20,7 +20,7 @@ return {
         "lua",
         "rust",
         "sql",
-        "terraform",
+        "hcl",
       },
       highlight = { enable = true },
       indent = { enable = true },
@@ -40,8 +40,26 @@ return {
         textobjects = {
           move = {
             enable = true,
-            goto_next_start = { ["nf"] = "@function.inner", ["nc"] = "@class.inner", ["nb"] = "@block.inner" },
-            goto_previous_start = { ["pf"] = "@function.inner", ["pc"] = "@class.inner", ["pb"] = "@block.inner" },
+            goto_next_start = {
+              ["nf"] = "@function.inner",
+              ["nc"] = "@class.inner",
+              ["ns"] = "@block.inner",
+            },
+            goto_previous_start = {
+              ["pf"] = "@function.inner",
+              ["pc"] = "@class.inner",
+              ["ps"] = "@block.inner",
+            },
+          },
+          select = {
+            enable = true,
+            keymaps = {
+              ["af"] = "@function.outer",
+              ["if"] = "@function.inner",
+              ["ac"] = "@class.outer",
+              ["ic"] = "@class.inner",
+              ["as"] = { query = "@scope", query_group = "locals", desc = "Select language scope" },
+            },
           },
         },
       })

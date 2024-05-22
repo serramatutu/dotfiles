@@ -15,7 +15,15 @@ return {
     dependencies = { "williamboman/mason.nvim" },
     build = ":MasonUpdate",
     opts = {
-      ensure_installed = { "lua_ls", "ruff_lsp", "pyright", "kotlin_language_server", "rust_analyzer", "yamlls" },
+      ensure_installed = {
+        "lua_ls",
+        "ruff_lsp",
+        "pyright",
+        "kotlin_language_server",
+        "rust_analyzer",
+        "yamlls",
+        "terraformls",
+      },
     },
   },
   {
@@ -48,7 +56,6 @@ return {
             },
           },
         },
-        ruff_lsp = {},
       },
     },
     config = function()
@@ -69,6 +76,7 @@ return {
         on_attach = on_attach,
       })
       lspconfig.yamlls.setup({})
+      lspconfig.terraformls.setup({})
     end,
     keys = {
       { "<leader>gD", "<cmd>lua vim.lsp.buf.declaration()<cr>", { noremap = true, silent = true } },
