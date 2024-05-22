@@ -34,6 +34,14 @@ yabai -m rule --add label="Finder" app="^Finder$" title="(Co(py|nnect)|Move|Info
 yabai -m rule --add label="Safari" app="^Safari$" title="^(General|(Tab|Password|Website|Extension)s|AutoFill|Se(arch|curity)|Privacy|Advance)$" manage=off
 yabai -m rule --add label="About This Mac" app="System Information" title="About This Mac" manage=off
 yabai -m rule --add label="Select file to save to" app="^Inkscape$" title="Select file to save to" manage=off
+ 
+# Automatically move certain apps to their spaces
+yabai -m rule --add label="Alacritty" app="^Alacritty$" space=1
+yabai -m rule --add label="Firefox" app="^Firefox$" space=2
+yabai -m rule --add label="Slack" app="^Slack$" space=3
+yabai -m rule --add label="Spotify" app="^Spotify$" space=4
+yabai -m rule --add label="Linear" app="^Linear$" space=5
+yabai -m rule --add label="Notion" app="^Notion$" space=5
 
 # integration with sketchybar
 yabai -m signal --add event=space_changed action="sketchybar --trigger window_focus"
