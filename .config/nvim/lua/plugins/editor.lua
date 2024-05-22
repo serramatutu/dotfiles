@@ -23,25 +23,67 @@ return {
       },
       highlight = { enable = true },
       indent = { enable = true },
-      incremental_selection = {
-        enable = true,
-        keymaps = {
-          init_selection = "<S-l>",
-          node_incremental = "<S-l>",
-          scope_incremental = false,
-          node_decremental = "<bs>",
+    },
+  },
+
+  {
+    "nvim-treesitter/nvim-treesitter-context",
+    dependencies = "nvim-treesitter/nvim-treesitter",
+  },
+
+  {
+    "nvim-treesitter/nvim-treesitter-textobjects",
+    dependencies = "nvim-treesitter/nvim-treesitter",
+    config = function()
+      require("nvim-treesitter.configs").setup({
+        textobjects = {
+          move = {
+            enable = true,
+            goto_next_start = { ["nf"] = "@function.inner", ["nc"] = "@class.inner", ["nb"] = "@block.inner" },
+            goto_previous_start = { ["pf"] = "@function.inner", ["pc"] = "@class.inner", ["pb"] = "@block.inner" },
+          },
         },
+      })
+    end,
+  },
+
+  -- indent
+  { "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = { indent = { char = "▏" } } },
+  {
+    "kiyoon/treesitter-indent-object.nvim",
+    keys = {
+      {
+        "ai",
+        function()
+          require("treesitter_indent_object.textobj").select_indent_outer()
+        end,
+        mode = { "x", "o" },
+        desc = "Select context-aware indent (outer)",
       },
-      -- TODO: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
-      -- textobjects = {
-      --   move = {
-      --     enable = true,
-      --     goto_next_start = { ["]f"] = "@function.outer", ["]c"] = "@class.outer" },
-      --     goto_next_end = { ["]F"] = "@function.outer", ["]C"] = "@class.outer" },
-      --     goto_previous_start = { ["[f"] = "@function.outer", ["[c"] = "@class.outer" },
-      --     goto_previous_end = { ["[F"] = "@function.outer", ["[C"] = "@class.outer" },
-      --   },
-      -- },
+      {
+        "aI",
+        function()
+          require("treesitter_indent_object.textobj").select_indent_outer(true)
+        end,
+        mode = { "x", "o" },
+        desc = "Select context-aware indent (outer, line-wise)",
+      },
+      {
+        "ii",
+        function()
+          require("treesitter_indent_object.textobj").select_indent_inner()
+        end,
+        mode = { "x", "o" },
+        desc = "Select context-aware indent (inner, partial range)",
+      },
+      {
+        "iI",
+        function()
+          require("treesitter_indent_object.textobj").select_indent_inner(true, "V")
+        end,
+        mode = { "x", "o" },
+        desc = "Select context-aware indent (inner, entire range) in line-wise visual mode",
+      },
     },
   },
 
@@ -241,18 +283,6 @@ return {
     },
   },
 
-  -- Auto close
-  {
-    "m4xshen/autoclose.nvim",
-    config = function()
-      require("autoclose").setup({
-        options = {
-          disable_when_touch = true,
-        },
-      })
-    end,
-  },
-
   -- Vertical movement
   {
     "karb94/neoscroll.nvim",
@@ -263,7 +293,9 @@ return {
   {
     "ggandor/leap.nvim",
     config = function()
-      require("leap").create_default_mappings()
+      vim.keymap.set({ "n", "x", "o" }, "s", "<Plug>(leap-forward)")
+      vim.keymap.set({ "n", "x", "o" }, "S", "<Plug>(leap-backward)")
+      vim.keymap.set({ "n", "x", "o" }, "gs", "<Plug>(leap-from-window)")
     end,
   },
 
@@ -309,40 +341,6 @@ return {
     },
   },
 
-  -- autocomplete
-  -- See: https://vonheikemen.github.io/devlog/tools/setup-nvim-lspconfig-plus-nvim-cmp/
-  -- {
-  --   "hrsh7th/nvim-cmp",
-  --   config = function()
-  --     local cmp = require("cmp")
-
-  --     return {
-  --       snippet = {
-  --         expand = function(args)
-  --           luasnip.lsp_expand(args.body)
-  --         end
-  --       },
-  --       window = {
-  --         documentation = cmp.config.window.bordered()
-  --       },
-  --       sources = {
-  --         { name = "path", keyword_length = 3 },
-  --         { name = "nvim_lsp", keyword_length = 1 },
-  --         { name = "buffer", keyword_length = 3 },
-  --         -- TODO: LuaSnip
-  --         -- { name = "luasnip", keyword_length = 2 },
-  --       }
-  --     }
-  --   end,
-  --   keys = function()
-  --     local cmp = require('cmp')
-  --     local select_opts = {behavior = cmp.SelectBehavior.Select}
-
-  --     return {
-  --       { "<Up>", cmp.mapping.select_prev_item(select_opts), desc = "Select previous item" },
-  --     }
-  --   end
-  -- },
   {
     "L3MON4D3/LuaSnip",
     version = "v2.*",
@@ -362,35 +360,6 @@ return {
       {
         "ms-jpq/coq.artifacts",
         branch = "artifacts",
-      },
-    },
-  },
-
-  -- persist sessions
-  {
-    "folke/persistence.nvim",
-    opts = { options = vim.opt.sessionoptions:get() },
-    keys = {
-      {
-        "<leader>sr",
-        function()
-          require("persistence").load()
-        end,
-        desc = "Restore Session",
-      },
-      {
-        "<leader>sl",
-        function()
-          require("persistence").load({ last = true })
-        end,
-        desc = "Restore Last Session",
-      },
-      {
-        "<leader>sq",
-        function()
-          require("persistence").stop()
-        end,
-        desc = "Don't Save Current Session",
       },
     },
   },
