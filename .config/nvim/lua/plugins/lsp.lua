@@ -15,7 +15,7 @@ return {
     dependencies = { "williamboman/mason.nvim" },
     build = ":MasonUpdate",
     opts = {
-      ensure_installed = { "lua_ls", "ruff_lsp", "pyright", "kotlin_language_server", "rust_analyzer" },
+      ensure_installed = { "lua_ls", "ruff_lsp", "pyright", "kotlin_language_server", "rust_analyzer", "yamlls" },
     },
   },
   {
@@ -33,6 +33,18 @@ return {
               analysis = {
                 ignore = { "*" }, -- Using Ruff
               },
+            },
+          },
+        },
+        yaml = {
+          settings = {
+            validate = true,
+            schemaStore = {
+              enable = false,
+              url = "",
+            },
+            schemas = {
+              ["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*",
             },
           },
         },
@@ -56,14 +68,12 @@ return {
       lspconfig.ruff_lsp.setup({
         on_attach = on_attach,
       })
+      lspconfig.yamlls.setup({})
     end,
     keys = {
       { "<leader>gD", "<cmd>lua vim.lsp.buf.declaration()<cr>", { noremap = true, silent = true } },
     },
   },
-
-  -- JSON schema
-  { import = "lazyvim.plugins.extras.lang.json" },
 
   -- Null-ls to import code actions and stuff
   {

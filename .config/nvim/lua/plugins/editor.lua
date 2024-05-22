@@ -20,6 +20,7 @@ return {
         "lua",
         "rust",
         "sql",
+        "terraform",
       },
       highlight = { enable = true },
       indent = { enable = true },
