@@ -2,3 +2,4 @@ tere
 fd-find
 ripgrep
 bat
+lsd
