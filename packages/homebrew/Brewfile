@@ -19,6 +19,7 @@ brew "postgresql@14", restart_service: true
 brew "qpdf"
 brew "shellcheck"
 brew "sketchybar"
+brew "starship"
 brew "skhd"
 brew "tmux"
 brew "trash"

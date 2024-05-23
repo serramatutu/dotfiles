@@ -1,19 +1,8 @@
-export ZSH="$HOME/.oh-my-zsh"
-ZSH_THEME="spaceship"
-plugins=(
-  git
-  zsh-syntax-highlighting
-  zsh-history-substring-search
-  zsh-vi-mode
-)
-
-# Update Oh My Zsh automatically every 13 days
-zstyle ':omz:update' mode auto
-zstyle ':omz:update' frequency 13
-
-source "$ZSH/oh-my-zsh.sh"
-
 export DOTFILES="$HOME/.dotfiles"
+
+source "$DOTFILES/zsh/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh"
+source "$DOTFILES/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.plugin.zsh"
+source "$DOTFILES/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh"
 
 export EDITOR=nvim
 export GPG_TTY=$(tty)
@@ -22,13 +11,15 @@ export GPG_TTY=$(tty)
 bindkey -M vicmd 'k' history-substring-search-up
 bindkey -M vicmd 'j' history-substring-search-down
 
-# Aliases
+# Aliases and convenient functions
+alias gst="git status"
+alias gaa="git add ."
+
 alias dotfiles="cd $DOTFILES"
 alias zshconfig="nvim ~/.zshrc"
 alias venv="source .venv/bin/activate"
 alias ls="lsd -l"
 alias reload="source ~/.zshrc"
-
 tere() {
     local result=$(command tere "$@")
     [ -n "$result" ] && cd -- "$result"
@@ -43,6 +34,9 @@ source "$(brew --prefix asdf)/libexec/asdf.sh"
 source $HOME/.asdf/plugins/golang/set-env.zsh
 
 # Load secrets
+if [[ ! -a ~/.zshenv ]]; then
+   touch ~/.zshenv 
+fi
 source ~/.zshenv
 
 # Start in a tmux session by default
@@ -50,3 +44,4 @@ if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] &&
   exec tmux
 fi
 
+eval "$(starship init zsh)"

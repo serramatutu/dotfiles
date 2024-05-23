@@ -11,8 +11,6 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
   . "$DOTFILES/os/macos/bootstrap.sh"
 fi
 
-. zsh/bootstrap.sh
-
 . packages/asdf/bootstrap.sh
 . packages/rust/bootstrap.sh
 . packages/golang/bootstrap.sh
