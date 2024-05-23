@@ -23,10 +23,17 @@ alias zshconfig="nvim ~/.zshrc"
 alias venv="source .venv/bin/activate"
 alias ls="lsd -l"
 alias reload="source ~/.zshrc"
-tere() {
-  local result=$(command tere "$@") 
-  [ -n "$result" ] && cd -- "$result"
+
+# smart cd using tere
+smartcd() {
+  if [ "$#" -eq "0" ]; then
+    local result=$(tere) 
+    [ -n "$result" ] && cd -- "$result"
+  else
+    cd -- "$@"
+  fi
 }
+alias cd="smartcd"
 
 # ripgrep
 export RIPGREP_CONFIG_PATH=$HOME/.config/ripgrep/ripgreprc

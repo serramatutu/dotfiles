@@ -2,13 +2,13 @@
   "entries": {
     "tap": {
       "homebrew/bundle": {
-        "revision": "246252e4a516397e290faed4bf65687f1d6bef37"
+        "revision": "b3d92663edb94c736ca26207ceeeb07876dd5c73"
       },
       "homebrew/cask-fonts": {
         "revision": "0ed20f35d21ebc3f4f829689b101078718ad5ce1"
       },
       "homebrew/services": {
-        "revision": "4dbd34a11b4dbd28686413a53aacc2c49049e96e"
+        "revision": "323e1b3f6da80f605f976d614a537ed5445c4e3c"
       },
       "koekeishiya/formulae": {
         "revision": "757b5c222bce502d4292dfbb9648eb749689d704"
