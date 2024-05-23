@@ -45,3 +45,4 @@ if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] &&
 fi
 
 eval "$(starship init zsh)"
+source <(fzf --zsh)
