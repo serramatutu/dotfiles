@@ -1,8 +1,11 @@
 export DOTFILES="$HOME/.dotfiles"
 
+autoload -U compinit; compinit
 source "$DOTFILES/zsh/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh"
 source "$DOTFILES/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.plugin.zsh"
 source "$DOTFILES/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh"
+source "$DOTFILES/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh"
+source "$DOTFILES/zsh/plugins/fzf-tab/fzf-tab.plugin.zsh"
 
 export EDITOR=nvim
 export GPG_TTY=$(tty)
@@ -21,8 +24,8 @@ alias venv="source .venv/bin/activate"
 alias ls="lsd -l"
 alias reload="source ~/.zshrc"
 tere() {
-    local result=$(command tere "$@")
-    [ -n "$result" ] && cd -- "$result"
+  local result=$(command tere "$@") 
+  [ -n "$result" ] && cd -- "$result"
 }
 
 # ripgrep
