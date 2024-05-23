@@ -7,6 +7,9 @@ export LC_CTYPE="en_US.UTF-8"
 export PATH="/opt/homebrew/bin:$PATH"
 alias ibrew="arch -x86_64 /usr/local/bin/brew"
 
+# add asdf vm path
+source $(brew --prefix asdf)/libexec/asdf.sh
+
 # default container arch for act since running on M1
 act() {
   command act --container-architecture=linux/amd64 $@

@@ -13,10 +13,10 @@ fi
 
 . zsh/bootstrap.sh
 
+. packages/asdf/bootstrap.sh
 . packages/rust/bootstrap.sh
-. packages/go/bootstrap.sh
+. packages/golang/bootstrap.sh
 . packages/python/bootstrap.sh
-# TODO: NodeJS and nvm
 
 scripts/ln_home
 scripts/ln_config

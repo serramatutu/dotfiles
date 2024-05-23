@@ -1,0 +1,5 @@
+terraform 1.8.3
+python 3.12.3
+golang 1.22.3
+rust 1.78.0
+nodejs 22.2.0

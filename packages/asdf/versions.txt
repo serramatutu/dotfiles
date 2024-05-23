@@ -1,0 +1,9 @@
+python latest
+python 3.8.19
+python 3.9.19
+python 3.10.13
+python 3.11.9
+python 3.12.3
+nodejs latest
+rust latest
+golang latest

@@ -11,6 +11,7 @@ My dotfiles have some interesting features:
 - Machine-specific environment via `.zshenv`
 - OS-specific ZSH configuration
 - OS-specific installation methods
+- Manage multiple versions of the same tool with [`asdf-vm`](https://asdf-vm.com/)
 - Global installation of language packages (Rust, Golang, Python)
 - Simplified tmux/neovim/i3 config to make shortcuts as similar as possible for similar functionality, just with different trigger keys.
 
@@ -29,9 +30,10 @@ The repo is divided into a few directories. Each of them might contain a `bootst
   - MacOS: Install Homebrew via `packages/homebrew/bootstrap.sh`
   - Linux: Install all `apt` packages via `packages/apt/bootstrap.sh`
 3. Initialize ZSH 
-4. Initialize language-managed packages (cargo, pip, golang etc)
-5. Symlink directories in `.config` to `~/.config`
-6. Symlink everything in `home` to `~/`
+4. Initialize `asdf`
+5. Initialize language-managed packages (cargo, pip, golang etc)
+6. Symlink directories in `.config` to `~/.config`
+7. Symlink everything in `home` to `~/`
 
 ## Making changes 
 

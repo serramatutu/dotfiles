@@ -27,6 +27,7 @@ alias dotfiles="cd $DOTFILES"
 alias zshconfig="nvim ~/.zshrc"
 alias venv="source .venv/bin/activate"
 alias ls="lsd -l"
+alias reload="source ~/.zshrc"
 
 tere() {
     local result=$(command tere "$@")
@@ -36,21 +37,10 @@ tere() {
 # ripgrep
 export RIPGREP_CONFIG_PATH=$HOME/.config/ripgrep/ripgreprc
 
-# Go
-export PATH="$PATH:$HOME/go/bin"
-
-# pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-
-# nvm
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
 # Load OS-specific config
 source "$DOTFILES/os/zshload.zsh"
+source "$(brew --prefix asdf)/libexec/asdf.sh"
+source $HOME/.asdf/plugins/golang/set-env.zsh
 
 # Load secrets
 source ~/.zshenv
@@ -59,3 +49,4 @@ source ~/.zshenv
 if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
   exec tmux
 fi
+
