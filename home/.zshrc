@@ -9,14 +9,34 @@ source "$DOTFILES/zsh/plugins/fzf-tab/fzf-tab.plugin.zsh"
 
 export EDITOR=nvim
 export GPG_TTY=$(tty)
+export GIT_USER="serramatutu"
 
 # History search
 bindkey -M vicmd 'k' history-substring-search-up
 bindkey -M vicmd 'j' history-substring-search-down
 
 # Aliases and convenient functions
+alias lg="lazygit"
 alias gst="git status"
 alias gaa="git add ."
+alias gc="git commit"
+alias gca="git commit --amend --no-edit"
+gp() {
+  local current_branch=$(git rev-parse --abbrev-ref HEAD)
+  git push $@ origin $current_branch
+}
+gb() {
+  arg=$1
+
+  if [ `git rev-parse --verify $arg 2>/dev/null` ]; then
+    git checkout $arg
+  elif [ `git rev-parse --verify $GIT_USER/$arg 2>/dev/null` ]; then 
+    git checkout $GIT_USER/$arg
+  else
+    git append $GIT_USER/$arg
+  fi
+}
+alias gpf="git push --force-with-lease"
 
 alias dotfiles="cd $DOTFILES"
 alias zshconfig="nvim ~/.zshrc"
