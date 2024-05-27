@@ -1,3 +1,6 @@
 github.com/charmbracelet/glow@latest
 github.com/jesseduffield/lazygit@latest
 github.com/cheat/cheat/cmd/cheat@latest
+github.com/go-task/task/v3/cmd/task@latest
+github.com/evilmartians/lefthook@latest
+github.com/junegunn/fzf@latest

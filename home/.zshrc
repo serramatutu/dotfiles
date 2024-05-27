@@ -60,7 +60,6 @@ export RIPGREP_CONFIG_PATH=$HOME/.config/ripgrep/ripgreprc
 
 # Load OS-specific config
 source "$DOTFILES/os/zshload.zsh"
-source "$(brew --prefix asdf)/libexec/asdf.sh"
 source $HOME/.asdf/plugins/golang/set-env.zsh
 
 # Load secrets

@@ -11,3 +11,5 @@ skhd --start-service
 
 yabai --install-service
 yabai --start-service
+
+ln -s $DOTFILES/.config/alacritty/macos.toml $DOTFILES/.config/alacritty/os.toml

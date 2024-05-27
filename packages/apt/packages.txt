@@ -1,0 +1,10 @@
+openssl
+libssl-dev
+curl
+git
+git-lfs
+tmux
+neovim
+gnupg2
+jq
+zsh

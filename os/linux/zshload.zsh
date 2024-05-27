@@ -1,4 +1,4 @@
-export PATH="$PATH:/opt/nvim-linux64/bin"
+source "$HOME/.asdf/asdf.sh"
 
 shutdown() {
     command shutdown -h now
