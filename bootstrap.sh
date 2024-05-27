@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 echo "Initializing submodules"
 git submodule update --init --recursive > /dev/null

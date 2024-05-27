@@ -19,7 +19,7 @@ My dotfiles have some interesting features:
 To install the dotfiles, run
 ```
 git clone git@github.com:serramatutu/dotfiles.git ~/.dotfiles
-sh bootstrap.sh
+bash bootstrap.sh
 ```
 The bootstrap script is idempotent and is safe to run multiple times, so don't worry :)
 

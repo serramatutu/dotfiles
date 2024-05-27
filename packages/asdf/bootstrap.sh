@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # We assume asdf was installed in the OS-bootstrap (Homebrew or apt)
 
