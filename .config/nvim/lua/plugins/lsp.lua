@@ -76,6 +76,7 @@ return {
         on_attach = on_attach,
       })
       lspconfig.yamlls.setup({})
+      lspconfig.rust_analyzer.setup({})
       lspconfig.terraformls.setup({})
     end,
     keys = {
