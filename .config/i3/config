@@ -5,6 +5,7 @@
 # skhd and yabai setup
 
 font pango:monospace 8
+default_border pixel 0
 
 exec --no-startup-id dex --autostart --environment i3
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
@@ -43,14 +44,14 @@ bindsym Mod4+Mod1+f fullscreen toggle
 # We use variables to avoid repeating the names in multiple places.
 set $ws1 "1:code"
 set $ws2 "2:web"
-set $ws3 "3"
-set $ws4 "4"
-set $ws5 "5"
-set $ws6 "6"
-set $ws7 "7"
-set $ws8 "8"
-set $ws9 "9"
-set $ws10 "10"
+set $ws3 "3:misc"
+set $ws4 "4:music"
+set $ws5 "5:misc"
+set $ws6 "6:misc"
+set $ws7 "7:misc"
+set $ws8 "8:misc"
+set $ws9 "9:misc"
+set $ws10 "10:misc"
 
 # switch to workspace
 bindsym Mod4+Mod1+1 workspace number $ws1
