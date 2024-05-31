@@ -41,10 +41,10 @@ The repo is divided into a few directories. Each of them might contain a `bootst
 To add a new program config in `~/.config` to the managed configs, just run
 ```
 mv ~/.config/new_program $DOTFILES/.config/new_program
-scripts/ln_config
+ln -sf $DOTFILES/.config/* ~/.config/
 ```
 
-To add a new home folder file to `home`, follow the same process but using `scripts/ln_home` instead.
+To add a new home folder file to `home`, follow the same process but using `~/` instead.
 
 ### Configuring OS-specific things in ZSH
 OS-specific macros, aliases and other things should be added to `os/<os>/zshload.zsh`. The `.zshrc` file will automatically load the correct file depending on which OS you are running on.

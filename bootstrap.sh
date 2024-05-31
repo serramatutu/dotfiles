@@ -16,5 +16,5 @@ fi
 . packages/golang/bootstrap.sh
 . packages/python/bootstrap.sh
 
-scripts/ln_home
-scripts/ln_config
+ln -sf $DOTFILES/home/* ~/
+ln -sf $DOTFILES/.config/* ~/.config/
