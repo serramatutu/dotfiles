@@ -8,6 +8,7 @@ source "$DOTFILES/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
 source "$DOTFILES/zsh/plugins/fzf-tab/fzf-tab.plugin.zsh"
 
 export EDITOR=nvim
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export GPG_TTY=$(tty)
 export GIT_USER="serramatutu"
 
@@ -15,12 +16,14 @@ export GIT_USER="serramatutu"
 bindkey -M vicmd 'k' history-substring-search-up
 bindkey -M vicmd 'j' history-substring-search-down
 
-# Aliases and convenient functions
+# Git aliases
 alias lg="lazygit"
 alias gst="git status"
 alias gaa="git add ."
 alias gc="git commit"
 alias gca="git commit --amend --no-edit"
+alias gpf="git push --force-with-lease"
+alias gd="git diff --name-only --relative --diff-filter=d | xargs bat --diff"
 gp() {
   local current_branch=$(git rev-parse --abbrev-ref HEAD)
   git push $@ origin $current_branch
@@ -36,7 +39,13 @@ gb() {
     git append $GIT_USER/$arg
   fi
 }
-alias gpf="git push --force-with-lease"
+
+# --help messages with syntax highlighting
+help() {
+    "$@" --help 2>&1 | bat --plain --language=help
+}
+alias -g -- -h='-h 2>&1 | bat --language=help --style=plain'
+alias -g -- --help='--help 2>&1 | bat --language=help --style=plain'
 
 alias dotfiles="cd $DOTFILES"
 alias zshconfig="nvim ~/.zshrc"

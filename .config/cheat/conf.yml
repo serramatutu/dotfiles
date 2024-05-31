@@ -3,7 +3,7 @@ editor: nvim
 colorize: true
 style: monokai
 formatter: terminal256
-pager: bat
+pager: bat --plain
 cheatpaths:
   - name: community
     path: ~/.config/cheat/cheatsheets/community
