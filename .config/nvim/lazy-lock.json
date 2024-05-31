@@ -16,7 +16,6 @@
   "marks.nvim": { "branch": "master", "commit": "74e8d01b2a2131b6e46354cffc553aa7f81bcf5b" },
   "mason-lspconfig.nvim": { "branch": "main", "commit": "a4caa0d083aab56f6cd5acf2d42331b74614a585" },
   "mason.nvim": { "branch": "main", "commit": "0fb4e56837f13b81a972fcc0554be1327b39061e" },
-  "neoscroll.nvim": { "branch": "master", "commit": "a731f66f1d39ec6175fd201c5bf849e54abda99c" },
   "none-ls.nvim": { "branch": "main", "commit": "f5b960a73418249aebcdae3455de320360509253" },
   "nvim-dap": { "branch": "master", "commit": "09b54e03d43d967c062a7d5b1da445f04e6f3113" },
   "nvim-dap-ui": { "branch": "master", "commit": "b7267003ba4dd860350be86f75b9d9ea287cedca" },
