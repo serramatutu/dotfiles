@@ -1,5 +1,7 @@
 openssl
 libssl-dev
+libffi-dev
+libsqlite3-dev
 curl
 git
 git-lfs
