@@ -119,6 +119,8 @@ return {
       options = {
         style_preset = "minimal",
         numbers = "buffer_id",
+        show_buffer_close_icons = false,
+        show_close_icons = false,
       },
     },
   },
