@@ -20,7 +20,6 @@ return {
         "ruff_lsp",
         "basedpyright",
         "kotlin_language_server",
-        "rust_analyzer",
         "yamlls",
         "terraformls",
       },
@@ -84,7 +83,6 @@ return {
         on_attach = on_attach,
       })
       lspconfig.yamlls.setup({})
-      lspconfig.rust_analyzer.setup({})
       lspconfig.terraformls.setup({})
     end,
     keys = {
@@ -105,5 +103,12 @@ return {
         },
       })
     end,
+  },
+
+  -- Default rust LSP kinda sucks so we use this plugin instead
+  {
+    "mrcjkb/rustaceanvim",
+    version = "^4", -- Recommended
+    lazy = false, -- This plugin is already lazy
   },
 }

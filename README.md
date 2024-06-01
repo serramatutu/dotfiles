@@ -23,6 +23,8 @@ bash bootstrap.sh
 ```
 The bootstrap script is idempotent and is safe to run multiple times, so don't worry :)
 
+**NOTE:** a fresh install from scratch might take a while to complete, since a lot of things are built from source. This is on purpose to avoid small bugs and issues with tools such as `python` and `rust-analyzer`.
+
 ## How the bootstrap script works
 The repo is divided into a few directories. Each of them might contain a `bootstrap.sh` script which is responsible for installing whatever is in that directory into the current environment. The environment is installed in the following order:
 1. Initialize Git submodules, such as ZSH themes and plugins, which are managed by Git

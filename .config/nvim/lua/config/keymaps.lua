@@ -43,9 +43,6 @@ vim.keymap.set("v", "<M-j>", ":m '>+1<cr>gv=gv", { desc = "Move line down" })
 vim.keymap.set("v", "<M-k>", ":m '<-2<cr>gv=gv", { desc = "Move line up" })
 
 -- Diagnostics
-vim.keymap.set("n", "<leader>do", "<cmd>lua vim.diagnostic.open_float()<cr>", { noremap = true, silent = true })
-vim.keymap.set("n", "<leader>da", "<cmd>lua vim.lsp.buf.code_action()<cr>", { noremap = true, silent = true })
-vim.keymap.set("n", "<leader>ds", "<cmd>lua vim.lsp.buf.signature_help()<cr>", { silent = true, noremap = true })
 vim.diagnostic.config({
   underline = true,
   virtual_text = {
