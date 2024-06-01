@@ -3,7 +3,7 @@
 -- Add any additional options here
 
 -- <Space> as leader
-vim.g.mapleader = ' '
+vim.g.mapleader = " "
 
 -- display relative line numbers
 vim.wo.number = true
@@ -15,3 +15,4 @@ vim.wo.cursorcolumn = true
 
 -- colors
 vim.opt.termguicolors = true
+vim.opt.guicursor = "n-v-c-sm:block-Cursor,i-ci-ve:ver25-Cursor,r-cr-o:hor20"
