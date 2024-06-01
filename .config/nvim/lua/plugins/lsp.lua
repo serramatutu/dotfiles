@@ -18,7 +18,7 @@ return {
       ensure_installed = {
         "lua_ls",
         "ruff_lsp",
-        "pyright",
+        "basedpyright",
         "kotlin_language_server",
         "rust_analyzer",
         "yamlls",
@@ -31,8 +31,11 @@ return {
     dependencies = { "williamboman/mason-lspconfig.nvim" },
     event = { "BufReadPre", "BufNewFile" },
     opts = {
+      inlay_hints = {
+        enabled = true,
+      },
       servers = {
-        pyright = {
+        basedpyright = {
           settings = {
             pyright = {
               disableOrganizeImports = true, -- Using Ruff
@@ -62,6 +65,11 @@ return {
       local lspconfig = require("lspconfig")
       local mason = require("mason")
 
+      vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+        title = "signature",
+        border = "single",
+      })
+
       mason.setup()
 
       local on_attach = function(client, bufnr)
@@ -71,7 +79,7 @@ return {
         end
       end
 
-      lspconfig.pyright.setup({})
+      lspconfig.basedpyright.setup({})
       lspconfig.ruff_lsp.setup({
         on_attach = on_attach,
       })
