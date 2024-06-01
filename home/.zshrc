@@ -9,7 +9,6 @@ source "$DOTFILES/zsh/plugins/fzf-tab/fzf-tab.plugin.zsh"
 
 export EDITOR=nvim
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
-export TERM="screen-256color"
 export GPG_TTY=$(tty)
 export GIT_USER="serramatutu"
 
