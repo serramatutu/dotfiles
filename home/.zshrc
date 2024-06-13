@@ -64,6 +64,20 @@ smartcd() {
 }
 alias cd="smartcd"
 
+# easy find and replace
+replace() {
+  if [ "$#" -ne 3 ]; then
+    echo "Bad arguments.\n\nUSAGE: replace FILES_GLOB OLD_PAT NEW_PAT"
+    exit 1
+  fi
+
+  local glob="$1"
+  local old="$2"
+  local new="$3"
+
+  find "$glob" -type f -exec sed -i "" "s/$old/$new/g" {} \;
+}
+
 # ripgrep
 export RIPGREP_CONFIG_PATH=$HOME/.config/ripgrep/ripgreprc
 
