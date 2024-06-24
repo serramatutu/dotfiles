@@ -21,7 +21,7 @@ alias lg="lazygit"
 alias gst="git status"
 alias gaa="git add ."
 alias gc="git commit"
-alias gca="git commit --amend --no-edit"
+alias gfix="git commit --amend --no-edit"
 alias gpf="git push --force-with-lease"
 alias gd="git diff --name-only --relative --diff-filter=d | xargs bat --diff"
 gp() {
