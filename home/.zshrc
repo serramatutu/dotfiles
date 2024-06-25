@@ -12,14 +12,12 @@ export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export GPG_TTY=$(tty)
 export GIT_USER="serramatutu"
 
-# History search
-# bindkey -M vicmd 'k' history-substring-search-up
-# bindkey -M vicmd 'j' history-substring-search-down
-
 # Git aliases
 alias lg="lazygit"
 alias gst="git status"
+alias ga="git add"
 alias gaa="git add ."
+alias gr="git reset"
 alias gc="git commit"
 alias gfix="git commit --amend --no-edit"
 alias gpf="git push --force-with-lease"
@@ -31,7 +29,12 @@ gp() {
 gb() {
   arg=$1
 
-  if [ `git rev-parse --verify $arg 2>/dev/null` ]; then
+  if [ "$arg" = "" ]; then
+    local selected=$(git branch | fzf --height "~100%" | cut -c 3-)
+    if [ "$selected" != "" ]; then
+      git checkout $selected
+    fi
+  elif [ `git rev-parse --verify $arg 2>/dev/null` ]; then
     git checkout $arg
   elif [ `git rev-parse --verify $GIT_USER/$arg 2>/dev/null` ]; then 
     git checkout $GIT_USER/$arg
