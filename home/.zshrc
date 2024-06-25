@@ -2,8 +2,8 @@ export DOTFILES="$HOME/.dotfiles"
 
 autoload -U compinit; compinit
 source "$DOTFILES/zsh/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh"
-source "$DOTFILES/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.plugin.zsh"
 source "$DOTFILES/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh"
+source "$DOTFILES/zsh/plugins/zsh-fzf-history-search/zsh-fzf-history-search.plugin.zsh"
 source "$DOTFILES/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh"
 source "$DOTFILES/zsh/plugins/fzf-tab/fzf-tab.plugin.zsh"
 
@@ -13,8 +13,8 @@ export GPG_TTY=$(tty)
 export GIT_USER="serramatutu"
 
 # History search
-bindkey -M vicmd 'k' history-substring-search-up
-bindkey -M vicmd 'j' history-substring-search-down
+# bindkey -M vicmd 'k' history-substring-search-up
+# bindkey -M vicmd 'j' history-substring-search-down
 
 # Git aliases
 alias lg="lazygit"
@@ -75,7 +75,7 @@ replace() {
   local old="$2"
   local new="$3"
 
-  find "$glob" -type f -exec sed -i "" "s/$old/$new/g" {} \;
+  LC_CTYPE=C find "$glob" -type f -exec sed -i "" "s/$old/$new/g" {} \;
 }
 
 # ripgrep
