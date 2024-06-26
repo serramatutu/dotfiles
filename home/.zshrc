@@ -71,7 +71,7 @@ alias cd="smartcd"
 replace() {
   if [ "$#" -ne 3 ]; then
     echo "Bad arguments.\n\nUSAGE: replace FILES_GLOB OLD_PAT NEW_PAT"
-    exit 1
+    return 1
   fi
 
   local glob="$1"
@@ -79,6 +79,17 @@ replace() {
   local new="$3"
 
   LC_CTYPE=C find "$glob" -type f -exec sed -i "" "s/$old/$new/g" {} \;
+}
+rm() {
+  local last_arg=${@[-1]}
+  if [ "$last_arg" = "$HOME" ]; then
+    echo "Avoiding accidental rm over home directory."
+    echo "If you REALLY want to do that, run "
+    echo "  command rm $@"
+    return 1
+  else
+    command rm "$@"
+  fi
 }
 
 # ripgrep
