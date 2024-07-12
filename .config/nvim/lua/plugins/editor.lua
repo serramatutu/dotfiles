@@ -385,4 +385,7 @@ return {
       default_mappings = true,
     },
   },
+
+  -- git conflicts
+  { "akinsho/git-conflict.nvim", version = "*", config = true },
 }
