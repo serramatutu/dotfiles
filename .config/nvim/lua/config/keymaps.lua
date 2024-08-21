@@ -22,6 +22,8 @@ vim.keymap.set("n", "<C-q>", "<cmd>:ccl<cr>", { desc = "Close quickfix list" })
 -- Always center vertical navigation
 vim.api.nvim_set_keymap("n", "<C-u>", "<C-u>zz", { noremap = true })
 vim.api.nvim_set_keymap("n", "<C-f>", "<C-f>zz", { noremap = true })
+vim.api.nvim_set_keymap("n", "<C-d>", "<C-d>zz", { noremap = true })
+vim.api.nvim_set_keymap("n", "<C-b>", "<C-b>zz", { noremap = true })
 vim.api.nvim_set_keymap("n", "n", "nzz", { noremap = true })
 vim.api.nvim_set_keymap("n", "N", "Nzz", { noremap = true })
 
