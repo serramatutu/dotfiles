@@ -21,6 +21,7 @@ alias gr="git reset"
 alias gc="git commit"
 alias gfix="git commit --amend --no-edit"
 alias gpf="git push --force-with-lease"
+alias gpr="git propose"
 alias gd="git diff --name-only --relative --diff-filter=d | xargs bat --diff"
 alias gl="git log"
 alias gll="git log --oneline"
@@ -57,6 +58,7 @@ alias zshconfig="nvim ~/.zshrc"
 alias venv="source .venv/bin/activate"
 alias ls="lsd -l"
 alias reload="source ~/.zshrc"
+alias c="clear"
 
 # smart cd using tere
 smartcd() {
