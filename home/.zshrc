@@ -22,6 +22,8 @@ alias gc="git commit"
 alias gfix="git commit --amend --no-edit"
 alias gpf="git push --force-with-lease"
 alias gd="git diff --name-only --relative --diff-filter=d | xargs bat --diff"
+alias gl="git log"
+alias gll="git log --oneline"
 gp() {
   local current_branch=$(git rev-parse --abbrev-ref HEAD)
   git push $@ origin $current_branch
