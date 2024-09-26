@@ -96,6 +96,12 @@ rm() {
   fi
 }
 
+# search for a session and kill it
+tmux-kill() {
+  local selected=$(tmux list-sessions | grep -oE "^[0-9A-Za-z]+" | fzf --height "~100%")
+  tmux kill-session -t "$selected"
+}
+
 # ripgrep
 export RIPGREP_CONFIG_PATH=$HOME/.config/ripgrep/ripgreprc
 
