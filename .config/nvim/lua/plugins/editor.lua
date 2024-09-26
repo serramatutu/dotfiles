@@ -19,6 +19,8 @@ return {
         "regex",
         "rust",
         "sql",
+        "tsx",
+        "typescript",
         "vim",
         "vimdoc",
         "yaml",
@@ -66,6 +68,7 @@ return {
       })
     end,
   },
+  { "windwp/nvim-ts-autotag" },
 
   -- indent
   { "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = { indent = { char = "▏" } } },

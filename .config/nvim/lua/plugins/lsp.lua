@@ -22,6 +22,10 @@ return {
         "kotlin_language_server",
         "yamlls",
         "terraformls",
+
+        "eslint",
+        "html",
+        "cssls",
       },
     },
   },
@@ -84,6 +88,9 @@ return {
       })
       lspconfig.yamlls.setup({})
       lspconfig.terraformls.setup({})
+      lspconfig.eslint.setup({})
+      lspconfig.html.setup({})
+      lspconfig.cssls.setup({})
     end,
     keys = {
       { "<leader>gD", "<cmd>lua vim.lsp.buf.declaration()<cr>", { noremap = true, silent = true } },
