@@ -19,7 +19,7 @@ return {
           Normal = normal,
           NormalFloat = normal,
           Visual = {
-            bg = colors.accent,
+            bg = colors.fg,
             fg = colors.bg,
           },
           TermCursor = cursor,
