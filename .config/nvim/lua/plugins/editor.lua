@@ -115,20 +115,6 @@ return {
 
   -- powerlines
   {
-    "akinsho/bufferline.nvim",
-    dependencies = {
-      "nvim-tree/nvim-web-devicons",
-    },
-    opts = {
-      options = {
-        style_preset = "minimal",
-        numbers = "buffer_id",
-        show_buffer_close_icons = false,
-        show_close_icons = false,
-      },
-    },
-  },
-  {
     "nvim-lualine/lualine.nvim",
     dependencies = "nvim-tree/nvim-web-devicons",
     config = function()
