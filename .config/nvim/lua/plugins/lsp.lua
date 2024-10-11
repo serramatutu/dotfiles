@@ -23,6 +23,7 @@ return {
         "yamlls",
         "terraformls",
 
+        "ts_ls",
         "eslint",
         "html",
         "cssls",
@@ -88,6 +89,7 @@ return {
       })
       lspconfig.yamlls.setup({})
       lspconfig.terraformls.setup({})
+      lspconfig.ts_ls.setup({})
       lspconfig.eslint.setup({})
       lspconfig.html.setup({})
       lspconfig.cssls.setup({})
