@@ -46,6 +46,10 @@ gb() {
   fi
 }
 
+# nvim
+alias vim="nvim"
+alias vi="nvim"
+
 # --help messages with syntax highlighting
 help() {
     "$@" --help 2>&1 | bat --plain --language=help
