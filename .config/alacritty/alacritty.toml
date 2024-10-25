@@ -19,6 +19,12 @@ italic = { family = "FiraCode Nerd Font", style = "italic" }
 [cursor]
 style = "Underline"
 
+# same cursor as nvim
+[colors.cursor]
+cursor = "#ff0000"
+text = "#ffffff"
+
+
 [env]
 WINIT_X11_SCALE_FACTOR = "1.0"
 
