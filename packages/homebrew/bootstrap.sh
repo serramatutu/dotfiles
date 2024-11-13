@@ -8,5 +8,5 @@ else
   echo "Skipping Homebrew installation"
 fi
 
-brew bundle install --file="$DOTFILES/packages/homebrew/Brewfile"
+brew bundle install
 

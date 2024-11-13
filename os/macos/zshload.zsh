@@ -5,6 +5,7 @@ export LC_CTYPE="en_US.UTF-8"
 
 # Homebrew Intel/ARM
 export PATH="/opt/homebrew/bin:$PATH"
+export HOMEBREW_BUNDLE_FILE="$DOTFILES/packages/homebrew/Brewfile"
 alias ibrew="arch -x86_64 /usr/local/bin/brew"
 
 # add asdf vm path
