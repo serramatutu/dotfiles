@@ -1,7 +1,14 @@
 return {
   "mfussenegger/nvim-dap",
-  { 
-    "rcarriga/nvim-dap-ui", dependencies = {"mfussenegger/nvim-dap", "nvim-neotest/nvim-nio"},
+  {
+    "mfussenegger/nvim-dap-python",
+    config = function()
+      require("dap-python").setup("python3")
+    end,
+  },
+  {
+    "rcarriga/nvim-dap-ui",
+    dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
     config = function()
       local dap, dapui = require("dap"), require("dapui")
 
@@ -12,8 +19,8 @@ return {
           open = { "<cr>", "<l>", "<Space>" },
           remove = { "d", "D" },
           repl = "r",
-          toggle = "t"
-        }      
+          toggle = "t",
+        },
       })
 
       dap.listeners.before.attach.dapui_config = function()
@@ -28,6 +35,6 @@ return {
       dap.listeners.before.event_exited.dapui_config = function()
         dapui.close()
       end
-    end
-  }
+    end,
+  },
 }

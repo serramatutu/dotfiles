@@ -56,3 +56,23 @@ vim.diagnostic.config({
     source = "always", -- Or "if_many"
   },
 })
+
+-- dap
+vim.keymap.set("n", "<leader>bc", function()
+  require("dap").continue()
+end)
+vim.keymap.set("n", "<leader>bj", function()
+  require("dap").step_over()
+end)
+vim.keymap.set("n", "<leader>bk", function()
+  require("dap").step_into()
+end)
+vim.keymap.set("n", "<leader>bl", function()
+  require("dap").step_out()
+end)
+vim.keymap.set("n", "<leader>bb", function()
+  require("dap").toggle_breakpoint()
+end)
+vim.keymap.set("n", "<leader>bf", function()
+  require("dap-python").test_method()
+end)
