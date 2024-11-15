@@ -5,14 +5,13 @@ launchctl unload -F /System/Library/LaunchAgents/com.apple.WindowManager.plist >
 yabai -m signal --add event=dock_did_restart 'action=sudo yabai --load-sa'
 sudo yabai --load-sa
 
-yabai -m config external_bar                 all:30:0 \
-                window_zoom_persist          off \
+yabai -m config window_zoom_persist          off \
                 mouse_follows_focus          off \
                 focus_follows_mouse          off \
                 window_placement             second_child \
                 window_opacity               on \
                 active_window_opacity        1.0 \
-                normal_window_opacity        0.7 \
+                normal_window_opacity        0.85 \
                 window_shadow                off \
                 insert_feedback_color        0xffd75f5f \
                 split_ratio                  0.50 \
@@ -21,35 +20,12 @@ yabai -m config external_bar                 all:30:0 \
                 mouse_action1                move \
                 mouse_action2                resize \
                 layout                       bsp \
-                top_padding                  5 \
-                bottom_padding               5 \
-                left_padding                 5 \
-                right_padding                5 \
+                top_padding                  0 \
+                bottom_padding               0 \
+                left_padding                 0 \
+                right_padding                0 \
                 window_gap                   8 \
                 display_arrangement_order    horizontal
-
-# Exclude problematic apps from being managed:
-yabai -m rule --add app="^(LuLu|Calculator|Software Update|Dictionary|VLC|System Preferences|System Settings|zoom.us|Photo Booth|Archive Utility|Python|LibreOffice|App Store|Steam|Alfred|Activity Monitor)$" manage=off
-yabai -m rule --add label="Finder" app="^Finder$" title="(Co(py|nnect)|Move|Info|Pref)" manage=off
-yabai -m rule --add label="Safari" app="^Safari$" title="^(General|(Tab|Password|Website|Extension)s|AutoFill|Se(arch|curity)|Privacy|Advance)$" manage=off
-yabai -m rule --add label="About This Mac" app="System Information" title="About This Mac" manage=off
-yabai -m rule --add label="Select file to save to" app="^Inkscape$" title="Select file to save to" manage=off
- 
-# Automatically move certain apps to their spaces
-yabai -m rule --add label="Alacritty" app="^Alacritty$" space=1
-yabai -m rule --add label="Firefox" app="^Firefox$" space=2
-yabai -m rule --add label="Slack" app="^Slack$" space=3
-yabai -m rule --add label="Spotify" app="^Spotify$" space=4
-yabai -m rule --add label="Tidal" app="^Tidal$" space=4
-yabai -m rule --add label="Linear" app="^Linear$" space=5
-yabai -m rule --add label="Notion" app="^Notion$" space=6
-yabai -m rule --add label="zoom.us" app="^zoom.us$" space=8
-
-# integration with sketchybar
-yabai -m signal --add event=space_changed action="sketchybar --trigger window_focus"
-yabai -m signal --add event=window_focused action="sketchybar --trigger window_focus"
-yabai -m signal --add event=window_created action="sketchybar --trigger windows_on_spaces"
-yabai -m signal --add event=window_destroyed action="sketchybar --trigger windows_on_spaces"
 
 # make sure we always have 7 available spaces
 curr_spaces=$(yabai -m query --spaces | jq length)
@@ -61,3 +37,23 @@ if [ "$curr_spaces" -lt "$max_spaces" ]; then
     yabai -m space --create
   done
 fi
+
+# Exclude problematic apps from being managed:
+yabai -m rule --add app="^(LuLu|Calculator|Software Update|Dictionary|VLC|System Preferences|System Settings|zoom.us|Photo Booth|Archive Utility|Python|LibreOffice|App Store|Steam|Alfred|Activity Monitor)$" manage=off
+yabai -m rule --add label="Finder" app="^Finder$" title="(Co(py|nnect)|Move|Info|Pref)" manage=off
+yabai -m rule --add label="Safari" app="^Safari$" title="^(General|(Tab|Password|Website|Extension)s|AutoFill|Se(arch|curity)|Privacy|Advance)$" manage=off
+yabai -m rule --add label="About This Mac" app="System Information" title="About This Mac" manage=off
+yabai -m rule --add label="Select file to save to" app="^Inkscape$" title="Select file to save to" manage=off
+yabai -m rule --add app="DBeaver.*" title=".*([Cc]onnect|Preferences|Search|Driver|[Pp]roperties).*)" manage=off
+ 
+# Automatically move certain apps to their spaces
+yabai -m rule --add label="Alacritty" app="^Alacritty$" space=1
+yabai -m rule --add label="Firefox" app="^Firefox$" space=2
+yabai -m rule --add label="Slack" app="^Slack$" space=3
+yabai -m rule --add label="Spotify" app="^Spotify$" space=4
+yabai -m rule --add label="Tidal" app="^TIDAL$" space=4
+yabai -m rule --add label="Linear" app="^Linear$" space=5
+yabai -m rule --add label="Notion" app="^Notion$" space=6
+yabai -m rule --add label="zoom.us" app="^zoom.us$" space=8
+
+yabai --start-service

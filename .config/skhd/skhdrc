@@ -37,6 +37,6 @@ shift + cmd + alt - 9 : yabai -m window --space 9; yabai -m space --focus 9
 shift + cmd + alt - 0 : yabai -m window --space 10; yabai -m space --focus 10
 
 # toggle window fullscreen zoom
-alt - f : yabai -m window --toggle zoom-fullscreen && yabai -m window --toggle border && yabai -m space --toggle padding && yabai -m space --toggle gap && sketchybar --trigger window_focus
+alt - f : yabai -m window --toggle zoom-fullscreen && yabai -m window --toggle border && yabai -m space --toggle padding && yabai -m space --toggle gap
 alt - t : yabai -m window --toggle topmost
 
