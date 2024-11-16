@@ -10,3 +10,5 @@ neovim
 gnupg2
 jq
 zsh
+build-essential
+sshfs-fuse
