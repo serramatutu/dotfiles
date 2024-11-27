@@ -17,7 +17,7 @@ return {
     opts = {
       ensure_installed = {
         "lua_ls",
-        "ruff_lsp",
+        "ruff",
         "basedpyright",
         "kotlin_language_server",
         "yamlls",
@@ -77,14 +77,14 @@ return {
       mason.setup()
 
       local on_attach = function(client, bufnr)
-        if client.name == "ruff_lsp" then
+        if client.name == "ruff" then
           -- Disable hover in favor of Pyright
           client.server_capabilities.hoverProvider = false
         end
       end
 
       lspconfig.basedpyright.setup({})
-      lspconfig.ruff_lsp.setup({
+      lspconfig.ruff.setup({
         on_attach = on_attach,
       })
       lspconfig.yamlls.setup({})

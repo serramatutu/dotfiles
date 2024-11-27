@@ -1,10 +1,3 @@
--- Keymaps are automatically loaded on the VeryLazy event
--- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
--- Add any additional keymaps here
-
--- remove Lazy keymap
-vim.keymap.del("n", "<leader>l")
-
 -- Insert newlines
 vim.keymap.set("n", "<M-cr>", "i<cr><Esc>", { desc = "Insert newline at cursor" })
 vim.keymap.set("i", "<M-cr>", "<Esc>i<cr>", { desc = "Insert newline at cursor" })

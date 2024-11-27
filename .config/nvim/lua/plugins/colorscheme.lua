@@ -28,6 +28,7 @@ return {
           CursorLineNr = { fg = colors.bg, bg = colors.fg },
         },
       })
+      require("ayu").colorscheme()
     end,
   },
 }
