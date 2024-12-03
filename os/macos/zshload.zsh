@@ -18,7 +18,7 @@ act() {
 
 # run as intel
 i() {
-  arch -x86_64 "$@"
+  PATH="$(ibrew --prefix)/bin:$PATH" arch -x86_64 "$@"
 }
 
 # Quickly change sleep settings (allows using it with lid closed)

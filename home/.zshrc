@@ -11,6 +11,7 @@ export EDITOR=nvim
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export GPG_TTY=$(tty)
 export GIT_USER="serramatutu"
+export FZF_DEFAULT_OPTS='--height "~100%" --layout reverse --border --margin=1 --padding=1'
 
 # Git aliases
 alias lg="lazygit"
@@ -29,11 +30,12 @@ gp() {
   local current_branch=$(git rev-parse --abbrev-ref HEAD)
   git push $@ origin $current_branch
 }
+alias gbp="git branch --merged | egrep -v '(^\*|master|main)' | xargs git branch -d"
 gb() {
   arg=$1
 
   if [ "$arg" = "" ]; then
-    local selected=$(git branch | fzf --height "~100%" | cut -c 3-)
+    local selected=$(git branch | fzf | cut -c 3-)
     if [ "$selected" != "" ]; then
       git checkout $selected
     fi
@@ -102,27 +104,26 @@ rm() {
 
 # search for a session and kill it
 tmux-kill() {
-  local selected=$(tmux list-sessions | grep -oE "^[0-9A-Za-z]+" | fzf --height "~100%")
+  local selected=$(tmux list-sessions | grep -oE "^[0-9A-Za-z]+" | fzf)
   tmux kill-session -t "$selected"
 }
 
 # ripgrep
 export RIPGREP_CONFIG_PATH=$HOME/.config/ripgrep/ripgreprc
 
+
 # Load OS-specific config
 source "$DOTFILES/os/zshload.zsh"
 source $HOME/.asdf/plugins/golang/set-env.zsh
 
-# Load secrets
-if [[ ! -a ~/.zshenv ]]; then
-   touch ~/.zshenv 
-fi
-source ~/.zshenv
 
 # Start in a tmux session by default
 if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
   exec tmux
 fi
 
+
+# Initialize completions
 eval "$(starship init zsh)"
 source <(fzf --zsh)
+
