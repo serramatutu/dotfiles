@@ -4,8 +4,8 @@ vim.keymap.set("i", "<M-cr>", "<Esc>i<cr>", { desc = "Insert newline at cursor" 
 vim.keymap.set("n", "O", "ko", { desc = "Insert newline above cursor" })
 
 -- Buffer navigation
-vim.keymap.set("n", "<Tab>,", "<cmd>:bp<cr>", { desc = "Switch to previous buffer" })
-vim.keymap.set("n", "<Tab>.", "<cmd>:bn<cr>", { desc = "Switch to next buffer" })
+vim.keymap.set("n", "H", "<cmd>:bp<cr>", { desc = "Switch to previous buffer" })
+vim.keymap.set("n", "L", "<cmd>:bn<cr>", { desc = "Switch to next buffer" })
 
 -- Quickfix navigation
 vim.keymap.set("n", "<C-j>", "<cmd>:cn<cr>", { desc = "Next item in quickfix list" })
