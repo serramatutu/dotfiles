@@ -1,0 +1,6 @@
+pre-commit:
+  commands:
+    stylua:
+      root: .config/nvim/
+      run: stylua lua
+      stage_fixed: true

@@ -9,6 +9,7 @@ return {
         "html",
         "javascript",
         "json",
+        "go",
         "kotlin",
         "lua",
         "lua",
@@ -71,17 +72,12 @@ return {
   { "windwp/nvim-ts-autotag" },
 
   -- indent
-  { 
-    "lukas-reineke/indent-blankline.nvim", 
+  {
+    "lukas-reineke/indent-blankline.nvim",
     main = "ibl",
     -- issue with latest nvim
     -- https://github.com/lukas-reineke/indent-blankline.nvim/issues/936
     tag = "v3.8.2",
-    opts = { 
-      indent = { 
-        char = "▏", 
-      }, 
-    },
   },
   {
     "kiyoon/treesitter-indent-object.nvim",

@@ -16,17 +16,17 @@ return {
     build = ":MasonUpdate",
     opts = {
       ensure_installed = {
-        "lua_ls",
-        "ruff",
+        "gopls",
         "basedpyright",
-        "kotlin_language_server",
-        "yamlls",
-        "terraformls",
-
-        "ts_ls",
+        "cssls",
         "eslint",
         "html",
-        "cssls",
+        "kotlin_language_server",
+        "lua_ls",
+        "ruff",
+        "terraformls",
+        "ts_ls",
+        "yamlls",
       },
     },
   },
@@ -74,6 +74,10 @@ return {
         border = "single",
       })
 
+      require("go").setup({
+        lsp_cfg = false,
+      })
+
       mason.setup()
 
       local on_attach = function(client, bufnr)
@@ -93,6 +97,9 @@ return {
       lspconfig.eslint.setup({})
       lspconfig.html.setup({})
       lspconfig.cssls.setup({})
+
+      local go_cfg = require("go.lsp").config()
+      lspconfig.gopls.setup(go_cfg)
     end,
     keys = {
       { "<leader>gD", "<cmd>lua vim.lsp.buf.declaration()<cr>", { noremap = true, silent = true } },
@@ -119,5 +126,20 @@ return {
     "mrcjkb/rustaceanvim",
     version = "^4", -- Recommended
     lazy = false, -- This plugin is already lazy
+  },
+
+  {
+    "ray-x/go.nvim",
+    dependencies = { -- optional packages
+      "ray-x/guihua.lua",
+      "neovim/nvim-lspconfig",
+      "nvim-treesitter/nvim-treesitter",
+    },
+    config = function()
+      require("go").setup()
+    end,
+    event = { "CmdlineEnter" },
+    ft = { "go", "gomod" },
+    build = ':lua require("go.install").update_all_sync()', -- if you need to install/update all binaries
   },
 }
