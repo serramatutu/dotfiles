@@ -2,6 +2,7 @@ return {
   -- treesitter
   {
     "nvim-treesitter/nvim-treesitter",
+    event = { "BufReadPre", "BufNewFile" },
     opts = {
       ensure_installed = {
         "bash",
@@ -33,11 +34,13 @@ return {
 
   {
     "nvim-treesitter/nvim-treesitter-context",
+    event = { "BufReadPre", "BufNewFile" },
     dependencies = "nvim-treesitter/nvim-treesitter",
   },
 
   {
     "nvim-treesitter/nvim-treesitter-textobjects",
+    event = { "BufReadPre", "BufNewFile" },
     dependencies = "nvim-treesitter/nvim-treesitter",
     config = function()
       require("nvim-treesitter.configs").setup({
@@ -69,7 +72,10 @@ return {
       })
     end,
   },
-  { "windwp/nvim-ts-autotag" },
+  {
+    "windwp/nvim-ts-autotag",
+    ft = { "html", "xml" },
+  },
 
   -- indent
   {
@@ -118,11 +124,12 @@ return {
   },
 
   -- git blame
-  { "f-person/git-blame.nvim" },
+  { "f-person/git-blame.nvim", event = "VeryLazy" },
 
-  -- powerlines
+  -- powerline
   {
     "nvim-lualine/lualine.nvim",
+    event = "VeryLazy",
     dependencies = "nvim-tree/nvim-web-devicons",
     config = function()
       vim.g.gitblame_display_virtual_text = 0
@@ -144,10 +151,7 @@ return {
   -- Comment
   {
     "numToStr/Comment.nvim",
-    lazy = false,
-    config = function()
-      require("Comment").setup()
-    end,
+    event = "VeryLazy",
   },
 
   -- File tree
@@ -158,6 +162,9 @@ return {
       "nvim-lua/plenary.nvim",
       "nvim-tree/nvim-web-devicons",
       "MunifTanjim/nui.nvim",
+    },
+    keys = {
+      { "<leader>t", "<cmd>:Neotree toggle<cr>", desc = "Toggle file tree" },
     },
     config = function()
       local neotree = require("neo-tree")
@@ -198,8 +205,6 @@ return {
           },
         },
       })
-
-      vim.keymap.set("n", "<leader>t", "<cmd>:Neotree toggle<cr>", { desc = "Toggle file tree" })
     end,
   },
 
@@ -207,7 +212,7 @@ return {
   {
     "nvim-telescope/telescope.nvim",
     dependencies = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope-ui-select.nvim" },
-    lazy = false,
+    event = "VeryLazy",
     config = function()
       local telescope = require("telescope")
       telescope.setup()
@@ -246,14 +251,9 @@ return {
   },
 
   {
-    "L3MON4D3/LuaSnip",
-    version = "v2.*",
-    build = "make install_jsregexp",
-  },
-  {
     "ms-jpq/coq_nvim",
     branch = "coq",
-    lazy = false,
+    event = "VeryLazy",
     build = ":COQdeps",
     init = function()
       vim.g.coq_settings = {
@@ -270,11 +270,40 @@ return {
 
   {
     "chentoast/marks.nvim",
+    event = "VeryLazy",
     opts = {
       default_mappings = true,
     },
   },
 
   -- git conflicts
-  { "akinsho/git-conflict.nvim", version = "*", config = true },
+  {
+    "akinsho/git-conflict.nvim",
+    event = "VeryLazy",
+    version = "*",
+    config = true,
+  },
+
+  -- better quickfix list
+  {
+    "stevearc/quicker.nvim",
+    event = "FileType qf",
+    keys = {
+      {
+        "<leader>q",
+        function()
+          require("quicker").toggle()
+        end,
+        desc = "Toggle quickfix",
+      },
+      {
+        "<leader>l",
+        function()
+          require("quicker").toggle({ loclist = true })
+        end,
+        desc = "Toggle loclist",
+      },
+    },
+    opts = {},
+  },
 }

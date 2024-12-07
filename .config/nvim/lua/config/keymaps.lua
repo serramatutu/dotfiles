@@ -37,6 +37,10 @@ vim.keymap.set("i", "<M-k>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move line up" 
 vim.keymap.set("v", "<M-j>", ":m '>+1<cr>gv=gv", { desc = "Move line down" })
 vim.keymap.set("v", "<M-k>", ":m '<-2<cr>gv=gv", { desc = "Move line up" })
 
+-- Keep visual line mode when indenting
+vim.keymap.set("v", "<", "<gv", { noremap = true })
+vim.keymap.set("v", ">", ">gv", { noremap = true })
+
 -- Diagnostics
 vim.diagnostic.config({
   underline = true,
@@ -49,23 +53,3 @@ vim.diagnostic.config({
     source = "always", -- Or "if_many"
   },
 })
-
--- dap
-vim.keymap.set("n", "<leader>bc", function()
-  require("dap").continue()
-end)
-vim.keymap.set("n", "<leader>bj", function()
-  require("dap").step_over()
-end)
-vim.keymap.set("n", "<leader>bk", function()
-  require("dap").step_into()
-end)
-vim.keymap.set("n", "<leader>bl", function()
-  require("dap").step_out()
-end)
-vim.keymap.set("n", "<leader>bb", function()
-  require("dap").toggle_breakpoint()
-end)
-vim.keymap.set("n", "<leader>bf", function()
-  require("dap-python").test_method()
-end)

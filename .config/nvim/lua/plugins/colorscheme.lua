@@ -2,6 +2,8 @@ return {
   {
     "Shatur/neovim-ayu",
     name = "ayu",
+    lazy = false,
+    priority = 10000,
     config = function()
       local colors = require("ayu.colors")
       colors.generate()

@@ -109,6 +109,7 @@ return {
   -- Null-ls to import code actions and stuff
   {
     "nvimtools/none-ls.nvim",
+    event = { "BufReadPre", "BufNewFile" },
     dependencies = { "nvim-lua/plenary.nvim" },
     config = function()
       local null_ls = require("null-ls")
@@ -124,8 +125,8 @@ return {
   -- Default rust LSP kinda sucks so we use this plugin instead
   {
     "mrcjkb/rustaceanvim",
-    version = "^4", -- Recommended
-    lazy = false, -- This plugin is already lazy
+    ft = "rust",
+    version = "^4",
   },
 
   {

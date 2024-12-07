@@ -1,7 +1,49 @@
 return {
-  "mfussenegger/nvim-dap",
+  {
+    "mfussenegger/nvim-dap",
+    keys = {
+      {
+        "<leader>bc",
+        function()
+          require("dap").continue()
+        end,
+      },
+      {
+        "<leader>bj",
+        function()
+          require("dap").step_over()
+        end,
+      },
+      {
+        "<leader>bk",
+        function()
+          require("dap").step_into()
+        end,
+      },
+      {
+        "<leader>bl",
+        function()
+          require("dap").step_out()
+        end,
+      },
+      {
+        "<leader>bb",
+        function()
+          require("dap").toggle_breakpoint()
+        end,
+      },
+      {
+        "<leader>bf",
+        function()
+          require("dap-python").test_method()
+        end,
+      },
+    },
+  },
   {
     "mfussenegger/nvim-dap-python",
+    dependencies = { "mfussenegger/nvim-dap" },
+    ft = "python",
     config = function()
       require("dap-python").setup("python3")
     end,
