@@ -10,7 +10,6 @@ vim.keymap.set("n", "L", "<cmd>:bn<cr>", { desc = "Switch to next buffer" })
 -- Quickfix navigation
 vim.keymap.set("n", "<C-j>", "<cmd>:cn<cr>", { desc = "Next item in quickfix list" })
 vim.keymap.set("n", "<C-k>", "<cmd>:cp<cr>", { desc = "Previous item in quickfix list" })
-vim.keymap.set("n", "<C-q>", "<cmd>:ccl<cr>", { desc = "Close quickfix list" })
 
 -- Always center vertical navigation
 vim.api.nvim_set_keymap("n", "<C-u>", "<C-u>zz", { noremap = true })

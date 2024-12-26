@@ -15,3 +15,6 @@ vim.wo.cursorcolumn = true
 
 -- colors
 vim.opt.guicursor = "n-v-c-sm:block-Cursor,i-ci-ve:ver25-Cursor,r-cr-o:hor20"
+
+-- use ripgrep for :grep
+vim.opt.grepprg = "rg"
