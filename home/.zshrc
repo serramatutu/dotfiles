@@ -77,19 +77,6 @@ smartcd() {
 }
 alias cd="smartcd"
 
-# easy find and replace
-replace() {
-  if [ "$#" -ne 3 ]; then
-    echo "Bad arguments.\n\nUSAGE: replace FILES_GLOB OLD_PAT NEW_PAT"
-    return 1
-  fi
-
-  local glob="$1"
-  local old="$2"
-  local new="$3"
-
-  LC_CTYPE=C find "$glob" -type f -exec sed -i "" "s/$old/$new/g" {} \;
-}
 rm() {
   local last_arg=${@[-1]}
   if [ "$last_arg" = "$HOME" ]; then

@@ -5,3 +5,4 @@ bat
 lsd
 starship
 stylua
+sd
