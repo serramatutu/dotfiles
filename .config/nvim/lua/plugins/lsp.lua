@@ -110,7 +110,7 @@ return {
   {
     "nvimtools/none-ls.nvim",
     event = { "BufReadPre", "BufNewFile" },
-    dependencies = { "nvim-lua/plenary.nvim" },
+    dependencies = { "nvim-lua/plenary.nvim", "L3MON4D3/LuaSnip" },
     config = function()
       local null_ls = require("null-ls")
       null_ls.setup({

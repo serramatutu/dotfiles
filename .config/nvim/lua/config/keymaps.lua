@@ -11,14 +11,6 @@ vim.keymap.set("n", "L", "<cmd>:bn<cr>", { desc = "Switch to next buffer" })
 vim.keymap.set("n", "<C-j>", "<cmd>:cn<cr>", { desc = "Next item in quickfix list" })
 vim.keymap.set("n", "<C-k>", "<cmd>:cp<cr>", { desc = "Previous item in quickfix list" })
 
--- Always center vertical navigation
-vim.api.nvim_set_keymap("n", "<C-u>", "<C-u>zz", { noremap = true })
-vim.api.nvim_set_keymap("n", "<C-f>", "<C-f>zz", { noremap = true })
-vim.api.nvim_set_keymap("n", "<C-d>", "<C-d>zz", { noremap = true })
-vim.api.nvim_set_keymap("n", "<C-b>", "<C-b>zz", { noremap = true })
-vim.api.nvim_set_keymap("n", "n", "nzz", { noremap = true })
-vim.api.nvim_set_keymap("n", "N", "Nzz", { noremap = true })
-
 -- Tab navigation
 vim.keymap.set("n", "<Tab>-", "<cmd>:sp<cr>", { desc = "Split horizontal" })
 vim.keymap.set("n", "<Tab>_", "<cmd>:vsp<cr>", { desc = "Split vertical" })

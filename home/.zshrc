@@ -26,6 +26,7 @@ alias gpr="git propose"
 alias gd="git diff --name-only --relative --diff-filter=d | xargs bat --diff"
 alias gl="git log"
 alias gll="git log --oneline"
+alias glt="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset%n' --abbrev-commit --date=relative --branches"
 gp() {
   local current_branch=$(git rev-parse --abbrev-ref HEAD)
   git push $@ origin $current_branch
