@@ -4,3 +4,5 @@ golang 1.23.4
 rust 1.83.0
 nodejs 22.2.0
 helm 3.15.3
+actionlint 1.7.1
+shellcheck 0.10.0

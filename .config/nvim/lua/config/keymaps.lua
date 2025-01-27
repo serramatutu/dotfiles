@@ -1,7 +1,6 @@
 -- Insert newlines
 vim.keymap.set("n", "<M-cr>", "i<cr><Esc>", { desc = "Insert newline at cursor" })
 vim.keymap.set("i", "<M-cr>", "<Esc>i<cr>", { desc = "Insert newline at cursor" })
-vim.keymap.set("n", "O", "ko", { desc = "Insert newline above cursor" })
 
 -- Buffer navigation
 vim.keymap.set("n", "H", "<cmd>:bp<cr>", { desc = "Switch to previous buffer" })
