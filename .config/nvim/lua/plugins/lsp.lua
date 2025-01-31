@@ -97,6 +97,7 @@ return {
       lspconfig.eslint.setup({})
       lspconfig.html.setup({})
       lspconfig.cssls.setup({})
+      lspconfig.kotlin_language_server.setup({})
 
       local go_cfg = require("go.lsp").config()
       lspconfig.gopls.setup(go_cfg)

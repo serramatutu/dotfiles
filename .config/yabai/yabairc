@@ -48,7 +48,7 @@ yabai -m rule --add app="DBeaver.*" title=".*([Cc]onnect|Preferences|Search|Driv
  
 # Automatically move certain apps to their spaces
 yabai -m rule --add label="Alacritty" app="^Alacritty$" space=1
-yabai -m rule --add label="Firefox" app="^Firefox$" space=2
+yabai -m rule --add label="Browser" app="^Firefox|Zen Browser$" space=2
 yabai -m rule --add label="Slack" app="^Slack$" space=3
 yabai -m rule --add label="Spotify" app="^Spotify$" space=4
 yabai -m rule --add label="Tidal" app="^TIDAL$" space=4
