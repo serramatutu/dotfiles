@@ -167,7 +167,9 @@ return {
       "MunifTanjim/nui.nvim",
     },
     keys = {
-      { "<leader>t", "<cmd>:Neotree toggle<cr>", desc = "Toggle file tree" },
+      { "<leader>tt", "<cmd>:Neotree toggle<cr>", desc = "Toggle file tree" },
+      { "<leader>tb", "<cmd>:Neotree toggle buffers<cr>", desc = "Toggle buffer tree" },
+      { "<leader>tg", "<cmd>:Neotree toggle git_status<cr>", desc = "Toggle git status tree" },
     },
     config = function()
       local neotree = require("neo-tree")
