@@ -24,7 +24,7 @@ yabai -m config window_zoom_persist          off \
                 bottom_padding               0 \
                 left_padding                 0 \
                 right_padding                0 \
-                window_gap                   8 \
+                window_gap                   0 \
                 display_arrangement_order    horizontal
 
 # make sure we always have 7 available spaces
