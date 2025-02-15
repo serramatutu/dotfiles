@@ -107,22 +107,6 @@ return {
     },
   },
 
-  -- Null-ls to import code actions and stuff
-  {
-    "nvimtools/none-ls.nvim",
-    event = { "BufReadPre", "BufNewFile" },
-    dependencies = { "nvim-lua/plenary.nvim", "L3MON4D3/LuaSnip" },
-    config = function()
-      local null_ls = require("null-ls")
-      null_ls.setup({
-        sources = {
-          null_ls.builtins.formatting.stylua,
-          null_ls.builtins.completion.luasnip,
-        },
-      })
-    end,
-  },
-
   -- Default rust LSP kinda sucks so we use this plugin instead
   {
     "mrcjkb/rustaceanvim",

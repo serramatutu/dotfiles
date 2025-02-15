@@ -18,3 +18,5 @@ fi
 
 rustup component add clippy
 rustup component add rustfmt
+
+asdf reshim rust
