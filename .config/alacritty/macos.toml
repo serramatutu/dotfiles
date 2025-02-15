@@ -1,2 +1,5 @@
 [font]
 size = 18
+
+[window]
+padding = { x = 3, y = 3 }

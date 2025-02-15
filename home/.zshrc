@@ -104,6 +104,9 @@ export RIPGREP_CONFIG_PATH=$HOME/.config/ripgrep/ripgreprc
 source "$DOTFILES/os/zshload.zsh"
 source $HOME/.asdf/plugins/golang/set-env.zsh
 
+# Add custom scripts and executables to path
+export PATH="$PATH:$HOME/bin"
+
 
 # Start in a tmux session by default
 if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then

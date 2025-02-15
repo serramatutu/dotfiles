@@ -1,0 +1,53 @@
+configuration {
+  modes: [ combi ];
+  combi-modes: [ drun, run, window ];
+  kb-remove-to-eol: "";
+  kb-accept-entry: "Return,KP_Enter";
+  kb-row-up: "Up,Control+k,Shift+Tab,Shift+ISO_Left_Tab";
+  kb-row-down: "Down,Control+j";
+}
+
+* {
+  highlight: bold italic;
+  scrollbar: true;
+
+  theme-bg0:          #000000;
+  theme-bg2:          #ff0000;
+  theme-fg0:          #aaaaaa;
+  theme-fg1:          #aaaaaa;
+  theme-red-dark:     #cc241d;
+  theme-red-light:    #fb4934;
+  theme-gray-dark:    #555555;
+  theme-gray-light:   #aaaaaa;
+
+  /* Theme colors */
+  background:                  @theme-bg0;
+  background-color:            @background;
+  foreground:                  @theme-fg1;
+  border-color:                @theme-gray-dark;
+  separatorcolor:              @border-color;
+  scrollbar-handle:            @border-color;
+
+  normal-background:           @background;
+  normal-foreground:           @foreground;
+  alternate-normal-background: @theme-bg0;
+  alternate-normal-foreground: @foreground;
+  selected-normal-background:  @theme-gray-light;
+  selected-normal-foreground:  @theme-bg0;
+
+  active-background:           @theme-gray-light;
+  active-foreground:           @background;
+  alternate-active-background: @active-background;
+  alternate-active-foreground: @active-foreground;
+  selected-active-background:  @theme-gray-light;
+  selected-active-foreground:  @active-foreground;
+
+  urgent-background:           @theme-red-dark;
+  urgent-foreground:           @background;
+  alternate-urgent-background: @urgent-background;
+  alternate-urgent-foreground: @urgent-foreground;
+  selected-urgent-background:  @theme-red-light;
+  selected-urgent-foreground:  @urgent-foreground;
+}
+
+@import "gruvbox-common"

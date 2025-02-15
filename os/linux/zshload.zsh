@@ -5,9 +5,9 @@ shutdown() {
 }
 
 display_off() {
-  xrandr --output eDP-1 --off --output HDMI-1 --auto
+  xrandr --output eDP1 --off --output HDMI1 --auto --mode 2560x1440 --rate 60
 }
 
 display_on() {
-  xrandr --output eDP-1 --auto --output HDMI-1 --auto
+  xrandr --output eDP1 --auto --output HDMI1 --auto
 }

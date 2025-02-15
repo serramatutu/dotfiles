@@ -9,7 +9,6 @@ shell = "zsh"
 decorations = "Buttonless"
 startup_mode = "Maximized"
 option_as_alt = "Both"
-padding = { x = 3, y = 3 }
 
 [font]
 normal = { family = "FiraCode Nerd Font" }
@@ -19,11 +18,13 @@ italic = { family = "FiraCode Nerd Font", style = "italic" }
 [cursor]
 style = "Underline"
 
+[colors.primary]
+background = "#000000"
+
 # same cursor as nvim
 [colors.cursor]
 cursor = "#ff0000"
 text = "#ffffff"
-
 
 [env]
 WINIT_X11_SCALE_FACTOR = "1.0"
