@@ -12,6 +12,7 @@ export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export GPG_TTY=$(tty)
 export GIT_USER="serramatutu"
 export FZF_DEFAULT_OPTS='--height "~100%" --layout reverse --border --margin=1 --padding=1'
+export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 
 # Git aliases
 alias lg="lazygit"
