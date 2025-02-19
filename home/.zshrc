@@ -14,6 +14,10 @@ export GIT_USER="serramatutu"
 export FZF_DEFAULT_OPTS='--height "~100%" --layout reverse --border --margin=1 --padding=1'
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 
+# asdf VM stuff
+export ASDF_DATA_DIR="$HOME/.asdf"
+export PATH="$ASDF_DATA_DIR/shims:$PATH"
+
 # Git aliases
 alias lg="lazygit"
 alias gst="git status"
