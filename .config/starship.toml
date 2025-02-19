@@ -1,2 +1,12 @@
-"$schema" = 'https://starship.rs/config-schema.json'
+"$schema" = "https://starship.rs/config-schema.json"
 
+format = "$directory| $all"
+
+[gcloud]
+disabled = true
+
+[kubernetes]
+disabled = false
+symbol = "🚢"
+format = "[$symbol $context]($style) "
+style = "blue bold"
