@@ -1,7 +1,5 @@
 # .dotfiles
-This repo contains my personal dotfiles. Here's how my setup looks on MacOS:
-
-![Setup on MacOS](look.png)
+This repo contains my personal dotfiles.
 
 ## Motivation
 My main motivation when creating this repo was having to keep things in sync between multiple workstations (Linux desktop, Linux laptop, MacOS laptop), since having to reconfigure the same things over and over again in different computers was getting tiresome.
