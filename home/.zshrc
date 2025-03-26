@@ -13,6 +13,7 @@ export GPG_TTY=$(tty)
 export GIT_USER="serramatutu"
 export FZF_DEFAULT_OPTS='--height "~100%" --layout reverse --border --margin=1 --padding=1'
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
+export PATH="$PATH:$HOME/.local/bin"
 
 # asdf VM stuff
 export ASDF_DATA_DIR="$HOME/.asdf"
