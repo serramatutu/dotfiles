@@ -229,6 +229,7 @@ return {
       { "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Find buffer" },
       { "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Open recent file" },
       { "<leader>fg", "<cmd>Telescope live_grep<cr>", desc = "Find in all files", remap = true },
+      { "<leader>fs", "<cmd>Telescope lsp_document_symbols<cr>", desc = "Find document simbols", remap = true },
 
       -- lsp stuff
       {
