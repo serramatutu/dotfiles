@@ -19,5 +19,4 @@ fi
 ln -sf $DOTFILES/home/* ~/
 ln -sf $DOTFILES/.config/* ~/.config/
 
-# Make global gitignore file
-git config --global core.excludesFile '~/.gitignore'
+git config --global include.path "~/.config/git/.gitconfig" 
