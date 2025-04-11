@@ -27,6 +27,7 @@ return {
         "terraformls",
         "ts_ls",
         "yamlls",
+        "zls",
       },
     },
   },
@@ -98,6 +99,7 @@ return {
       lspconfig.html.setup({})
       lspconfig.cssls.setup({})
       lspconfig.kotlin_language_server.setup({})
+      lspconfig.zls.setup({})
 
       local go_cfg = require("go.lsp").config()
       lspconfig.gopls.setup(go_cfg)

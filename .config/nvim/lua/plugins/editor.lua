@@ -310,5 +310,5 @@ return {
         desc = "Toggle loclist",
       },
     },
-  }
+  },
 }
