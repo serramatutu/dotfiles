@@ -28,7 +28,6 @@ alias gr="git reset"
 alias gc="git commit"
 alias gfix="git commit --amend --no-edit"
 alias gpf="git push --force-with-lease"
-alias gpr="git propose"
 alias gl="git log"
 alias gll="git log --oneline"
 alias glt="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset%n' --abbrev-commit --date=relative --branches"
@@ -36,23 +35,8 @@ gp() {
   local current_branch=$(git rev-parse --abbrev-ref HEAD)
   git push $@ origin $current_branch
 }
+alias gd="git diff --cached"
 alias gbp="git branch --merged | egrep -v '(^\*|master|main)' | xargs git branch -d"
-gb() {
-  arg=$1
-
-  if [ "$arg" = "" ]; then
-    local selected=$(git branch | fzf | cut -c 3-)
-    if [ "$selected" != "" ]; then
-      git checkout $selected
-    fi
-  elif [ `git rev-parse --verify $arg 2>/dev/null` ]; then
-    git checkout $arg
-  elif [ `git rev-parse --verify $GIT_USER/$arg 2>/dev/null` ]; then 
-    git checkout $GIT_USER/$arg
-  else
-    git append $GIT_USER/$arg
-  fi
-}
 
 # nvim
 alias vim="nvim"
