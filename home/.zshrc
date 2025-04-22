@@ -35,6 +35,14 @@ gp() {
   local current_branch=$(git rev-parse --abbrev-ref HEAD)
   git push $@ origin $current_branch
 }
+gb() {
+  local branch="$1"
+  if [ "$branch" = "" ]; then
+    branch=$(git branch | cut -c 3- | fzf)
+  fi
+
+  git switch "$branch"
+}
 alias gd="git diff --cached"
 alias gbp="git branch --merged | egrep -v '(^\*|master|main)' | xargs git branch -d"
 
