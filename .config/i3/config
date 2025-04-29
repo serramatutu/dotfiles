@@ -4,7 +4,7 @@
 # My config file is heavily modified from the default to be compatible with my MacOS
 # skhd and yabai setup
 
-font pango:monospace 8
+font pango:monospace 10
 default_border pixel 0
 
 exec --no-startup-id dex --autostart --environment i3
@@ -80,9 +80,9 @@ bindsym Mod4+Mod1+r restart
 bindsym Mod4+Mod1+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
 bar {
         status_command i3blocks
+	separator_symbol "|"
 	colors {
 		background #000000
 		statusline #aaaaaa
@@ -90,44 +90,28 @@ bar {
 		inactive_workspace #000000 #000000 #aaaaaa
 	}
 }
-# Review the lines below and append to ~/.config/i3/config
 
 ## Volume control
 
-# Path to volume control, without trailing slash
-set $volumepath ~/i3-volume
-
-# Command for the status line
-#   ie: i3blocks, i3status
-set $statuscmd i3status
-
-# Signal used to update the status line
-#   i3blocks uses SIGRTMIN+10 by default
-#   i3status uses SIGUSR1 by default
-set $statussig SIGUSR1
-
-# Amount to increase/decrease volume as a percentage
+set $i3volume ~/bin/i3volume
+set $statuscmd i3blocks
+set $statussig SIGRTMIN+10
 set $volumestep 5
 
-# pulseaudio-utils settings
-#
-# Symbolic name for sink (numeric index not supported)
-#   Recommended: comment out this setting and omit the -s option to use default sink
-#   List sink names: pacmd list-sinks | awk -F "[<>]" '/^\s+name: <.*>/{print $2}'
-#set $sinkname alsa_output.pci-0000_00_1b.0.analog-stereo
-
-# Using pulseaudio-utils (append "-s $sinkname" without quotes to override default sink)
-bindsym XF86AudioRaiseVolume exec --no-startup-id $volumepath/volume -n -t $statuscmd -u $statussig up $volumestep
-bindsym XF86AudioLowerVolume exec --no-startup-id $volumepath/volume -n -t $statuscmd -u $statussig down $volumestep
-bindsym XF86AudioMute        exec --no-startup-id $volumepath/volume -n -t $statuscmd -u $statussig mute
+bindsym XF86AudioRaiseVolume exec --no-startup-id $i3volume -n -t $statuscmd -u $statussig up $volumestep
+bindsym XF86AudioLowerVolume exec --no-startup-id $i3volume -n -t $statuscmd -u $statussig down $volumestep
+bindsym XF86AudioMute        exec --no-startup-id $i3volume -n -t $statuscmd -u $statussig mute
 
 # Change brightness
-bindsym XF86MonBrightnessUp   exec --no-startup-id brightnessctl set +5%
-bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
+bindsym XF86MonBrightnessUp   exec --no-startup-id brightnessctl set 1000+
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 1000-
 
 # Suspend
-bindsym Mod4+control+q exec --no-startup-id i3lock --color=333333
+bindsym Mod4+control+q exec --no-startup-id i3lock --color=000000
 
 # i3-battery-popup
 exec --no-startup-id i3-battery-popup
+
+# GTK settings
+exec --no-startup-id /usr/libexec/gsd-xsettings
 

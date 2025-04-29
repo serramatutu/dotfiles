@@ -1,0 +1,40 @@
+[wifi]
+command=iwgetid -r
+label=🛜
+min_width=🛜
+interval=5
+
+[batterybar]
+command=~/.config/i3blocks/blocks/batterybar
+label=⚡
+interval=30
+markup=pango
+min_width=⚡ ■■■■■
+
+[backlight]
+command=~/.config/i3blocks/blocks/backlight
+label=☀️
+min_width=☀️100%
+interval=1
+
+[volume]
+command=~/bin/i3volume output "%v\n"
+label=🔉
+min_width=🔉 100%
+interval=1
+
+[time]
+command=date +"%Y-%m-%d %T"
+label=📅
+interval=1
+
+[monitors]
+command=~/.config/i3blocks/blocks/monitor_manager
+full_text=🖥️
+min_width=🖥️
+interval=once
+
+[shutdown_menu]
+full_text=⏻
+min_width=⏻ 
+command=~/.config/i3blocks/blocks/shutdown_menu
