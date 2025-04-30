@@ -7,6 +7,10 @@ source "$DOTFILES/zsh/plugins/zsh-fzf-history-search/zsh-fzf-history-search.plug
 source "$DOTFILES/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh"
 source "$DOTFILES/zsh/plugins/fzf-tab/fzf-tab.plugin.zsh"
 
+# long history
+HISTSIZE=9999
+SAVEHIST=$HISTSIZE
+
 export EDITOR=nvim
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export GPG_TTY=$(tty)
