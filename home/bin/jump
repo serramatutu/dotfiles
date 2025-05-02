@@ -1,0 +1,50 @@
+#!/usr/bin/env bash
+#
+# jump
+#
+# Add path bookmarks and jump to them
+#
+# Jump will look for all files in the JUMPFILES env var, and will parse them
+# line by line in order, looking for jump shortcut matches.
+#
+# The RETCODE will be 0 on success, and the first line of output will always be
+# the cd-able path. It will output "." when there's nothing to do (i.e when you're
+# listing jumps).
+#
+# USAGE:
+#   # go to a shortcut
+#   jump shortcut-name
+#
+#   # list shortcuts
+#   jump
+#
+# EXAMPLE JUMPFILE:
+#   shortcut-name=~/my/bookmarked/path
+
+jump_re="^([a-z\-]+)=(.+)\$"
+jumpfiles=${JUMPFILES:-$HOME/.jump}
+target="$1"
+
+if [ "$target" == "" ]; then
+  echo "."
+fi
+
+for file in $(echo "$jumpfiles" | tr ":" "\n"); do
+  for jump in $(cat $file); do
+    if [[ "$jump" =~ $jump_re ]]; then
+      shortcut="${BASH_REMATCH[1]}"
+      path="${BASH_REMATCH[2]}"
+      if [ "$target" == "" ]; then
+	echo "$shortcut = $path"
+      elif [ "$target" == "$shortcut" ]; then
+	echo "$path"
+	exit 0
+      fi
+    else
+      >&2 echo "Invalid jump in config: '$jump' does not match regex '$jump_re'"
+      exit 1
+    fi
+  done
+done
+
+exit 0

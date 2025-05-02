@@ -61,12 +61,16 @@ help() {
 alias -g -- -h='-h 2>&1 | bat --language=help --style=plain'
 alias -g -- --help='--help 2>&1 | bat --language=help --style=plain'
 
-alias dotfiles="cd $DOTFILES"
-alias zshconfig="nvim ~/.zshrc"
+# jump
+j() {
+  local output=$(jump "$@")
+  echo "$output"
+  local dir="$(echo -n "$output" | head -n 1)"
+  eval cd "$dir"
+}
+
 alias venv="source .venv/bin/activate"
 alias ls="lsd -l"
-alias reload="source ~/.zshrc"
-alias c="clear"
 
 # smart cd using tere
 smartcd() {
