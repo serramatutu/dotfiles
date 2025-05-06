@@ -89,6 +89,7 @@ return {
       end
 
       lspconfig.basedpyright.setup({})
+      lspconfig.lua_ls.setup({})
       lspconfig.ruff.setup({
         on_attach = on_attach,
       })

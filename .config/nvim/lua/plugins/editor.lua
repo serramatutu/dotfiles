@@ -136,15 +136,38 @@ return {
     dependencies = "nvim-tree/nvim-web-devicons",
     config = function()
       vim.g.gitblame_display_virtual_text = 0
-      git_blame = require("gitblame")
+      local git_blame = require("gitblame")
 
       require("lualine").setup({
         options = {
           theme = "ayu_dark",
         },
         sections = {
+          lualine_b = {
+            { "lsp_status" },
+          },
+          lualine_c = {
+            {
+              "buffers",
+	      buffers_color = {
+		active = 'lualine_c_inactive',
+		inactive = 'lualine_c_normal',
+	      },
+              symbols = {
+                modified = "",
+                alternate_file = "",
+                directory = "",
+              },
+            },
+          },
           lualine_x = {
             { git_blame.get_current_blame_text, cond = git_blame.is_blame_text_available },
+          },
+          lualine_y = {
+            { "diff" },
+          },
+          lualine_z = {
+            { "branch" },
           },
         },
       })
@@ -229,7 +252,12 @@ return {
       { "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Find buffer" },
       { "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Open recent file" },
       { "<leader>fg", "<cmd>Telescope live_grep<cr>", desc = "Find in all files", remap = true },
-      { "<leader>fs", "<cmd>lua require'telescope.builtin'.lsp_document_symbols{symbols={'function', 'class', 'method'}}<cr>", desc = "Find document functions and classes", remap = true },
+      {
+        "<leader>fs",
+        "<cmd>lua require'telescope.builtin'.lsp_document_symbols{symbols={'function', 'class', 'method'}}<cr>",
+        desc = "Find document functions and classes",
+        remap = true,
+      },
 
       -- lsp stuff
       {
