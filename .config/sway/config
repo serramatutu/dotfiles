@@ -1,5 +1,4 @@
-# i3 config file (v4)
-# Please see https://i3wm.org/docs/userguide.html for a complete reference!
+# sway config file
 # 
 # My config file is heavily modified from the default to be compatible with my MacOS
 # skhd and yabai setup
@@ -7,11 +6,7 @@
 font pango:monospace 10
 default_border pixel 0
 
-exec --no-startup-id dex --autostart --environment i3
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
-exec --no-startup-id nm-applet
-
-bindsym Mod4+Mod1+Return exec i3-sensible-terminal
+exec --no-startup-id xss-lock --transfer-sleep-lock -- swaylock --nofork
 
 bindsym Mod4+Mod1+q kill 
 
@@ -48,9 +43,13 @@ set $ws8 "8"
 set $ws9 "9"
 set $ws10 "0"
 
-# Assign workspaces to monitors
-set $ds_ext "HDMI1"
-set $ds_int "eDP1"
+# Multi monitor setup
+
+set $ds_ext "HDMI-A-1"
+set $ds_int "eDP-1"
+
+output $ds_int pos 0 1440 background "#000000" solid_color
+output $ds_ext enable pos 0 0 res 2560 1440 background "#000000" solid_color
 workspace $ws1 output $ds_ext $ds_int
 workspace $ws2 output $ds_ext $ds_int
 workspace $ws3 output $ds_ext $ds_int
@@ -88,12 +87,10 @@ bindsym Mod4+Mod1+Shift+0 move container to workspace number $ws10
 
 # reload the configuration file
 bindsym Mod4+Mod1+c reload
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+# restart sway inplace (preserves your layout/session, can be used to upgrade sway)
 bindsym Mod4+Mod1+r restart
-# exit i3 (logs you out of your X session)
-bindsym Mod4+Mod1+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
-# Start i3bar to display a workspace bar (plus the system information i3status
+# Start swaybar to display a workspace bar (plus the system information i3status)
 bar {
         status_command i3blocks
 	separator_symbol "|"
@@ -121,10 +118,7 @@ bindsym XF86MonBrightnessUp   exec --no-startup-id brightnessctl set 1000+
 bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 1000-
 
 # Suspend
-bindsym Mod4+control+q exec --no-startup-id i3lock --color=000000
-
-# i3-battery-popup
-exec --no-startup-id i3-battery-popup
+bindsym Mod4+control+q exec --no-startup-id swaylock --color=000000
 
 # GTK settings
 exec --no-startup-id /usr/libexec/gsd-xsettings

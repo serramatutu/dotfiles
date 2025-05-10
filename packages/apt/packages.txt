@@ -14,7 +14,6 @@ build-essential
 sshfs-fuse
 lua5.4
 liblua5.4-dev
-rofi
-i3blocks
 python3-tk
+i3blocks
 fonts-font-awesome
