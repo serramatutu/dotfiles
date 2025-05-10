@@ -48,6 +48,20 @@ set $ws8 "8"
 set $ws9 "9"
 set $ws10 "0"
 
+# Assign workspaces to monitors
+set $ds_ext "HDMI1"
+set $ds_int "eDP1"
+workspace $ws1 output $ds_ext $ds_int
+workspace $ws2 output $ds_ext $ds_int
+workspace $ws3 output $ds_ext $ds_int
+workspace $ws4 output $ds_ext $ds_int
+workspace $ws5 output $ds_ext $ds_int
+workspace $ws6 output $ds_int
+workspace $ws7 output $ds_int
+workspace $ws8 output $ds_int
+workspace $ws9 output $ds_int
+workspace $ws10 output $ds_int
+
 # switch to workspace
 bindsym Mod4+Mod1+1 workspace number $ws1
 bindsym Mod4+Mod1+2 workspace number $ws2

@@ -1,13 +1,11 @@
 source "$HOME/.asdf/asdf.sh"
 
-shutdown() {
-    command shutdown --halt now
+display_mobile() {
+  xrandr --output eDP1 --below HDMI1 --auto
 }
 
-display_off() {
-  xrandr --output eDP1 --off --output HDMI1 --auto --mode 2560x1440 --rate 60
-}
-
-display_on() {
-  xrandr --output eDP1 --auto --output HDMI1 --auto
+display_docked() {
+  xrandr \
+    --output eDP1 --below HDMI1 --auto \
+    --output HDMI1 --primary --mode 2560x1440 --rate 60 
 }
