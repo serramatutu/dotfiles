@@ -1,16 +1,77 @@
-# sway config file
-# 
-# My config file is heavily modified from the default to be compatible with my MacOS
-# skhd and yabai setup
+# ------
+# global
+# ------
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "0"
 
+set $c_background #000000
+set $c_active     #ffffff
+set $c_inactive   #000000
+
+# -----
+# style
+# -----
 font pango:monospace 10
-default_border pixel 0
 
-exec --no-startup-id xss-lock --transfer-sleep-lock -- swaylock --nofork
+default_border pixel 2
 
+client.background $c_background
+#                border      background  text        next_window
+client.focused   $c_active   $c_active   $c_active   $c_active
+client.unfocused $c_inactive $c_inactive $c_inactive $c_inactive
+
+gaps outer 3
+gaps inner 3
+
+# Start swaybar to display a workspace bar (plus the system information i3status)
+bar {
+        status_command i3blocks
+	separator_symbol "|"
+	position top
+	colors {
+		background #000000
+		statusline #aaaaaa
+		focused_workspace #000000 #aaaaaa #000000
+		inactive_workspace #000000 #000000 #aaaaaa
+	}
+}
+
+
+# --------
+# monitors
+# --------
+set $ds_ext "HDMI-A-1"
+set $ds_int "eDP-1"
+
+# Symlink the wallpaper to ~/Pictures/wallpaper.jpg
+output $ds_int pos 0 1440 background ~/Pictures/wallpaper.jpg fill $c_background
+output $ds_ext enable pos 0 0 res 2560 1440 background ~/Pictures/wallpaper.jpg fill $c_background
+workspace $ws1 output $ds_ext $ds_int
+workspace $ws2 output $ds_ext $ds_int
+workspace $ws3 output $ds_ext $ds_int
+workspace $ws4 output $ds_ext $ds_int
+workspace $ws5 output $ds_ext $ds_int
+workspace $ws6 output $ds_int
+workspace $ws7 output $ds_int
+workspace $ws8 output $ds_int
+workspace $ws9 output $ds_int
+workspace $ws10 output $ds_int
+
+
+# ----
+# keys
+# ----
 bindsym Mod4+Mod1+q kill 
 
-bindsym Mod4+space exec --no-startup-id "rofi -show combi -combi-modi window,drun,run -modi combi"
+bindsym Mod4+space exec "rofi -show combi -combi-modi window,drun,run -modi combi"
 
 # change focus
 bindsym Mod4+Mod1+h focus left
@@ -26,40 +87,6 @@ bindsym Mod4+Mod1+Shift+l move right
 
 # enter fullscreen mode for the focused container
 bindsym Mod4+Mod1+f fullscreen toggle
-
-# focus the child container
-#bindsym Mod4+Mod1+d focus child
-
-# Define names for default workspaces for which we configure key bindings later on.
-# We use variables to avoid repeating the names in multiple places.
-set $ws1 "1"
-set $ws2 "2"
-set $ws3 "3"
-set $ws4 "4"
-set $ws5 "5"
-set $ws6 "6"
-set $ws7 "7"
-set $ws8 "8"
-set $ws9 "9"
-set $ws10 "0"
-
-# Multi monitor setup
-
-set $ds_ext "HDMI-A-1"
-set $ds_int "eDP-1"
-
-output $ds_int pos 0 1440 background "#000000" solid_color
-output $ds_ext enable pos 0 0 res 2560 1440 background "#000000" solid_color
-workspace $ws1 output $ds_ext $ds_int
-workspace $ws2 output $ds_ext $ds_int
-workspace $ws3 output $ds_ext $ds_int
-workspace $ws4 output $ds_ext $ds_int
-workspace $ws5 output $ds_ext $ds_int
-workspace $ws6 output $ds_int
-workspace $ws7 output $ds_int
-workspace $ws8 output $ds_int
-workspace $ws9 output $ds_int
-workspace $ws10 output $ds_int
 
 # switch to workspace
 bindsym Mod4+Mod1+1 workspace number $ws1
@@ -86,40 +113,28 @@ bindsym Mod4+Mod1+Shift+9 move container to workspace number $ws9
 bindsym Mod4+Mod1+Shift+0 move container to workspace number $ws10
 
 # reload the configuration file
-bindsym Mod4+Mod1+c reload
-# restart sway inplace (preserves your layout/session, can be used to upgrade sway)
-bindsym Mod4+Mod1+r restart
+bindsym Mod4+Mod1+r reload
 
-# Start swaybar to display a workspace bar (plus the system information i3status)
-bar {
-        status_command i3blocks
-	separator_symbol "|"
-	colors {
-		background #000000
-		statusline #aaaaaa
-		focused_workspace #000000 #aaaaaa #000000
-		inactive_workspace #000000 #000000 #aaaaaa
-	}
-}
-
-## Volume control
-
+## volume control
 set $i3volume ~/bin/i3volume
 set $statuscmd i3blocks
 set $statussig SIGRTMIN+10
 set $volumestep 5
+bindsym XF86AudioRaiseVolume exec $i3volume -n -t $statuscmd -u $statussig up $volumestep
+bindsym XF86AudioLowerVolume exec $i3volume -n -t $statuscmd -u $statussig down $volumestep
+bindsym XF86AudioMute        exec $i3volume -n -t $statuscmd -u $statussig mute
 
-bindsym XF86AudioRaiseVolume exec --no-startup-id $i3volume -n -t $statuscmd -u $statussig up $volumestep
-bindsym XF86AudioLowerVolume exec --no-startup-id $i3volume -n -t $statuscmd -u $statussig down $volumestep
-bindsym XF86AudioMute        exec --no-startup-id $i3volume -n -t $statuscmd -u $statussig mute
+# brightness control
+bindsym XF86MonBrightnessUp   exec brightnessctl set 1000+
+bindsym XF86MonBrightnessDown exec brightnessctl set 1000-
 
-# Change brightness
-bindsym XF86MonBrightnessUp   exec --no-startup-id brightnessctl set 1000+
-bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 1000-
+# suspend
+exec xss-lock --transfer-sleep-lock -- swaylock --nofork
+bindsym Mod4+control+q exec swaylock --color=000000
 
-# Suspend
-bindsym Mod4+control+q exec --no-startup-id swaylock --color=000000
+# --------
+# services
+# --------
 
-# GTK settings
-exec --no-startup-id /usr/libexec/gsd-xsettings
-
+# notifications
+exec_always dunst
