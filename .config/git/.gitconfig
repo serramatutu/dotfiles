@@ -19,3 +19,6 @@
     side-by-side = true
 [merge]
     conflictstyle = zdiff3
+[rerere]
+    enabled = true
+    autoupdate = true
