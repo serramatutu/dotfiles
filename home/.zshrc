@@ -47,6 +47,10 @@ gb() {
 
   git switch "$branch"
 }
+gclone() {
+  local repo="$1"
+  git clone "git@github.com:$repo.git"
+}
 alias gd="git diff --cached"
 alias gbp="git branch --merged | egrep -v '(^\*|master|main)' | xargs git branch -d"
 
