@@ -51,6 +51,10 @@ gclone() {
   local repo="$1"
   git clone "git@github.com:$repo.git"
 }
+gbrowse() {
+  local repo_url=$(git config --get remote.origin.url | sd "git@github.com:" "https://github.com/")
+  open "$repo_url"
+}
 alias gd="git diff --cached"
 alias gbp="git branch --merged | egrep -v '(^\*|master|main)' | xargs git branch -d"
 

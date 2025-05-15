@@ -6,3 +6,4 @@ nodejs 22.2.0
 helm 3.15.3
 actionlint 1.7.1
 shellcheck 0.10.0
+pnpm 9.15.9
