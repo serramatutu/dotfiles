@@ -69,6 +69,18 @@ workspace $ws9 output $ds_int
 workspace $ws10 output $ds_int
 
 
+# -----
+# input
+# -----
+input "type:touchpad" {
+	tap enabled
+	# tap with 1 finger = left click, 2 fingers = right click, 3 fingers = middle click
+	tap_button_map lrm
+	# disable (touchpad) while typing
+	dwt enabled
+}
+
+
 # ----
 # keys
 # ----
