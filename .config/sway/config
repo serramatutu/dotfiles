@@ -42,6 +42,9 @@ bar {
 		focused_workspace #000000 #aaaaaa #000000
 		inactive_workspace #000000 #000000 #aaaaaa
 	}
+	mode hide
+	hidden_state hide
+	modifier Mod4
 }
 
 
