@@ -1,0 +1,40 @@
+[core]
+    editor = nvim
+    pager = delta
+[user]
+    name = serramatutu
+[commit]
+    gpgSign = true
+    verbose = true
+[rebase]
+    autoSquash = true
+    missingCommitsCheck = warn
+[init]
+    defaultBranch = main
+[interactive]
+    diffFilter = delta --color-only
+[merge]
+    conflictStyle = zdiff3
+[rerere]
+    enabled = true
+    autoUpdate = true
+[status]
+    branch = true
+    showStash = true
+    showUntrackedFiles = all
+[pull]
+    rebase = true
+[push]
+    autoSetupRemote = true
+
+[delta]
+    navigate = true
+    side-by-side = true
+
+[url "git@github.com:"]
+    insteadOf = https://github.com/
+    insteadOf = gh:
+[url "git@github.com:serramatutu/"]
+    insteadOf = me:
+[url "git@github.com:dbt-labs/"]
+    insteadOf = dbt:

@@ -24,4 +24,4 @@
 	url = https://github.com/testssl/testssl.sh.git
 [submodule "packages/git/i3-volume"]
 	path = packages/git/i3-volume
-	url = git@github.com:hastinbe/i3-volume.git
+	url = https://github.com/hastinbe/i3-volume
