@@ -107,17 +107,6 @@ j() {
 alias venv="source .venv/bin/activate"
 alias ls="lsd -l"
 
-# smart cd using tere
-smartcd() {
-  if [ "$#" -eq "0" ]; then
-    local result=$(tere) 
-    [ -n "$result" ] && cd -- "$result"
-  else
-    cd -- "$@"
-  fi
-}
-alias cd="smartcd"
-
 rm() {
   local last_arg=${@[-1]}
   if [ "$last_arg" = "$HOME" ]; then
@@ -139,7 +128,6 @@ tmux-kill() {
 # ripgrep
 export RIPGREP_CONFIG_PATH=$HOME/.config/ripgrep/ripgreprc
 
-
 # Load OS-specific config
 source "$DOTFILES/os/zshload.zsh"
 source $HOME/.asdf/plugins/golang/set-env.zsh
@@ -147,12 +135,10 @@ source $HOME/.asdf/plugins/golang/set-env.zsh
 # Add custom scripts and executables to path
 export PATH="$PATH:$HOME/bin"
 
-
 # Start in a tmux session by default
 if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
   exec tmux
 fi
-
 
 # Initialize completions
 eval "$(starship init zsh)"
