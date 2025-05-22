@@ -16,10 +16,10 @@ return {
     build = ":MasonUpdate",
     opts = {
       ensure_installed = {
-        "gopls",
         "basedpyright",
         "cssls",
         "eslint",
+        "gopls",
         "html",
         "kotlin_language_server",
         "lua_ls",

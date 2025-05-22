@@ -21,3 +21,6 @@ vim.opt.grepprg = "rg"
 
 -- keep cursor centered
 vim.opt.scrolloff = 999
+
+-- indent with spaces only
+vim.opt.expandtab = true
