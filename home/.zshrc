@@ -82,7 +82,38 @@ gpr() {
   return 0
 }
 alias gd="git diff --cached"
-alias gbp="git branch --merged | egrep -v '(^\*|master|main)' | xargs git branch -d"
+
+# prune branches
+gbp() {
+  local main="main"
+  if git rev-parse master > /dev/null 2>&1 ; then
+    main="master"
+  fi
+
+  local current_branch=$(git rev-parse --abbrev-ref HEAD)
+  if [ "$current_branch" != "$main" ]; then
+    echo "Must be on $main to prune branches."
+    return 1
+  fi
+
+  # delete normally merged branches
+  git branch --merged | egrep -v '(^\*|master|main)' | xargs git branch -d
+
+  # delete squash-merged branches
+  git checkout -q "$main"
+  git for-each-ref refs/heads/ "--format=%(refname:short)" | while read branch; do 
+    local merge_base=$(git merge-base $main $branch) 
+    local cherry=$(git cherry $main $(git commit-tree $(git rev-parse "$branch^{tree}") -p $merge_base -m _))
+    local should_delete=$(echo "$cherry" | grep "-")
+
+    if [ "$should_delete" != "" ]; then
+      git branch -D $branch; 
+    else
+      echo "Keeping branch $branch"
+    fi
+  done
+}
+
 alias gcl="git clone"
 
 # nvim
