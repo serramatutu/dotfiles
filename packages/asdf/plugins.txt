@@ -1,4 +1,3 @@
 python
 nodejs
-rust
 golang

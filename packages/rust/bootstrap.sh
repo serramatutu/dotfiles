@@ -2,6 +2,14 @@
 
 echo "Running Rust bootstrap"
 
+if ! command -v rustup --version >/dev/null 2>&1
+then
+    echo "rustup could not be found. Will install."
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+else
+    echo "rustup found. Skipping installation."
+fi
+
 cat "$DOTFILES/packages/rust/crates.txt" | xargs -I {} cargo install "{}"
 
 # rust-analyzer is weird to install and takes a long time to compile
@@ -18,5 +26,3 @@ fi
 
 rustup component add clippy
 rustup component add rustfmt
-
-asdf reshim rust

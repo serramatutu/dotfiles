@@ -23,6 +23,9 @@ export PATH="$PATH:$HOME/.local/bin"
 export ASDF_DATA_DIR="$HOME/.asdf"
 export PATH="$ASDF_DATA_DIR/shims:$PATH"
 
+# rust
+export PATH="$PATH:$HOME/.cargo/bin"
+
 # Git aliases
 function get_repo_url {
   local repo_url=$(
