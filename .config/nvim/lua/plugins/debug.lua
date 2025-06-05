@@ -39,26 +39,41 @@ return {
         end,
       },
     },
-  },
-  {
-    "mfussenegger/nvim-dap-python",
-    dependencies = { "mfussenegger/nvim-dap" },
-    ft = "python",
     config = function()
-      require("dap-python").setup("python3")
-    end,
-  },
-  {
-    "rcarriga/nvim-dap-ui",
-    dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
-    config = function()
-      local dap, dapui = require("dap"), require("dapui")
+      local dap = require("dap")
+
+      dap.adapters.lldb = {
+        type = "server",
+        port = "${port}",
+        executable = {
+          command = "codelldb",
+          args = { "--port", "${port}" },
+          detached = false,
+        },
+      }
+
+      dap.configurations.c = {
+        {
+          name = "Debug an Executable",
+          type = "lldb",
+          request = "launch",
+          program = function()
+            return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+          end,
+          cwd = "${workspaceFolder}",
+          stopOnEntry = false,
+        },
+      }
+      dap.configurations.cpp = dap.configurations.c
+      dap.configurations.rust = dap.configurations.c
+
+      local dapui = require("dapui")
 
       dapui.setup({
         mappings = {
           edit = "e",
-          expand = { "<cr>", "<l>", "<Space>" },
-          open = { "<cr>", "<l>", "<Space>" },
+          expand = { "<cr>", "l", "<Space>" },
+          open = { "o" },
           remove = { "d", "D" },
           repl = "r",
           toggle = "t",
@@ -78,5 +93,25 @@ return {
         dapui.close()
       end
     end,
+  },
+  {
+    "mfussenegger/nvim-dap-python",
+    dependencies = { "mfussenegger/nvim-dap" },
+    ft = "python",
+    config = function()
+      require("dap-python").setup("python3")
+    end,
+  },
+  {
+    "rcarriga/nvim-dap-ui",
+    dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
+    keys = {
+      {
+        "<leader>bh",
+        function()
+          require("dapui").eval()
+        end,
+      },
+    },
   },
 }

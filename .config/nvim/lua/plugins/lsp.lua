@@ -3,6 +3,7 @@ return {
     "williamboman/mason.nvim",
     opts = {
       ensure_installed = {
+        "codelldb",
         "stylua",
         "shellcheck",
         "shfmt",
@@ -114,7 +115,7 @@ return {
   {
     "mrcjkb/rustaceanvim",
     ft = "rust",
-    version = "^4",
+    version = "^6",
   },
 
   {

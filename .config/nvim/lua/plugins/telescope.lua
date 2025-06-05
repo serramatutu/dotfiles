@@ -37,6 +37,13 @@ return {
         silent = true,
       },
       {
+        "<leader>gr",
+        "<cmd> lua require'telescope.builtin'.lsp_references{}<cr>",
+        desc = "Go to references",
+        remap = true,
+        silent = true,
+      },
+      {
         "<leader>gd",
         "<cmd>lua require'telescope.builtin'.lsp_definitions{}<cr>",
         desc = "Go to definitions",
