@@ -23,7 +23,7 @@ return {
 
       -- lsp stuff
       {
-        "<leader>d",
+        "<leader>fd",
         "<cmd>lua require'telescope.builtin'.diagnostics{bufnr=0}<cr>",
         desc = "Open diagnostics",
         remap = true,

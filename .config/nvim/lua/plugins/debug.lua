@@ -4,24 +4,28 @@ return {
     keys = {
       {
         "<leader>bc",
+        "<F5>",
         function()
           require("dap").continue()
         end,
       },
       {
         "<leader>bj",
+        "<F9>",
         function()
           require("dap").step_over()
         end,
       },
       {
         "<leader>bk",
+        "<F10>",
         function()
           require("dap").step_into()
         end,
       },
       {
         "<leader>bl",
+        "<F2>",
         function()
           require("dap").step_out()
         end,
@@ -32,10 +36,19 @@ return {
           require("dap").toggle_breakpoint()
         end,
       },
+
       {
         "<leader>bf",
+        ft = "python",
         function()
           require("dap-python").test_method()
+        end,
+      },
+      {
+        "<leader>bf",
+        ft = "rust",
+        function()
+          vim.cmd.RustLsp("debug")
         end,
       },
     },
