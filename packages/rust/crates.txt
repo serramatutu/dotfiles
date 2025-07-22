@@ -6,3 +6,4 @@ lsd
 starship
 stylua
 sd
+just
