@@ -48,14 +48,14 @@ return {
           move = {
             enable = true,
             goto_next_start = {
-              ["nf"] = "@function.inner",
-              ["nc"] = "@class.inner",
-              ["ns"] = "@block.inner",
+              ["]f"] = "@function.inner",
+              ["]c"] = "@class.inner",
+              ["]s"] = "@block.inner",
             },
             goto_previous_start = {
-              ["pf"] = "@function.inner",
-              ["pc"] = "@class.inner",
-              ["ps"] = "@block.inner",
+              ["[f"] = "@function.inner",
+              ["[c"] = "@class.inner",
+              ["[s"] = "@block.inner",
             },
           },
           select = {
