@@ -7,3 +7,4 @@ starship
 stylua
 sd
 just
+cargo-nextest

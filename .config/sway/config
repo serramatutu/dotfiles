@@ -47,6 +47,10 @@ bar {
 	modifier Mod4
 }
 
+# -----------
+# assignments
+# -----------
+assign [title="^dev:"] $ws9
 
 # --------
 # monitors
@@ -84,7 +88,7 @@ input "type:touchpad" {
 # ----
 # keys
 # ----
-bindsym Mod4+q kill 
+bindsym Mod4+Shift+q kill 
 
 bindsym Mod4+space exec "rofi -show combi -combi-modi window,drun,run -modi combi"
 
