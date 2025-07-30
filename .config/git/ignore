@@ -1,2 +1,5 @@
 .tb
 .ignore/
+
+# Annoying mac stuff
+.DS_Store

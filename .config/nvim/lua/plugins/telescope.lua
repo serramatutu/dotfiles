@@ -1,19 +1,39 @@
 return {
   {
     "nvim-telescope/telescope.nvim",
-    dependencies = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope-ui-select.nvim" },
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-telescope/telescope-ui-select.nvim",
+      {
+        "nvim-telescope/telescope-live-grep-args.nvim",
+        -- This will not install any breaking changes.
+        -- For major updates, this must be adjusted manually.
+        version = "^1.0.0",
+      },
+    },
     event = "VeryLazy",
     config = function()
       local telescope = require("telescope")
-      telescope.setup()
+      telescope.setup({
+        layout_config = {
+          vertical = { width = 0.9 },
+          horizontal = { width = 0.9 },
+        },
+      })
       telescope.load_extension("ui-select")
+      telescope.load_extension("live_grep_args")
     end,
     keys = {
       -- find
-      { "<leader>ff", "<cmd>Telescope find_files hidden=true<cr>", desc = "Find file" },
-      { "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Find buffer" },
-      { "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Open recent file" },
-      { "<leader>fg", "<cmd>Telescope live_grep<cr>", desc = "Find in all files", remap = true },
+      { "<leader>ff", "<cmd>Telescope find_files hidden=true layout_strategy=vertical<cr>", desc = "Find file" },
+      { "<leader>fb", "<cmd>Telescope buffers layout_stategy=vertical<cr>", desc = "Find buffer" },
+      { "<leader>fr", "<cmd>Telescope oldfiles layout_strategy=vertical<cr>", desc = "Open recent file" },
+      {
+        "<leader>fg",
+        "<cmd>Telescope live_grep_args layout_strategy=vertical<cr>",
+        desc = "Find in all files",
+        remap = true,
+      },
       {
         "<leader>fs",
         "<cmd>lua require'telescope.builtin'.lsp_document_symbols{symbols={'function', 'class', 'method'}}<cr>",
