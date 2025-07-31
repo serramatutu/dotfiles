@@ -5,6 +5,10 @@ format = "$directory| $all"
 [gcloud]
 disabled = true
 
+# this is very slow, even with core.fsmonitor and feature.manyfiles on
+[git_status]
+disabled= true
+
 [kubernetes]
 disabled = false
 symbol = "🚢"

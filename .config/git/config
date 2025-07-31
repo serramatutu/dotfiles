@@ -1,8 +1,11 @@
 [core]
     editor = nvim
     pager = delta
+    fsmonitor = true
 [user]
     name = serramatutu
+[feature]
+    manyFiles = true
 [commit]
     gpgSign = true
     verbose = true
