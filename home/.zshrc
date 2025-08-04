@@ -169,6 +169,11 @@ source $HOME/.asdf/plugins/golang/set-env.zsh
 # Add custom scripts and executables to path
 export PATH="$PATH:$HOME/bin"
 
+# Early exit if loading from VSCode to allow it to load path
+if [ "${TERM_PROGRAM}" = "vscode" ]; then
+  return
+fi
+
 # Start in a tmux session by default
 if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
   exec tmux
