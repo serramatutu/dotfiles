@@ -51,8 +51,8 @@ yabai -m rule --add label="Alacritty" app="^Alacritty$" space=1
 yabai -m rule --add label="Browser" app="^Firefox|Zen Browser$" space=2
 yabai -m rule --add label="Slack" app="^Slack$" space=3
 yabai -m rule --add label="Spotify" app="^Spotify$" space=4
-yabai -m rule --add label="Tidal" app="^TIDAL$" space=4
-yabai -m rule --add label="Linear" app="^Linear$" space=5
+yabai -m rule --add label="Tidal" app="^TIDAL|Visual Studio Code$" space=4
+yabai -m rule --add label="Linear" app="^Linear|Volta$" space=5
 yabai -m rule --add label="Notion" app="^Notion$" space=6
 yabai -m rule --add label="zoom.us" app="^zoom.us$" space=8
 

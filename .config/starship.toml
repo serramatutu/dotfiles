@@ -11,6 +11,6 @@ disabled= true
 
 [kubernetes]
 disabled = false
-symbol = "🚢"
+symbol = "k8s"
 format = "[$symbol $context]($style) "
 style = "blue bold"
