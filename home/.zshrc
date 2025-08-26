@@ -174,11 +174,6 @@ if [ "${TERM_PROGRAM}" = "vscode" ]; then
   return
 fi
 
-# Start in a tmux session by default
-if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
-  exec tmux
-fi
-
 # Initialize completions
 eval "$(starship init zsh)"
 source <(fzf --zsh)

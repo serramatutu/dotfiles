@@ -1,4 +1,3 @@
-
 [window]
 decorations = "Buttonless"
 startup_mode = "Maximized"
@@ -11,9 +10,6 @@ italic = { family = "FiraCode Nerd Font", style = "italic" }
 
 [cursor]
 style = "Underline"
-
-[colors.primary]
-background = "#000000"
 
 # same cursor as nvim
 [colors.cursor]
@@ -28,8 +24,4 @@ import = [
     "~/.config/alacritty/themes/themes/ayu_dark.toml",
     "~/.config/alacritty/os.toml"
 ]
-
-[terminal]
-
-shell = "zsh"
 

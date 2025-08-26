@@ -25,6 +25,5 @@ require("lazy").setup({
     lazy = true,
     version = false,
   },
-  install = { colorscheme = { "ayu" } },
   checker = { enabled = false },
 })

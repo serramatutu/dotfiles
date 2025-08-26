@@ -5,32 +5,25 @@ return {
     lazy = false,
     priority = 10000,
     config = function()
+      local ayu = require("ayu")
       local colors = require("ayu.colors")
       colors.generate()
 
-      local normal = { fg = colors.fg, bg = "#000000" }
       local cursor = {
         fg = "#ffffff",
         bg = "#ff0000",
       }
 
-      require("ayu").setup({
+      ayu.setup({
         dark = true,
-        terminal = true,
         overrides = {
-          Normal = normal,
-          NormalFloat = normal,
-          Visual = {
-            bg = colors.fg,
-            fg = colors.bg,
-          },
           TermCursor = cursor,
           Cursor = cursor,
           LineNr = { fg = colors.fg },
           CursorLineNr = { fg = colors.bg, bg = colors.fg },
         },
       })
-      require("ayu").colorscheme()
+      ayu.colorscheme()
     end,
   },
 }
