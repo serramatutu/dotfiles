@@ -1,7 +1,7 @@
 [core]
     editor = nvim
     pager = delta
-    fsmonitor = true
+    ; fsmonitor = true
 [user]
     name = serramatutu
 [feature]
