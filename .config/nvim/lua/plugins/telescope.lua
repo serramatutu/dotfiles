@@ -40,6 +40,12 @@ return {
         desc = "Find document functions and classes",
         remap = true,
       },
+      {
+        "<leader>fm",
+        "<cmd>lua require'telescope.builtin'.marks{}<cr>",
+        desc = "Find marks",
+        remap = true,
+      },
 
       -- lsp stuff
       {

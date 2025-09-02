@@ -116,6 +116,24 @@ return {
     "mrcjkb/rustaceanvim",
     ft = "rust",
     version = "^6",
+    init = function()
+      vim.g.rustaceanvim = {
+        server = {
+          default_settings = {
+            ['rust-analyzer'] = {
+              ["initialization_options"] = {
+                ["cargo"] = {
+                  ["targetDir"] = true
+                },
+                ["check"] = {
+                  ["workspace"] = false
+                }
+              }
+            },
+          },
+        },
+      }
+    end
   },
 
   {
