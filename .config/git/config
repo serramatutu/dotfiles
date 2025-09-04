@@ -1,3 +1,5 @@
+[alias]
+    stash-unstaged = "!git stash push -S; git stash; git stash pop --index stash@{1}; git add ."
 [core]
     editor = nvim
     pager = delta
@@ -16,6 +18,8 @@
     defaultBranch = main
 [interactive]
     diffFilter = delta --color-only
+[status]
+    short = true
 [merge]
     conflictStyle = zdiff3
 [rerere]
@@ -29,6 +33,7 @@
     rebase = true
 [push]
     autoSetupRemote = true
+    useForceIfIncludes = true
 
 [delta]
     navigate = true
