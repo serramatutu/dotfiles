@@ -120,20 +120,20 @@ return {
       vim.g.rustaceanvim = {
         server = {
           default_settings = {
-            ['rust-analyzer'] = {
+            ["rust-analyzer"] = {
               ["initialization_options"] = {
                 ["cargo"] = {
-                  ["targetDir"] = true
+                  ["targetDir"] = true,
                 },
                 ["check"] = {
-                  ["workspace"] = false
-                }
-              }
+                  ["workspace"] = false,
+                },
+              },
             },
           },
         },
       }
-    end
+    end,
   },
 
   {
