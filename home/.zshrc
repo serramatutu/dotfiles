@@ -71,6 +71,10 @@ tmux-kill() {
 # ripgrep
 export RIPGREP_CONFIG_PATH=$HOME/.config/ripgrep/ripgreprc
 
+# difftastic (it doesnt support config files)
+export DFT_CONTEXT=5
+export DFT_DISPLAY=side-by-side
+
 # Load OS-specific config
 source "$DOTFILES/os/zshload.zsh"
 source $HOME/.asdf/plugins/golang/set-env.zsh

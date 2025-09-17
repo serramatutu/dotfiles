@@ -8,3 +8,4 @@ stylua
 sd
 just
 cargo-nextest
+difftastic

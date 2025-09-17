@@ -17,11 +17,11 @@
 [init]
     defaultBranch = main
 [interactive]
-    diffFilter = delta --color-only
+    ; diffFilter = delta --color-only
+    diffFilter = difft
 [status]
     short = true
-[merge]
-    conflictStyle = zdiff3
+
 [rerere]
     enabled = true
     autoUpdate = true
@@ -35,6 +35,10 @@
     autoSetupRemote = true
     useForceIfIncludes = true
 
+
+[diff]
+    external = difft
+    algorithm = histogram
 [delta]
     navigate = true
     side-by-side = true
