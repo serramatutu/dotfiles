@@ -17,3 +17,4 @@ liblua5.4-dev
 python3-tk
 i3blocks
 fonts-font-awesome
+fzy
