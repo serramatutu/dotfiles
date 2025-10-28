@@ -12,6 +12,7 @@
     gpgSign = true
     verbose = true
 [rebase]
+    updateRefs = true
     autoSquash = true
     missingCommitsCheck = warn
 [init]
