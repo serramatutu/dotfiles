@@ -55,6 +55,11 @@ case "$1" in
         done
         ;;
 
+    "purge") 
+        git reset --hard
+        git clean -f
+        ;;
+
     "help")
         man git-x
         ;;
