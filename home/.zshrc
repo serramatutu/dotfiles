@@ -14,6 +14,7 @@ SAVEHIST=$HISTSIZE
 export EDITOR=nvim
 export MANROFFOPT="-c"
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+export MANPATH="$MANPATH:$(rustc --print sysroot)/share/man"
 export GPG_TTY=$(tty)
 export GIT_USER="serramatutu"
 export FZF_DEFAULT_OPTS='--height "~100%" --layout reverse --border --margin=1 --padding=1'
