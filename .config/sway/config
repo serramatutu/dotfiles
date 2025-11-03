@@ -146,9 +146,9 @@ set $i3volume ~/bin/i3volume
 set $statuscmd i3blocks
 set $statussig SIGRTMIN+10
 set $volumestep 5
-bindsym --locked XF86AudioRaiseVolume exec $i3volume -n -t $statuscmd -u $statussig up $volumestep
-bindsym --locked XF86AudioLowerVolume exec $i3volume -n -t $statuscmd -u $statussig down $volumestep
-bindsym --locked XF86AudioMute        exec $i3volume -n -t $statuscmd -u $statussig mute
+bindsym --locked XF86AudioRaiseVolume exec $i3volume -x 100 -n -t $statuscmd -u $statussig up $volumestep
+bindsym --locked XF86AudioLowerVolume exec $i3volume -x 100 -n -t $statuscmd -u $statussig down $volumestep
+bindsym --locked XF86AudioMute        exec $i3volume -x 100 -n -t $statuscmd -u $statussig mute
 
 # brightness control
 bindsym --locked XF86MonBrightnessUp   exec brightnessctl set +5%
