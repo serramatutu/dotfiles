@@ -7,18 +7,23 @@ configuration {
   kb-row-down: "Down,Control+j";
 }
 
+window {
+  border-radius: 10px;
+}
+
 * {
+  font: "SF Mono 12";
   highlight: bold italic;
   scrollbar: true;
 
   theme-bg0:          #000000;
   theme-bg2:          #ff0000;
   theme-fg0:          #aaaaaa;
-  theme-fg1:          #aaaaaa;
+  theme-fg1:          #ffffff;
   theme-red-dark:     #cc241d;
   theme-red-light:    #fb4934;
   theme-gray-dark:    #555555;
-  theme-gray-light:   #aaaaaa;
+  theme-gray-light:   #ffff00;
 
   /* Theme colors */
   background:                  @theme-bg0;

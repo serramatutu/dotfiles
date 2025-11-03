@@ -6,6 +6,7 @@ return {
     priority = 10000,
     config = function()
       local ayu = require("ayu")
+
       local colors = require("ayu.colors")
       colors.generate()
 

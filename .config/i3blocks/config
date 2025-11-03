@@ -27,14 +27,3 @@ interval=1
 command=date +"%Y-%m-%d %T"
 label=📅
 interval=1
-
-[monitors]
-command=~/.config/i3blocks/blocks/monitor_manager
-full_text=🖥️
-min_width=🖥️
-interval=once
-
-[shutdown_menu]
-full_text=⏻
-min_width=⏻ 
-command=~/.config/i3blocks/blocks/shutdown_menu

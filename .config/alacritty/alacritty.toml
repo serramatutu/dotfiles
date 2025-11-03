@@ -11,6 +11,9 @@ italic = { family = "FiraCode Nerd Font", style = "italic" }
 [cursor]
 style = "Underline"
 
+[colors.primary]
+background = "#000000"
+
 # same cursor as nvim
 [colors.cursor]
 cursor = "#ff0000"

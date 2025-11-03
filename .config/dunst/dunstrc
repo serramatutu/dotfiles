@@ -1,0 +1,15 @@
+[global]
+frame_color = "#AAAAAA"
+frame_width = 2
+
+background = "#000000"
+highlight = "#FFFF00"
+
+font = "SF Mono 9"
+
+corner_radius = 10
+progress_bar_corner_radius = 10
+
+
+[urgency_critical]
+frame_color = "#AA0000"

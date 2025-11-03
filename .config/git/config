@@ -5,7 +5,8 @@
     pager = delta
     ; fsmonitor = true
 [user]
-    name = serramatutu
+	name = serramatutu
+	email = serramatutu@pm.me
 [feature]
     manyFiles = true
 [commit]

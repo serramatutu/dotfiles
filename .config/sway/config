@@ -1,3 +1,6 @@
+# XDG env vars compat
+include /etc/sway/config.d/*
+
 # ------
 # global
 # ------
@@ -19,17 +22,17 @@ set $c_inactive   #000000
 # -----
 # style
 # -----
-font pango:monospace 10
+font pango:SF Mono 10
 
-default_border pixel 2
+default_border pixel 0
 
 client.background $c_background
 #                border      background  text        next_window
 client.focused   $c_active   $c_active   $c_active   $c_active
 client.unfocused $c_inactive $c_inactive $c_inactive $c_inactive
 
-gaps outer 3
-gaps inner 3
+gaps outer 0
+gaps inner 0
 
 # Start swaybar to display a workspace bar (plus the system information i3status)
 bar {
@@ -38,9 +41,9 @@ bar {
 	position top
 	colors {
 		background #000000
-		statusline #aaaaaa
-		focused_workspace #000000 #aaaaaa #000000
-		inactive_workspace #000000 #000000 #aaaaaa
+		statusline #ffffff
+		focused_workspace #ffff00 #000000 #ffff00
+		inactive_workspace #000000 #000000 #ffffff
 	}
 	mode hide
 	hidden_state hide
@@ -50,6 +53,9 @@ bar {
 # -----------
 # assignments
 # -----------
+assign [app_id="alacritty"] $ws1
+assign [app_id="zen"] $ws2
+assign [app_id="tidal-hifi"] $ws4
 assign [title="^dev:"] $ws9
 
 # --------

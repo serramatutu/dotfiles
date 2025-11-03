@@ -12,6 +12,7 @@ HISTSIZE=9999
 SAVEHIST=$HISTSIZE
 
 export EDITOR=nvim
+export MANROFFOPT="-c"
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export GPG_TTY=$(tty)
 export GIT_USER="serramatutu"
@@ -19,8 +20,14 @@ export FZF_DEFAULT_OPTS='--height "~100%" --layout reverse --border --margin=1 -
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 export PATH="$PATH:$HOME/.local/bin"
 
-export ASDF_DATA_DIR="$HOME/.asdf"
-export PATH="$ASDF_DATA_DIR/shims:$PATH"
+
+# asdf
+if [[ -d "$HOME/.asdf" ]]; then
+    export ASDF_DATA_DIR="$HOME/.asdf"
+    export PATH="$ASDF_DATA_DIR/shims:$PATH"
+    source $HOME/.asdf/plugins/golang/set-env.zsh
+fi 
+
 source "$HOME/.cargo/env"
 
 alias gl="git log --oneline"
@@ -77,7 +84,6 @@ export DFT_DISPLAY=side-by-side
 
 # Load OS-specific config
 source "$DOTFILES/os/zshload.zsh"
-source $HOME/.asdf/plugins/golang/set-env.zsh
 
 # Add custom scripts and executables to path
 export PATH="$PATH:$HOME/bin"
