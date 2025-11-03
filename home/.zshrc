@@ -86,9 +86,6 @@ export DFT_DISPLAY=side-by-side
 # Load OS-specific config
 source "$DOTFILES/os/zshload.zsh"
 
-# Add custom scripts and executables to path
-export PATH="$PATH:$HOME/bin"
-
 # Early exit if loading from VSCode to allow it to load path
 if [ "${TERM_PROGRAM}" = "vscode" ]; then
   return

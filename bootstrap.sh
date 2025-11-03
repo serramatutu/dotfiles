@@ -16,7 +16,9 @@ fi
 . packages/golang/bootstrap.sh
 . packages/python/bootstrap.sh
 
+mkdir -p ~/.local/bin/
 ln -sf $DOTFILES/home/* ~/
+ln -sf $DOTFILES/.local/bin/* ~/.local/
 ln -sf $DOTFILES/.config/* ~/.config/
 
 git config --global include.path "~/.config/git/.gitconfig" 

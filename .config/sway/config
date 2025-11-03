@@ -142,8 +142,8 @@ bindsym Mod4+Shift+0 move container to workspace number $ws10
 bindsym Mod4+r reload
 
 ## volume control
-set $i3volume ~/bin/i3volume
-set $uictl ~/bin/uictl
+set $i3volume ~/.local/bin/i3volume
+set $uictl ~/.local/bin/uictl
 set $statuscmd i3blocks
 set $statussig SIGRTMIN+10
 set $volumestep 5
