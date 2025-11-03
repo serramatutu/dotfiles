@@ -143,6 +143,7 @@ bindsym Mod4+r reload
 
 ## volume control
 set $i3volume ~/bin/i3volume
+set $uictl ~/bin/uictl
 set $statuscmd i3blocks
 set $statussig SIGRTMIN+10
 set $volumestep 5
@@ -151,8 +152,8 @@ bindsym --locked XF86AudioLowerVolume exec $i3volume -x 100 -n -t $statuscmd -u 
 bindsym --locked XF86AudioMute        exec $i3volume -x 100 -n -t $statuscmd -u $statussig mute
 
 # brightness control
-bindsym --locked XF86MonBrightnessUp   exec brightnessctl set +5%
-bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
+bindsym --locked XF86MonBrightnessUp   exec $uictl brightness +5%
+bindsym --locked XF86MonBrightnessDown exec $uictl brightness 5%-
 
 # suspend
 exec xss-lock --transfer-sleep-lock -- swaylock --nofork

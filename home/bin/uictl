@@ -1,0 +1,26 @@
+#/bin/bash
+
+state_dir="$HOME/.local/state/uictl"
+mkdir -p $state_dir
+
+case "$1" in 
+    "brightness") 
+        brightnessctl set "$2"
+
+        current=$(brightnessctl get)
+        max=$(brightnessctl max)
+        percent=$(( current*100/max ))
+
+        id_file="$state_dir/brightness"
+        id="$(cat $id_file 2> /dev/null)"
+        if [ "$id" == "" ]; then
+            id="0"
+        fi
+
+        id=$(notify-send --print-id --replace-id "$id" -h "INT:value:$percent" "Brightness  $percent%")
+
+        echo -n "$id" > "$id_file"
+
+        exit 0
+        ;;
+esac
