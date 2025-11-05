@@ -1,10 +1,14 @@
 configuration {
-  modes: [ combi ];
+  modes: [ drun, window ];
   combi-modes: [ drun, run, window ];
   kb-remove-to-eol: "";
   kb-accept-entry: "Return,KP_Enter";
-  kb-row-up: "Up,Control+k,Shift+Tab,Shift+ISO_Left_Tab";
-  kb-row-down: "Down,Control+j";
+  kb-row-up: "Up,Control+k,K";
+  kb-row-down: "Down,Control+j,J";
+  kb-element-next: "";
+  kb-element-prev: "";
+  kb-mode-next: "Tab,ISO_Left_Tab";
+  kb-mode-previous: "Shift+Tab,Shift+ISO_Left_Tab";
 }
 
 window {
@@ -12,47 +16,114 @@ window {
 }
 
 * {
-  font: "SF Mono 12";
-  highlight: bold italic;
+  font: "SF Pro 12";
+  highlight: bold;
   scrollbar: true;
 
-  theme-bg0:          #000000;
-  theme-bg2:          #ff0000;
-  theme-fg0:          #aaaaaa;
-  theme-fg1:          #ffffff;
-  theme-red-dark:     #cc241d;
-  theme-red-light:    #fb4934;
-  theme-gray-dark:    #555555;
-  theme-gray-light:   #ffff00;
+  white:   #ffffff;
+  black:   #10121c;
+  gray-bg: #b0a7b8;
+  gray-fg: #2c1e31;
+  red:     #ec273f;
+  yellow:  #f3a833;
+  green:   #5ab552;
+  blue:    #3388de;
 
-  /* Theme colors */
-  background:                  @theme-bg0;
-  background-color:            @background;
-  foreground:                  @theme-fg1;
-  border-color:                @theme-gray-dark;
-  separatorcolor:              @border-color;
-  scrollbar-handle:            @border-color;
+  border-color:                transparent;
+  scrollbar-handle:            @black;
 
-  normal-background:           @background;
-  normal-foreground:           @foreground;
-  alternate-normal-background: @theme-bg0;
-  alternate-normal-foreground: @foreground;
-  selected-normal-background:  @theme-gray-light;
-  selected-normal-foreground:  @theme-bg0;
+  background:                  transparent;
+  normal-background:           transparent;
+  normal-foreground:           @white;
+  alternate-normal-background: transparent;
+  alternate-normal-foreground: @white;
+  selected-normal-background:  #77777733;
+  selected-normal-foreground:  @white;
+  active-background:           @gray-bg;
+  active-foreground:           @gray-fg;
 
-  active-background:           @theme-gray-light;
-  active-foreground:           @background;
-  alternate-active-background: @active-background;
-  alternate-active-foreground: @active-foreground;
-  selected-active-background:  @theme-gray-light;
-  selected-active-foreground:  @active-foreground;
+  alternate-active-background: @gray-bg;
+  alternate-active-foreground: @gray-fg;
+  selected-active-background:  @gray-bg;
+  selected-active-foreground:  @gray-fg;
 
-  urgent-background:           @theme-red-dark;
-  urgent-foreground:           @background;
-  alternate-urgent-background: @urgent-background;
-  alternate-urgent-foreground: @urgent-foreground;
-  selected-urgent-background:  @theme-red-light;
-  selected-urgent-foreground:  @urgent-foreground;
+  urgent-background:           @red;
+  urgent-foreground:           transparent;
+  alternate-urgent-background: @red;
+  alternate-urgent-foreground: transparent;
+  selected-urgent-background:  @red;
+  selected-urgent-foreground:  @white;
 }
 
-@import "gruvbox-common"
+window {
+  background-image: linear-gradient(70deg, #2c1e31f1, #10121cf1);
+  full-shadow: true;
+}
+
+mainbox {
+  padding: 15px 15px;
+}
+
+message {
+  border-color: #ff0000;
+}
+
+inputbar {
+  children: [ entry, overlay, mode-switcher ];
+}
+
+case-indicator,
+entry,
+prompt {
+  font: "SF Pro 18";
+}
+
+button {
+  font: "SF Pro Light 9";
+  expand: true;
+  border: 1px solid;
+  margin: 0 5px 0 5px;
+  padding: 5px;
+  border-color: @white;
+  border-radius: 50px;
+  text-color: @white;
+  width: 80px;
+}
+
+button.selected {
+  background-color: @white;
+  text-color: @gray-fg;
+}
+
+listview {
+  margin: 10px 0 0 0;
+  border: 1px solid 0 0;
+  border-color: #ffffff33;
+  padding: 10px 0 0 0;
+  columns: 2;
+}
+
+scrollbar {
+  handle-width: 3px;
+  handle-rounded-corners: true;
+  padding: 10px 10px;
+}
+
+element {
+  orientation: horizontal;
+  children: [element-icon, element-text];
+  spacing: 10px;
+  padding: 5px 5px;
+}
+
+element.selected {
+  border-radius: 8px;
+}
+
+element-text {
+    vertical-align: 0.5;
+}
+
+element-icon {
+  size: 2em;
+}

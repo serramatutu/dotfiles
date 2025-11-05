@@ -1,0 +1,127 @@
+* {
+    border: none;
+    font-family: "SF Pro", "Apple Color Emoji";
+    font-size: 14px;
+    min-height: 15px;
+}
+
+@define-color fg-neutral #ffffff;
+@define-color bg-neutral #10121c;
+
+@define-color bg-accent #b0a7b8;
+@define-color fg-accent #2c1e31;
+
+@define-color bg-info #3388de;
+@define-color fg-info #10121c;
+
+@define-color bg-good #5ab552;
+@define-color fg-good #ffffff;
+
+@define-color bg-warn #f3a833;
+@define-color fg-warn #10121c;
+
+@define-color bg-critical #ec273f;
+@define-color fg-critical #10121c;
+
+window#waybar {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0) 100%);
+}
+
+.modules-right, .modules-left, .modules-center {
+    margin: 10px;
+    border-radius: 15px;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.5);
+    opacity: 0.90;
+
+    /* trick to make swaybar larger and drop shadow larger */
+    margin-bottom: 20px;
+}
+
+label {
+    opacity: 1;
+}
+
+/* continuous gradient across the entire bar */
+.modules-right {
+    background: linear-gradient(160deg, rgba(16, 18, 28, 240) 0%, rgba(42, 30, 48, 240) 100%);
+}
+
+.modules-center {
+    background: linear-gradient(0deg, rgba(16, 18, 28, 240) 0%, rgba(29, 24, 38, 240) 100%);
+}
+
+.modules-left {
+    background: linear-gradient(160deg, rgba(42, 30, 48, 240) 0%, rgba(16, 18, 28, 240) 100%);
+}
+
+.modules-right :first-child *, .modules-left :first-child *, .modules-center :first-child * {
+    border-top-left-radius: 14px;
+    border-bottom-left-radius: 14px;
+}
+
+.modules-right :last-child *, .modules-left :last-child *, .modules-center :last-child * {
+    border-top-right-radius: 14px;
+    border-bottom-right-radius: 14px;
+}
+
+.module {
+    padding-left: 16px;
+    padding-right: 16px;
+    color: @fg-neutral;
+}
+
+widget:not(:last-child) > .module {
+    border-right: 2px solid @bg-neutral;
+}
+
+.module button {
+    padding: 5px;
+    font-size: 18px;
+    color: @fg-neutral;
+}
+
+.module button.focused {
+    background-color: @bg-accent;
+    color: @fg-accent;
+}
+
+#workspaces {
+    padding: 0;
+}
+
+#battery {
+    animation-duration: 0.5s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#battery.charging {
+    background: @bg-good;
+    color: @fg-good;
+    animation-name: blink;
+    animation-duration: 2s;
+}
+
+#battery.full {
+    background: @bg-good;
+    color: @fg-good;
+}
+
+#battery.warning:not(.charging) {
+    background-color: @bg-warn;
+    color: @fg-warn;
+}
+
+#battery.critical:not(.charging) {
+    background-color: @bg-critical;
+    color: @fg-critical;
+    animation-name: blink;
+}
+
+@keyframes blink {
+    to {
+        background-color: transparent;
+        color: @fg-neutral;
+    }
+}

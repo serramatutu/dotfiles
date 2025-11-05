@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-
-# Show the screen brightness value given by `brightnessctl`.
-
-MAX=$(brightnessctl max)
-VAL=$(brightnessctl get)
-PCT=$(( $VAL*100/$MAX ))
-
-echo "$PCT%"

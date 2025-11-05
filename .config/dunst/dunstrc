@@ -1,15 +1,16 @@
 [global]
-frame_color = "#AAAAAA"
-frame_width = 2
-
-background = "#000000"
-highlight = "#FFFF00"
-
-font = "SF Mono 9"
-
-corner_radius = 10
+frame_width = 0
+background = "#10121c"
+highlight = "#FFFFFF"
+transparency = 90
+font = "SF Pro 11"
+corner_radius = 15
 progress_bar_corner_radius = 10
-
+frame_color = "#555555"
+padding = 10
+horizontal_padding = 16
+gap_size = 5
+progress_bar_height = 3
 
 [urgency_critical]
-frame_color = "#AA0000"
+background = "#ec273f"

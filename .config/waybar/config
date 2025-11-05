@@ -1,0 +1,76 @@
+{
+    "ipc": true,
+    "mode": "hide",
+    "modules-left": ["sway/workspaces"],
+    "modules-center": ["clock"],
+    "modules-right": ["pulseaudio", "custom/mem", "battery"],
+
+    "sway/workspaces": {
+        "disable-scroll": true,
+        "persistent-workspaces": {
+            "1": [],
+            "2": [],
+            "3": [],
+            "4": [],
+            "5": [],
+            "6": [],
+            "7": [],
+            "8": [],
+            "9": [],
+            "0": [],
+        }
+    },
+
+    "sway/language": {
+        "format": "{} ",
+	"min-length": 5,
+	"tooltip": false
+    },
+
+    "sway/mode": {
+        "format": "<span style=\"italic\">{}</span>"
+    },
+
+    "clock": {
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format": "{:%a, %d %b, %I:%M %p}"
+    },
+
+    "pulseaudio": {
+        "format": "{volume}% {icon}{format_source}",
+        "format-muted": "muted 🔇{format_source}",
+        "format-source": "",
+        "format-source-muted": " 🤫",
+        "format-icons": {
+            "headphone": "🎧",
+            "hands-free": "🔈",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["🔈", "🔉", "🔊"]
+        },
+        "min-length": 7,
+        "tooltip": false,
+    },
+
+    "custom/mem": {
+        "format": "{} 💻",
+        "interval": 3,
+        "exec": "free -h | awk '/Mem:/{printf $3}'",
+        "tooltip": false,
+    },
+
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{capacity}% {icon}",
+        "format-charging": "{capacity}% 🔌",
+        "format-plugged": "{capacity}% 🔌",
+        "format-alt": "{time} {icon}",
+        "format-icons": ["🪫", "🪫", "🔋", "🔋", "🔋", "🔋", "🔋", "🔋", "🔋", "🔋"],
+	"on-update": "$HOME/.config/waybar/scripts/check_battery.sh",
+    },
+}

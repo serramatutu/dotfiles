@@ -23,7 +23,7 @@ set $c_inactive   #000000
 # -----
 # style
 # -----
-font pango:SF Mono 10
+font pango:SF Pro 12
 
 default_border pixel 0
 
@@ -37,15 +37,8 @@ gaps inner 0
 
 # Start swaybar to display a workspace bar (plus the system information i3status)
 bar {
-        status_command i3blocks
-	separator_symbol "|"
-	position top
-	colors {
-		background #000000
-		statusline #ffffff
-		focused_workspace #ffff00 #000000 #ffff00
-		inactive_workspace #000000 #000000 #ffffff
-	}
+        swaybar_command waybar
+
 	mode hide
 	hidden_state hide
 	modifier Mod4
@@ -57,6 +50,7 @@ bar {
 assign [app_id="alacritty"] $ws1
 assign [app_id="zen"] $ws2
 assign [app_id="tidal-hifi"] $ws4
+assign [instance="vscodium"] $ws5
 assign [title="^dev:"] $ws9
 
 # --------
@@ -97,7 +91,7 @@ input "type:touchpad" {
 # ----
 bindsym Mod4+Shift+q kill 
 
-bindsym Mod4+space exec "rofi -show combi -combi-modi window,drun,run -modi combi"
+bindsym Mod4+space exec "rofi -show drun"
 
 # change focus
 bindsym Mod4+h focus left
@@ -150,6 +144,7 @@ set $volumestep 5
 bindsym --locked XF86AudioRaiseVolume exec $i3volume -x 100 -n -t $statuscmd -u $statussig up $volumestep
 bindsym --locked XF86AudioLowerVolume exec $i3volume -x 100 -n -t $statuscmd -u $statussig down $volumestep
 bindsym --locked XF86AudioMute        exec $i3volume -x 100 -n -t $statuscmd -u $statussig mute
+bindsym --locked XF86AudioMicMute     exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
 # brightness control
 bindsym --locked XF86MonBrightnessUp   exec $uictl brightness +5%
