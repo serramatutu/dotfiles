@@ -136,14 +136,10 @@ bindsym Mod4+Shift+0 move container to workspace number $ws10
 bindsym Mod4+r reload
 
 ## volume control
-set $i3volume ~/.local/bin/i3volume
 set $uictl ~/.local/bin/uictl
-set $statuscmd i3blocks
-set $statussig SIGRTMIN+10
-set $volumestep 5
-bindsym --locked XF86AudioRaiseVolume exec $i3volume -x 100 -n -t $statuscmd -u $statussig up $volumestep
-bindsym --locked XF86AudioLowerVolume exec $i3volume -x 100 -n -t $statuscmd -u $statussig down $volumestep
-bindsym --locked XF86AudioMute        exec $i3volume -x 100 -n -t $statuscmd -u $statussig mute
+bindsym --locked XF86AudioRaiseVolume exec $uictl volume up 5
+bindsym --locked XF86AudioLowerVolume exec $uictl volume down 5
+bindsym --locked XF86AudioMute        exec $uictl volume mute
 bindsym --locked XF86AudioMicMute     exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
 # brightness control

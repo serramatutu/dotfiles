@@ -11,16 +11,16 @@ case "$1" in
         max=$(brightnessctl max)
         percent=$(( current*100/max ))
 
-        id_file="$state_dir/brightness"
-        id="$(cat $id_file 2> /dev/null)"
-        if [ "$id" == "" ]; then
-            id="0"
-        fi
-
-        id=$(notify-send --print-id --replace-id "$id" -h "INT:value:$percent" "Brightness  $percent%")
+        notify-send -h "STRING:synchronous:brightness" -h "INT:value:$percent" "Brightness  $percent%"
 
         echo -n "$id" > "$id_file"
 
         exit 0
+        ;;
+
+    "volume")
+        direction="$2"
+        step="$3"
+        ~/.local/bin/i3volume -P -x 100 -n "$direction" "$step"
         ;;
 esac
