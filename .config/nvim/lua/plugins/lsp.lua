@@ -121,13 +121,11 @@ return {
         server = {
           default_settings = {
             ["rust-analyzer"] = {
-              ["initialization_options"] = {
-                ["cargo"] = {
-                  ["targetDir"] = true,
-                },
-                ["check"] = {
-                  ["workspace"] = false,
-                },
+              ["cargo"] = {
+                ["targetDir"] = true,
+              },
+              ["check"] = {
+                ["workspace"] = false,
               },
             },
           },
