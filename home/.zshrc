@@ -70,6 +70,22 @@ rm() {
   fi
 }
 
+awscurl() {
+  service="$SERVICE"
+  region=$(aws configure get region)
+  creds=$(aws configure export-credentials)
+
+  user=$(echo "$creds" | jq -r '.AccessKeyId + ":" + .SecretAccessKey')
+  token=$(echo $creds | jq -r '.SessionToken')
+
+  curl --aws-sigv4 "aws:amz:$region:$SERVICE" \
+        --silent \
+        --user "$user" \
+        --header "x-amz-security-token: $token" \
+        --compressed \
+        $@
+}
+
 # search for a session and kill it
 tmux-kill() {
   local selected=$(tmux list-sessions | grep -oE "^[0-9A-Za-z]+" | fzf)
@@ -94,4 +110,3 @@ fi
 # Initialize completions
 eval "$(starship init zsh)"
 source <(fzf --zsh)
-
