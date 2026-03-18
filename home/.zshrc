@@ -26,7 +26,6 @@ export PATH="$PATH:$HOME/.local/bin"
 if [[ -d "$HOME/.asdf" ]]; then
     export ASDF_DATA_DIR="$HOME/.asdf"
     export PATH="$ASDF_DATA_DIR/shims:$PATH"
-    source $HOME/.asdf/plugins/golang/set-env.zsh
 fi 
 
 source "$HOME/.cargo/env"
