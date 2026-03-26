@@ -1,6 +1,7 @@
 return {
+  "b0o/schemastore.nvim",
   {
-    "williamboman/mason.nvim",
+    "mason-org/mason.nvim",
     opts = {
       ensure_installed = {
         "codelldb",
@@ -12,8 +13,8 @@ return {
     },
   },
   {
-    "williamboman/mason-lspconfig.nvim",
-    dependencies = { "williamboman/mason.nvim" },
+    "mason-org/mason-lspconfig.nvim",
+    dependencies = { "mason-org/mason.nvim" },
     build = ":MasonUpdate",
     opts = {
       ensure_installed = {
@@ -22,6 +23,7 @@ return {
         "eslint",
         "gopls",
         "html",
+        "jsonls",
         "kotlin_language_server",
         "lua_ls",
         "ruff",
@@ -34,7 +36,10 @@ return {
   },
   {
     "neovim/nvim-lspconfig",
-    dependencies = { "williamboman/mason-lspconfig.nvim" },
+    dependencies = {
+      "mason-org/mason-lspconfig.nvim",
+      "b0o/schemastore.nvim",
+    },
     event = { "BufReadPre", "BufNewFile" },
     opts = {
       inlay_hints = {
@@ -53,22 +58,16 @@ return {
             },
           },
         },
-        yaml = {
-          settings = {
-            validate = true,
-            schemaStore = {
-              enable = false,
-              url = "",
-            },
-            schemas = {
-              ["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*",
-            },
-          },
-        },
       },
     },
     config = function()
-      local lspconfig = require("lspconfig")
+      local function setup(ls, config)
+        if config then
+          vim.lsp.config[ls] = config
+        end
+        vim.lsp.enable(ls)
+      end
+
       local mason = require("mason")
 
       vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
@@ -89,22 +88,43 @@ return {
         end
       end
 
-      lspconfig.basedpyright.setup({})
-      lspconfig.lua_ls.setup({})
-      lspconfig.ruff.setup({
+      setup("basedpyright", {})
+      setup("lua_ls", {})
+      setup("ruff", {
         on_attach = on_attach,
       })
-      lspconfig.yamlls.setup({})
-      lspconfig.terraformls.setup({})
-      lspconfig.ts_ls.setup({})
-      lspconfig.eslint.setup({})
-      lspconfig.html.setup({})
-      lspconfig.cssls.setup({})
-      lspconfig.kotlin_language_server.setup({})
-      lspconfig.zls.setup({})
+      setup("yamlls", {
+        settings = {
+          yaml = {
+            schemaStore = {
+              -- You must disable built-in schemaStore support if you want to use
+              -- this plugin and its advanced options like `ignore`.
+              enable = false,
+              -- Avoid TypeError: Cannot read properties of undefined (reading 'length')
+              url = "",
+            },
+            schemas = require("schemastore").yaml.schemas(),
+          },
+        },
+      })
+      setup("jsonls", {
+        settings = {
+          json = {
+            schemas = require("schemastore").json.schemas(),
+            validate = { enable = true },
+          },
+        },
+      })
+      setup("terraformls", {})
+      setup("ts_ls", {})
+      setup("eslint", {})
+      setup("html", {})
+      setup("cssls", {})
+      setup("kotlin_language_server", {})
+      setup("zls", {})
 
       local go_cfg = require("go.lsp").config()
-      lspconfig.gopls.setup(go_cfg)
+      setup("gopls", go_cfg)
     end,
     keys = {
       { "<leader>gD", "<cmd>lua vim.lsp.buf.declaration()<cr>", { noremap = true, silent = true } },
