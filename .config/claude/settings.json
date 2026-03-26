@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "env": {
+    "CLAUDE_CODE_ENABLE_TELEMETRY": "0"
+  },
+  "attribution": {
+    "commit": "Generated with the help of AI.",
+    "pr": ""
+  },
+  "model": "us.anthropic.claude-sonnet-4-5-20250929-v1:0",
+  "allowedHttpHookUrls": [],
+  "sandbox": {
+    "enabled": true,
+    "failIfUnavailable": true
+  },
+  "editorMode": "vim",
+  "enabledPlugins": {
+    "rust-analyzer-lsp@claude-plugins-official": true
+  }
+}
