@@ -60,6 +60,11 @@ case "$1" in
         git clean -f
         ;;
 
+    "select")
+        selected=$(git log --format="%h %s" | fzf | cut -f1 -d" ")
+        echo "$selected"
+        ;;
+
     "help")
         man git-x
         ;;
