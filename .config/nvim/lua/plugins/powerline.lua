@@ -14,23 +14,11 @@ return {
           component_separators = "",
         },
         sections = {
+          lualine_a = {},
           lualine_b = {
             { "lsp_status" },
           },
-          lualine_c = {
-            {
-              "buffers",
-              buffers_color = {
-                active = "lualine_c_inactive",
-                inactive = "lualine_c_normal",
-              },
-              symbols = {
-                modified = "",
-                alternate_file = "",
-                directory = "",
-              },
-            },
-          },
+          lualine_c = {},
           lualine_x = {
             { git_blame.get_current_blame_text, cond = git_blame.is_blame_text_available },
           },
@@ -40,6 +28,27 @@ return {
           lualine_z = {
             { "branch" },
           },
+        },
+        tabline = {
+          lualine_a = {
+            {
+              "buffers",
+              buffers_color = {
+                active = "lualine_c_inactive",
+                inactive = "lualine_c_active",
+              },
+              symbols = {
+                modified = "",
+                alternate_file = "",
+                directory = "",
+              },
+            },
+          },
+          lualine_b = {},
+          lualine_c = {},
+          lualine_x = {},
+          lualine_y = {},
+          lualine_z = {},
         },
       })
     end,
