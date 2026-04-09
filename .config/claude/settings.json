@@ -7,16 +7,6 @@
     "commit": "Generated with the help of AI.",
     "pr": ""
   },
-  "model": "us.anthropic.claude-sonnet-4-5-20250929-v1:0",
-  "allowedHttpHookUrls": [],
-  "sandbox": {
-    "enabled": true,
-    "failIfUnavailable": true
-  },
-  "editorMode": "vim",
-  "enabledPlugins": {
-    "rust-analyzer-lsp@claude-plugins-official": true
-  },
   "permissions": {
     "allow": [
       "Bash(cut:*)",
@@ -34,5 +24,15 @@
       "Bash(wait:*)",
       "Bash(docker compoose:*)"
     ]
-  }
+  },
+  "model": "sonnet",
+  "allowedHttpHookUrls": [],
+  "enabledPlugins": {
+    "rust-analyzer-lsp@claude-plugins-official": true
+  },
+  "sandbox": {
+    "enabled": true,
+    "failIfUnavailable": true
+  },
+  "editorMode": "vim"
 }
