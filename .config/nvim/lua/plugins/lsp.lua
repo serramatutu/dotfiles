@@ -77,6 +77,7 @@ return {
 
       require("go").setup({
         lsp_cfg = false,
+        lsp_keymaps = false,
       })
 
       mason.setup()
