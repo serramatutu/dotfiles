@@ -42,4 +42,20 @@ return {
       },
     },
   },
+  -- guess indentation to avoid :set shiftwidth all the time
+  {
+    "nmac427/guess-indent.nvim",
+    lazy = false,
+    opts = {
+      on_tab_options = {
+        ["expandtab"] = "detected",
+      },
+      on_space_options = {
+        ["expandtab"] = "detected",
+        ["tabstop"] = "detected",
+        ["softtabstop"] = "detected",
+        ["shiftwidth"] = "detected",
+      },
+    },
+  },
 }
