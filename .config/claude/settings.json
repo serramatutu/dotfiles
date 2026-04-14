@@ -34,5 +34,18 @@
     "enabled": true,
     "failIfUnavailable": true
   },
-  "editorMode": "vim"
+  "editorMode": "vim",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "$HOME/.claude/hooks/rtk-rewrite.sh"
+          }
+        ]
+      }
+    ]
+  }
 }
