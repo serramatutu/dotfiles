@@ -48,13 +48,7 @@ return {
     lazy = false,
     opts = {
       on_tab_options = {
-        ["expandtab"] = "detected",
-      },
-      on_space_options = {
-        ["expandtab"] = "detected",
-        ["tabstop"] = "detected",
-        ["softtabstop"] = "detected",
-        ["shiftwidth"] = "detected",
+        ["expanctab"] = true,
       },
     },
   },
