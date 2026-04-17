@@ -1,12 +1,13 @@
 [global]
 frame_width = 0
-background = "#10121c"
-highlight = "#FFFFFF"
+background = "#e4e3ad"
+foreground = "#1a1a10"
+highlight = "#1a1a10"
 transparency = 90
-font = "SF Pro 11"
+font = "Google Sans 11"
 corner_radius = 15
 progress_bar_corner_radius = 10
-frame_color = "#555555"
+frame_color = "#1a1a10"
 padding = 10
 horizontal_padding = 16
 gap_size = 5
