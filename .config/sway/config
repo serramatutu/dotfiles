@@ -91,6 +91,7 @@ input "type:touchpad" {
 # ----
 bindsym Mod4+Shift+q kill 
 
+bindsym Mod4+Shift+t exec "alacritty"
 bindsym Mod4+space exec "rofi -show drun"
 
 # change focus

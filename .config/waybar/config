@@ -3,7 +3,7 @@
     "mode": "hide",
     "modules-left": ["sway/workspaces"],
     "modules-center": ["clock"],
-    "modules-right": ["pulseaudio", "custom/mem", "battery"],
+    "modules-right": ["network", "battery"],
 
     "sway/workspaces": {
         "disable-scroll": true,
@@ -34,6 +34,19 @@
     "clock": {
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "format": "{:%a, %d %b, %I:%M %p}"
+    },
+
+    "network": {
+        "interface": "wlan0",
+        "format": "{ifname}",
+        "format-wifi": "{signalStrength}% ",
+        "format-ethernet": "{ipaddr}/{cidr} 󰊗",
+        "format-disconnected": "",
+        "tooltip-format": "{ifname} via {gwaddr} 󰊗",
+        "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
+        "tooltip-format-ethernet": "{ifname} ",
+        "tooltip-format-disconnected": "Disconnected",
+        "max-length": 50
     },
 
     "pulseaudio": {

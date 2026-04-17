@@ -1,83 +1,46 @@
 * {
     border: none;
-    font-family: "SF Pro", "Apple Color Emoji";
+    font-family: "Google Sans", "SF Pro", "Apple Color Emoji";
     font-size: 14px;
-    min-height: 15px;
+    min-height: 12px;
 }
 
-@define-color fg-neutral #ffffff;
-@define-color bg-neutral #10121c;
+@define-color fg-neutral #1a1a10;
+@define-color bg-neutral #e4e3ad;
 
-@define-color bg-accent #b0a7b8;
+@define-color bg-accent #97bb61;
 @define-color fg-accent #2c1e31;
 
 @define-color bg-info #3388de;
 @define-color fg-info #10121c;
 
-@define-color bg-good #5ab552;
-@define-color fg-good #ffffff;
+@define-color bg-good #97bb61;
+@define-color fg-good #1a1a10;
 
-@define-color bg-warn #f3a833;
-@define-color fg-warn #10121c;
+@define-color bg-warn #f3a866;
+@define-color fg-warn #6d5320;
 
 @define-color bg-critical #ec273f;
 @define-color fg-critical #10121c;
 
 window#waybar {
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0) 100%);
-}
-
-.modules-right, .modules-left, .modules-center {
-    margin: 10px;
-    border-radius: 15px;
-    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.5);
-    opacity: 0.90;
-
-    /* trick to make swaybar larger and drop shadow larger */
-    margin-bottom: 20px;
-}
-
-label {
-    opacity: 1;
-}
-
-/* continuous gradient across the entire bar */
-.modules-right {
-    background: linear-gradient(160deg, rgba(16, 18, 28, 240) 0%, rgba(42, 30, 48, 240) 100%);
-}
-
-.modules-center {
-    background: linear-gradient(0deg, rgba(16, 18, 28, 240) 0%, rgba(29, 24, 38, 240) 100%);
-}
-
-.modules-left {
-    background: linear-gradient(160deg, rgba(42, 30, 48, 240) 0%, rgba(16, 18, 28, 240) 100%);
-}
-
-.modules-right :first-child *, .modules-left :first-child *, .modules-center :first-child * {
-    border-top-left-radius: 14px;
-    border-bottom-left-radius: 14px;
-}
-
-.modules-right :last-child *, .modules-left :last-child *, .modules-center :last-child * {
-    border-top-right-radius: 14px;
-    border-bottom-right-radius: 14px;
+    background: @bg-neutral;
 }
 
 .module {
-    padding-left: 16px;
-    padding-right: 16px;
+    padding-left: 8px;
+    padding-right: 8px;
     color: @fg-neutral;
 }
 
-widget:not(:last-child) > .module {
-    border-right: 2px solid @bg-neutral;
+.modules-right .module {
+    margin: 0 8px 0 8px;
 }
 
 .module button {
-    padding: 5px;
-    font-size: 18px;
+    padding: 2px;
     color: @fg-neutral;
+    margin: 2px;
 }
 
 .module button.focused {
