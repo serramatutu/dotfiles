@@ -16,47 +16,42 @@ window {
 }
 
 * {
-  font: "SF Pro 12";
+  font: "Google Sans 12";
   highlight: bold;
   scrollbar: true;
 
-  white:   #ffffff;
-  black:   #10121c;
-  gray-bg: #b0a7b8;
-  gray-fg: #2c1e31;
+  black:   #1a1a10;
+  light-green: #e4e3ad;
   red:     #ec273f;
-  yellow:  #f3a833;
-  green:   #5ab552;
-  blue:    #3388de;
 
   border-color:                transparent;
   scrollbar-handle:            @black;
 
   background:                  transparent;
   normal-background:           transparent;
-  normal-foreground:           @white;
+  normal-foreground:           @black;
   alternate-normal-background: transparent;
-  alternate-normal-foreground: @white;
-  selected-normal-background:  #77777733;
-  selected-normal-foreground:  @white;
-  active-background:           @gray-bg;
-  active-foreground:           @gray-fg;
+  alternate-normal-foreground: @black;
+  selected-normal-background:  @black;
+  selected-normal-foreground:  @light-green;
+  active-background:           @black;
+  active-foreground:           @light-green;
 
-  alternate-active-background: @gray-bg;
-  alternate-active-foreground: @gray-fg;
-  selected-active-background:  @gray-bg;
-  selected-active-foreground:  @gray-fg;
+  alternate-active-background: @black;
+  alternate-active-foreground: @light-green;
+  selected-active-background:  @black;
+  selected-active-foreground:  @light-green;
 
   urgent-background:           @red;
   urgent-foreground:           transparent;
   alternate-urgent-background: @red;
   alternate-urgent-foreground: transparent;
   selected-urgent-background:  @red;
-  selected-urgent-foreground:  @white;
+  selected-urgent-foreground:  @black;
 }
 
 window {
-  background-image: linear-gradient(70deg, #2c1e31f1, #10121cf1);
+  background-image: linear-gradient(70deg, #e4e3adf1, #c7d888f1);
   full-shadow: true;
 }
 
@@ -75,30 +70,30 @@ inputbar {
 case-indicator,
 entry,
 prompt {
-  font: "SF Pro 18";
+  font: "Google Sans 18";
 }
 
 button {
-  font: "SF Pro Light 9";
+  font: "Google Sans Light 9";
   expand: true;
   border: 1px solid;
   margin: 0 5px 0 5px;
   padding: 5px;
-  border-color: @white;
+  border-color: @black;
   border-radius: 50px;
-  text-color: @white;
+  text-color: @black;
   width: 80px;
 }
 
 button.selected {
-  background-color: @white;
-  text-color: @gray-fg;
+  background-color: @black;
+  text-color: @light-green;
 }
 
 listview {
   margin: 10px 0 0 0;
   border: 1px solid 0 0;
-  border-color: #ffffff33;
+  border-color: #00000000;
   padding: 10px 0 0 0;
   columns: 2;
 }
