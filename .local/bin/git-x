@@ -25,6 +25,14 @@ case "$1" in
         open "$repo_url"
         ;;
 
+    "fixup") 
+        shift
+        commit="$1"
+        shift
+        git commit $@ --fixup "$commit"
+        git rebase -i "$commit~1"
+        ;;
+
     "prune")
         main="main"
         if git rev-parse master > /dev/null 2>&1 ; then
