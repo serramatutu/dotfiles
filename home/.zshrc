@@ -1,4 +1,6 @@
 export DOTFILES="$HOME/.dotfiles"
+export ZSH_CACHE_DIR="$HOME/.local/share/zsh/"
+mkdir -p "$ZSH_CACHE_DIR"
 
 autoload -U compinit; compinit
 source "$DOTFILES/zsh/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh"
@@ -6,6 +8,7 @@ source "$DOTFILES/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.pl
 source "$DOTFILES/zsh/plugins/zsh-fzf-history-search/zsh-fzf-history-search.plugin.zsh"
 source "$DOTFILES/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh"
 source "$DOTFILES/zsh/plugins/fzf-tab/fzf-tab.plugin.zsh"
+source "$DOTFILES/zsh/plugins/ohmyzsh/plugins/dotenv/dotenv.plugin.zsh"
 
 # long history
 HISTSIZE=9999
