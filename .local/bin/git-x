@@ -29,7 +29,7 @@ case "$1" in
         shift
         commit="$1"
         shift
-        git commit $@ --fixup "$commit"
+        git commit $@ --fixup `git rev-parse "$commit"`
         git rebase -i "$commit~1"
         ;;
 
