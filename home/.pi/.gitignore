@@ -1,0 +1,7 @@
+*
+!.gitignore
+!agent/settings.json
+!agent/APPEND_SYSTEM.md
+!agent/skills/**
+!*/
+

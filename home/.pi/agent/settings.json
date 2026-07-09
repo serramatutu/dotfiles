@@ -1,0 +1,13 @@
+{
+  "lastChangelogVersion": "0.80.3",
+  "theme": "dark",
+  "defaultProvider": "anthropic",
+  "defaultModel": "claude-opus-4-8",
+  "defaultThinkingLevel": "medium",
+  "packages": [
+    "npm:pi-vim",
+    "npm:@hypabolic/pi-hypa",
+    "npm:pi-subagents",
+    "npm:pi-ask-user"
+  ]
+}
