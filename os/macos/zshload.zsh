@@ -19,12 +19,12 @@ i() {
 }
 
 # Quickly change sleep settings (allows using it with lid closed)
-dontsleep() { 
+macos_disable_sleep() { 
   echo "Disabling sleep"
   sudo pmset -a disablesleep 1
 }
 
-sleep() {
+macos_enable_sleep() {
   echo "Enabling sleep"
   sudo pmset -a disablesleep 0
 }
