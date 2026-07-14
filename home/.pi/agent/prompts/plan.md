@@ -33,8 +33,6 @@ landing-page
 
 Find out which files are relevant (the user might have pointed out starting points), read their contents and extract key information that will be relevant to the implementer, such as the overall purpose of each module, struct/enum/function names, dependencies etc. You should also list possible pitfalls like circular dependencies and edge cases.
 
-You may use sub-agents for that using the `/subagent` tool.
-
 ## Design
 
 Think about how to accomplish the goal at a high level: what's the overall architecture? What modules need to be changed? 
