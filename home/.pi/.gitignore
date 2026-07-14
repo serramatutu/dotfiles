@@ -4,6 +4,7 @@
 !agent/APPEND_SYSTEM.md
 !agent/skills/**
 !agent/prompts/**
+!agent/extensions
 !agent/extensions/**
 !*/
 

@@ -28,3 +28,6 @@
 [submodule "zsh/plugins/ohmyzsh"]
 	path = zsh/plugins/ohmyzsh
 	url = git@github.com:ohmyzsh/ohmyzsh.git
+[submodule "home/.pi/agent/extensions"]
+	path = home/.pi/agent/extensions
+	url = git@github.com:serramatutu/pi-extensions.git
