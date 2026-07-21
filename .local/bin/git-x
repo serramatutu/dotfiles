@@ -68,9 +68,46 @@ case "$1" in
         git clean -f
         ;;
 
+    "wait-for-action")
+        shift
+        run_id="$1"
+        shift
+
+        if [ -z "$run_id" ]; then
+            echo "No workflow run found."
+            exit 1
+        fi
+
+        gh run watch "$run_id" --exit-status
+        status=$?
+
+        url=$(gh run view "$run_id" --json url --jq '.url')
+
+        if [ $status -eq 0 ]; then
+            title="✅ Run succeeded"
+        else
+            title="❌ Run failed"
+        fi
+
+        case "$(uname -s)" in
+            Darwin)
+                terminal-notifier -title "$title" -message "Click to see details." -open "$url"
+                ;;
+            Linux)
+                notify-send "$title" "$url"
+                ;;
+        esac
+
+        exit $status
+        ;;
+
     "select")
         selected=$(git log --format="%h %s" | fzf | cut -f1 -d" ")
         echo "$selected"
+        ;;
+
+    "stats")
+        git log --follow --format=%an -- "$path" | sort | uniq -c | sort -nr
         ;;
 
     "help")

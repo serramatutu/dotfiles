@@ -6,18 +6,20 @@
 .P
 .SH "AVAILABLE COMMANDS"
 .P
-help    Show this message and exit.
+help              Show this message and exit.
 .P
-branch  Switch branches using fzf.
+branch            Switch branches using fzf.
 .P
-browse  Open the remote repository on the browser (GitHub only).
+browse            Open the remote repository on the browser (GitHub only).
 .P
-fixup   Fixup a commit in the past and autoapply the patch via rebase.
+fixup             Fixup a commit in the past and autoapply the patch via rebase.
 .P
-log     Show a fancy graph-like log. This is very useful for seeing how branches relate to each other and planning out rebases.
+log               Show a fancy graph-like log. This is very useful for seeing how branches relate to each other and planning out rebases.
 .P
-prune   Prune merged/squashed branches. This removes branches which have been squash-merged and deleted on the remote and that pollute your local git with an ever-growing list of dead branches.
+prune             Prune merged/squashed branches. This removes branches which have been squash-merged and deleted on the remote and that pollute your local git with an ever-growing list of dead branches.
 .P
-purge   Get rid of all changes and reset to HEAD.
+purge             Get rid of all changes and reset to HEAD.
 .P
-select  Select a commit from the git log using fzf
+select            Select a commit from the git log using fzf
+.P
+wait-for-action   Wait for a GitHub Actions run to finish (success or fail) and send an OS notification with a link to the run. Takes a run ID. defaults to the latest run. Requires the gh CLI.
