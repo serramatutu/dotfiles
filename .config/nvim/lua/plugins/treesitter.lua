@@ -7,13 +7,13 @@ return {
     opts = {
       ensure_installed = {
         "bash",
+        "go",
         "hcl",
+        "hlsl",
         "html",
         "javascript",
         "json",
-        "go",
         "kotlin",
-        "lua",
         "lua",
         "markdown",
         "markdown_inline",

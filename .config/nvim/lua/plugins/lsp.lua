@@ -70,11 +70,6 @@ return {
 
       local mason = require("mason")
 
-      vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-        title = "signature",
-        border = "single",
-      })
-
       require("go").setup({
         lsp_cfg = false,
         lsp_keymaps = false,
@@ -144,6 +139,7 @@ return {
             ["rust-analyzer"] = {
               ["cargo"] = {
                 ["targetDir"] = true,
+                ["features"] = "all",
               },
               ["check"] = {
                 ["workspace"] = false,
