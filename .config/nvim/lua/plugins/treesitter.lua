@@ -1,6 +1,8 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter",
+    branch = "main",
+    main = "nvim-treesitter.config",
     event = { "BufReadPre", "BufNewFile" },
     opts = {
       ensure_installed = {
@@ -37,40 +39,6 @@ return {
     opts = {
       max_lines = 1,
     },
-  },
-  {
-    "nvim-treesitter/nvim-treesitter-textobjects",
-    event = { "BufReadPre", "BufNewFile" },
-    dependencies = "nvim-treesitter/nvim-treesitter",
-    config = function()
-      require("nvim-treesitter.configs").setup({
-        textobjects = {
-          move = {
-            enable = true,
-            goto_next_start = {
-              ["]f"] = "@function.inner",
-              ["]c"] = "@class.inner",
-              ["]s"] = "@block.inner",
-            },
-            goto_previous_start = {
-              ["[f"] = "@function.inner",
-              ["[c"] = "@class.inner",
-              ["[s"] = "@block.inner",
-            },
-          },
-          select = {
-            enable = true,
-            keymaps = {
-              ["af"] = "@function.outer",
-              ["if"] = "@function.inner",
-              ["ac"] = "@class.outer",
-              ["ic"] = "@class.inner",
-              ["as"] = { query = "@scope", query_group = "locals", desc = "Select language scope" },
-            },
-          },
-        },
-      })
-    end,
   },
   {
     "windwp/nvim-ts-autotag",

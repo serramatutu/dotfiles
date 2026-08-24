@@ -43,13 +43,13 @@ return {
     },
   },
   -- guess indentation to avoid :set shiftwidth all the time
-  {
-    "nmac427/guess-indent.nvim",
-    lazy = false,
-    opts = {
-      on_tab_options = {
-        ["expanctab"] = true,
-      },
-    },
-  },
+  -- {
+  --   "nmac427/guess-indent.nvim",
+  --   lazy = false,
+  --   opts = {
+  --     on_tab_options = {
+  --       ["expanctab"] = true,
+  --     },
+  --   },
+  -- },
 }
