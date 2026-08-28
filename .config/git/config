@@ -1,5 +1,6 @@
 [alias]
     stash-unstaged = "!git stash push -S; git stash; git stash pop --index stash@{1}; git add ."
+    ilog = "log -p --ext-diff"
 [core]
     editor = nvim
     pager = delta
@@ -19,8 +20,7 @@
 [init]
     defaultBranch = main
 [interactive]
-    ; diffFilter = delta --color-only
-    diffFilter = difft
+    diffFilter = delta --color-only
 [status]
     short = true
 
@@ -39,7 +39,6 @@
 
 
 [diff]
-    external = difft
     algorithm = histogram
 [delta]
     navigate = true
