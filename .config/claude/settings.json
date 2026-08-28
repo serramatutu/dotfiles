@@ -10,6 +10,8 @@
   },
   "permissions": {
     "allow": [
+      "Bash(rtk:*)",
+      "Bash(cargo:*)",
       "Bash(cut:*)",
       "Bash(find:*)",
       "Bash(git add:*)",
@@ -23,19 +25,10 @@
       "Bash(mkdir:*)",
       "Bash(sed:*)",
       "Bash(wait:*)",
-      "Bash(docker compoose:*)"
+      "Bash(docker:*)"
     ]
   },
-  "model": "sonnet",
-  "allowedHttpHookUrls": [],
-  "enabledPlugins": {
-    "rust-analyzer-lsp@claude-plugins-official": true
-  },
-  "sandbox": {
-    "enabled": true,
-    "failIfUnavailable": true
-  },
-  "editorMode": "vim",
+  "model": "opus",
   "hooks": {
     "PreToolUse": [
       {
@@ -44,6 +37,17 @@
           {
             "type": "command",
             "command": "${CLAUDE_CONFIG_DIR}/hooks/rtk-rewrite.sh"
+          }
+        ]
+      },
+      {
+        "matcher": "Edit|Write|NotebookEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "${CLAUDE_CONFIG_DIR}/hooks/no-comments.py",
+            "timeout": 30,
+            "statusMessage": "Checking for comments..."
           }
         ]
       }
@@ -79,5 +83,18 @@
         ]
       }
     ]
-  }
+  },
+  "allowedHttpHookUrls": [],
+  "enabledPlugins": {
+    "rust-analyzer-lsp@claude-plugins-official": true,
+    "gopls-lsp@claude-plugins-official": true,
+    "pyright-lsp@claude-plugins-official": true
+  },
+  "sandbox": {
+    "enabled": true,
+    "failIfUnavailable": true
+  },
+  "tui": "fullscreen",
+  "editorMode": "vim",
+  "outputStyle": "No Slop"
 }
