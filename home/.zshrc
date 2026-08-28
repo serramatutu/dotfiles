@@ -8,7 +8,6 @@ source "$DOTFILES/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.pl
 source "$DOTFILES/zsh/plugins/zsh-fzf-history-search/zsh-fzf-history-search.plugin.zsh"
 source "$DOTFILES/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh"
 source "$DOTFILES/zsh/plugins/fzf-tab/fzf-tab.plugin.zsh"
-source "$DOTFILES/zsh/plugins/ohmyzsh/plugins/dotenv/dotenv.plugin.zsh"
 
 # long history
 HISTSIZE=9999
