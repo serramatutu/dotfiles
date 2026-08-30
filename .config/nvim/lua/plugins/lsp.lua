@@ -131,7 +131,6 @@ return {
   {
     "mrcjkb/rustaceanvim",
     ft = "rust",
-    version = "^9",
     init = function()
       vim.g.rustaceanvim = {
         server = {
