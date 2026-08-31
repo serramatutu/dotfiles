@@ -51,7 +51,7 @@ assign [app_id="alacritty"] $ws1
 assign [app_id="zen"] $ws2
 assign [app_id="tidal-hifi"] $ws4
 assign [instance="vscodium"] $ws5
-assign [title="^dev:"] $ws9
+assign [title="(^dev:)|(^gdtk:)"] $ws9
 
 # --------
 # monitors
@@ -106,8 +106,14 @@ bindsym Mod4+Shift+j move down
 bindsym Mod4+Shift+k move up
 bindsym Mod4+Shift+l move right
 
+# resize focused window
+bindsym Mod4+Alt+h resize shrink width
+bindsym Mod4+Alt+j resize shrink height
+bindsym Mod4+Alt+k resize grow height
+bindsym Mod4+Alt+l resize grow width
+
 # enter fullscreen mode for the focused container
-bindsym Mod4+f fullscreen toggle
+bindsym Mod4+f floating toggle
 
 # switch to workspace
 bindsym Mod4+1 workspace number $ws1
