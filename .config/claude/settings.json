@@ -9,6 +9,7 @@
     "pr": ""
   },
   "permissions": {
+    "defaultMode": "manual",
     "allow": [
       "Bash(rtk:*)",
       "Bash(cargo:*)",
