@@ -53,6 +53,31 @@
         ]
       }
     ],
+    "PostToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "${CLAUDE_CONFIG_DIR}/hooks/no-comments.py",
+            "timeout": 30,
+            "statusMessage": "Checking worktree for comments..."
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "${CLAUDE_CONFIG_DIR}/hooks/no-comments.py",
+            "timeout": 30,
+            "statusMessage": "Baselining comments..."
+          }
+        ]
+      }
+    ],
     "Stop": [
       {
         "matcher": "*",
