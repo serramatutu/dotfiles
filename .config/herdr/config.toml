@@ -2,6 +2,7 @@ onboarding = false
 
 [theme]
 name = "onedark"
+custom.panel_bg = "black"
 
 [ui]
 prompt_new_tab_name = false
@@ -12,6 +13,7 @@ status_indicators = "symbols"
 tab_bar_position = "bottom"
 toast.delivery = "terminal"
 sound.enabled = false
+
 
 [keys]
 prefix = "`"
