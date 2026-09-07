@@ -1,0 +1,48 @@
+onboarding = false
+
+[theme]
+name = "onedark"
+
+[ui]
+prompt_new_tab_name = false
+prompt_new_workspace_name = false
+confirm_close = false
+sidebar_start_collapsed = true
+status_indicators = "symbols"
+tab_bar_position = "bottom"
+toast.delivery = "terminal"
+sound.enabled = false
+
+[keys]
+prefix = "`"
+toggle_sidebar = "prefix+b"
+
+# managing tabs/workspaces/panes
+new_workspace = "prefix+plus"
+rename_workspace = "prefix+$"
+close_workspace = "prefix+shift+q"
+
+new_tab = "prefix+="
+close_tab = "prefix+q"
+rename_tab = "prefix+shift+r"
+
+split_horizontal = "prefix+shift+minus"
+split_vertical = "prefix+minus"
+
+# navigation
+goto = "prefix+c"
+
+next_workspace = "prefix+j"
+previous_workspace = "prefix+k"
+next_tab = "prefix+l"
+previous_tab = "prefix+h"
+next_agent = "prefix+shift+j"
+previous_agent = "prefix+shift+k"
+
+focus_pane_left = "prefix+n"
+focus_pane_down = "prefix+m"
+focus_pane_up = "prefix+,"
+focus_pane_right = "prefix+."
+
+move_tab_previous = "prefix+shift+h"
+move_tab_next = "prefix+shift+l"

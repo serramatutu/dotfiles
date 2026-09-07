@@ -29,7 +29,7 @@
     ],
     "defaultMode": "default"
   },
-  "model": "opus[1m]",
+  "model": "sonnet",
   "hooks": {
     "PreToolUse": [
       {
@@ -69,6 +69,18 @@
           {
             "type": "command",
             "command": "${CLAUDE_CONFIG_DIR}/hooks/tmux-notify.sh"
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash '/Users/lucas/.config/claude/hooks/herdr-agent-state.sh' session",
+            "timeout": 10
           }
         ]
       }

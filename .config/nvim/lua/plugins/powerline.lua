@@ -7,12 +7,9 @@ return {
       vim.g.gitblame_display_virtual_text = 0
       local git_blame = require("gitblame")
 
-      local colors = require("ayu.colors")
-      colors.generate()
-
       require("lualine").setup({
         options = {
-          theme = "ayu_dark",
+          theme = "onedark",
           section_separators = "",
           component_separators = "",
         },
@@ -36,10 +33,6 @@ return {
           lualine_a = {
             {
               "buffers",
-              buffers_color = {
-                active = { fg = colors.bg, bg = colors.accent },
-                inactive = { fg = colors.fg, bg = colors.bg },
-              },
               symbols = {
                 modified = "",
                 alternate_file = "",

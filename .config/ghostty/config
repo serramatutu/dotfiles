@@ -1,0 +1,7 @@
+theme = One Dark Darker
+
+cursor-style-blink = false
+fullscreen = true
+window-inherit-font-size = false
+font-size = 16
+font-family = "FiraCode Nerd Font"
