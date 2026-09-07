@@ -1,0 +1,106 @@
+#!/bin/bash
+
+function quiet() {
+  $@ >/dev/null 2>&1
+}
+
+function debug() {
+  if [[ "$LLM" == "0" ]]; then
+    >&2 echo "$@"
+  fi
+}
+
+function remote() {
+  local result=$(ssh $SSH_ARGS "$REMOTE" "cd $REMOTE_PATH ; $@")
+  echo -n "$result"
+}
+
+
+if [ "$REMOTE" = "" ]; then
+  >&2 echo "Must set REMOTE variable to use this script"
+  exit 1
+fi
+
+if [ "$REMOTE_PATH" = "" ]; then
+  >&2 echo "Must set REMOTE_PATH variable to use this script"
+  exit 1
+fi
+
+LLM="${LLM:-0}"
+LOCAL_PATH="$(git rev-parse --show-toplevel)"
+STATE="$HOME/.local/state/remote"
+mkdir -p "$STATE"
+LOCKFILE="$STATE/remote.lock"
+TIMEOUT=300
+
+
+# Acquire lock
+debug "Waiting for lock $LOCKFILE"
+exec 9>"$LOCKFILE"
+flock -w "$TIMEOUT" 9 || { >&2 echo "lock acquire timeout"; exit 1; }
+debug "Lock acquired"
+
+# Clean remote
+quiet remote git reset --hard
+quiet remote git clean -fdx --exclude=target/
+
+# Sync git HEAD
+remote_head="$(remote git rev-parse HEAD)"
+local_head="$(git rev-parse HEAD)"
+
+if [[ "$remote_head" != "$local_head" ]]; then
+  debug "Switching remote HEAD to $local_head"
+  quiet git branch -f local-head HEAD
+  quiet git push -f "$REMOTE" local-head:local-head
+
+  quiet remote git switch main
+  quiet remote git fetch -f self local-head:local-head
+  quiet remote git switch local-head
+fi
+
+# Sync uncommitted changes
+path=$(pwd)
+cd "$LOCAL_PATH"
+
+uncommitted=$(git status -s | cut -c4- | tail -n +2 | tr '\' ' ' | xargs)
+
+if [[ "$uncommitted" != "" ]]; then
+  debug "Syncing uncommitted changes"
+  rsync -a --relative $uncommitted "$REMOTE:$REMOTE_PATH"
+fi
+
+cd "$path"
+
+
+# Run command
+if [[ "$LLM" == "0" ]]; then
+  cmd="$@"
+else
+  cmd="rtk $@"
+fi
+
+debug "Running '$cmd'"
+ssh -t "$REMOTE" "cd $REMOTE_PATH ; $cmd"
+status=$?
+
+# Sync remote changes back
+filelist=$(mktemp)
+trap 'rm -f "$filelist"' EXIT
+
+remote git status --porcelain \
+  | grep -v '^ *D' \
+  | sed -e 's/^...//' -e 's/.* -> //' \
+  | grep -v '^target/' \
+  > "$filelist"
+
+if [[ -s "$filelist" ]]; then
+  debug "Syncing remote changes back"
+  rsync -ar --relative --exclude='target/' --files-from="$filelist" \
+    "$REMOTE:${REMOTE_PATH#\~/}" "$LOCAL_PATH"
+fi
+
+# unlock
+flock -u 9
+
+exit $status
+
