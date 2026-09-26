@@ -5,6 +5,7 @@ name = "onedark"
 custom.panel_bg = "black"
 
 [ui]
+host_cursor = "native"
 prompt_new_tab_name = false
 prompt_new_workspace_name = false
 confirm_close = false
