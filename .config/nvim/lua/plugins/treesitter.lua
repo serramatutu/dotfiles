@@ -21,6 +21,7 @@ return {
         "query",
         "regex",
         "rust",
+        "slang",
         "sql",
         "tsx",
         "typescript",
