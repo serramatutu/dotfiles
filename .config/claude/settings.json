@@ -28,7 +28,7 @@
     ],
     "defaultMode": "default"
   },
-  "model": "opus",
+  "model": "sonnet",
   "hooks": {
     "Stop": [
       {
