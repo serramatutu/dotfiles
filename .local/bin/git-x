@@ -34,19 +34,22 @@ case "$1" in
         ;;
 
     "prune")
-        main="main"
+        default_main="main"
         if git rev-parse master > /dev/null 2>&1 ; then
-            main="master"
+            default_main="master"
         fi
+
+        shift
+        main="${1:-$default_main}"
 
         current_branch=$(git rev-parse --abbrev-ref HEAD)
         if [ "$current_branch" != "$main" ]; then
-            echo "Must be on $main to prune branches."
-            return 1
+            echo "Must be on '$main' to prune branches."
+            exit 1
         fi
 
         # delete normally merged branches
-        git branch --merged | egrep -v '(^\*|master|main)' | xargs git branch -d
+        git branch --merged | egrep -v "(^\*|main|master|$main)" | xargs git branch -d
 
         # delete squash-merged branches
         git checkout -q "$main"
