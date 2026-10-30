@@ -28,7 +28,7 @@
     ],
     "defaultMode": "default"
   },
-  "model": "sonnet",
+  "model": "opus",
   "hooks": {
     "Stop": [
       {
@@ -88,9 +88,10 @@
   "enabledPlugins": {
     "rust-analyzer-lsp@claude-plugins-official": true,
     "gopls-lsp@claude-plugins-official": true,
-    "pyright-lsp@claude-plugins-official": true
+    "pyright-lsp@claude-plugins-official": true,
+    "datadog@claude-plugins-official": true
   },
-  "outputStyle": "No Slop",
+  "outputStyle": "Code",
   "sandbox": {
     "enabled": true,
     "failIfUnavailable": true
